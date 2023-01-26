@@ -11,6 +11,8 @@ export default function MongoHandler({ children }) {
   const [mongodb, setMongodb] = useState();
   const [user, setUser] = useState();
   const { data: session, status } = useSession();
+  console.log('run')
+  console.log('status', status)
 
   // This useEffect hook will run only once when the page
   // is loaded and when status changes
@@ -18,6 +20,7 @@ export default function MongoHandler({ children }) {
     const login = async () => {
       //authenticate with jwt
       try {
+        console.log(session.accessToken);
         const jwt = session.accessToken;
         const credentials = Realm.Credentials.jwt(jwt);
         const user = await app.logIn(credentials);
