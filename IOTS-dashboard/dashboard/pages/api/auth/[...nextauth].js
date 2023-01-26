@@ -16,6 +16,25 @@ export default NextAuth({
       }
     })
   ],
+  callbacks: {
+    session: async ({ session, token }) => {
+      if (token) {
+        session.user = token.user;
+        session.accessToken = token.accessToken;
+        session.error = token.error;
+      }
+      return session;
+    },
+    async jwt({ token, account }) {
+      // Persist the OAuth access_token to the token right after signin
+      if (account) {
+        token.accessToken = account.access_token;
+      }
+
+      return token;
+    }
+  },
+
   secret: process.env.NEXTAUTH_SECRET,
   session: {
     jwt: true,
