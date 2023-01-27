@@ -17,17 +17,32 @@ import Typography from "@mui/material/Typography";
 
 // Define the App component
 
-const HomePage = () => {
+const HomePage = ({mongodb, user, app}) => {
   // Set state variables
   
   // This useEffect hook will run only once when the page is loaded and when
   // mongodb connection is established
+
+  function write() {
+    if (mongodb) {
+      //dont run watch when mongodb connection is not established
+      const collection = mongodb.db("IOTS-database").collection("iot"); //insert into collection
+      collection.insertOne({
+        timestamp: new Date(),
+        value: 1234567,
+        owner_id: user
+      });
+    } else {
+      alert("Mongodb connection not established. Please try again");
+    }
+  }
  
 
   // Return the JSX that will generate HTML for the page
   return (
     <div>
         homepage
+        <button onClick={write}>write</button>
     </div>
     // <div className="App">
     //   {!!user  && ( //check if user is loaded
