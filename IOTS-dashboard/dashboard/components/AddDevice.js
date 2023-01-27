@@ -10,7 +10,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { Stack } from "@mui/system";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import { Box, IconButton } from "@mui/material";
+import { Box, Grid, IconButton } from "@mui/material";
 
 export default function AddDevice({ handlePopup, open, user, mongodb }) {
   const [password, setpassword] = React.useState("");
@@ -37,7 +37,6 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
           });
           handleIdPopup();
           handlePopup();
-          
         } catch (err) {
           if (err.toString().search("duplicate")) {
             alert("Please re-upload again"); //device id colliding with existing one in db
@@ -106,19 +105,23 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
         <DialogTitle>Device ID</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Your device has been successfully been inserted. This is your Device
-            ID. <b> DO NOT SHARE THIS with anyone.</b> Put this ID to your
-            device to pair with your account.
-            <Stack direction={"row"}>
-              <Box>{deviceId}</Box>
-              <IconButton
-                onClick={() => {
-                  navigator.clipboard.writeText(deviceId);
-                }}
-              >
-                <ContentCopyIcon />
-              </IconButton>
-            </Stack>
+            <Grid justifyContent="center" alignItems="center" spacing={4}>
+              <div>
+                Your device has been successfully been inserted. This is your
+                Device ID. <b> DO NOT SHARE THIS WITH ANYONE.</b> Put this ID in
+                your device to pair with your account.
+              </div>
+              <Stack direction={"row"}>
+                <Box>{deviceId}</Box>
+                <IconButton
+                  onClick={() => {
+                    navigator.clipboard.writeText(deviceId);
+                  }}
+                >
+                  <ContentCopyIcon />
+                </IconButton>
+              </Stack>
+            </Grid>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
