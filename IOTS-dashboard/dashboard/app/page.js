@@ -45,7 +45,9 @@ const HomePage = () => {
 
   // for opening and closing popup
   const handleEditPopup = () => {
+    console.log('this should run too and the data is', !openEditPopup)
     setEditPopup(!openEditPopup);
+    
   };
 
   // for opening and closing popup
