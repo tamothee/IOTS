@@ -22,9 +22,9 @@ export default function EditDevice({
   mongodb,
   device,
 }) {
-  const [name, setName] = React.useState(device.name);
+  const [name, setName] = React.useState('');
   const [regenId, setRegenId] = React.useState(false); // request to regenerate deviceId
-  const [deviceId, setDeviceId] = React.useState(device["device_id"]);
+  const [deviceId, setDeviceId] = React.useState('');
   const [changePass, setChangePass] = React.useState(false); //request to change password
   const [password, setPassword] = React.useState("");
   const [deleteLoading, setDeleteLoading] = React.useState(false);
@@ -37,6 +37,11 @@ export default function EditDevice({
 
   console.log('device',device);
   console.log('device',device.name);
+
+  React.useEffect(()=>{
+    setName(device.name);
+    setDeviceId(device["device_id"])
+  },[device])
 
   const edit = () => {
     setEditLoading(true);
