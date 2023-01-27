@@ -84,7 +84,7 @@ const HomePage = () => {
             Refresh
           </Button>
         </Stack>
-        {devices !=='' && <>loading...</>} {/* show loading when devices are not shown */}
+        {!devices && <>loading...</>} {/* show loading when devices are not shown */}
 
         {!!user &&
           !!devices && //check if user and devices is loaded to prevent error when running an undefined variable
