@@ -16,7 +16,7 @@ import { CardActionArea } from "@mui/material";
 import EditDevice from "../components/EditDevice";
 import AddDevice from "../components/AddDevice";
 import RefreshIcon from '@mui/icons-material/Refresh';
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const HomePage = () => {
   // Set state variables
