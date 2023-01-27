@@ -30,7 +30,7 @@ const HomePage = () => {
   const [devices, setDevices] = useState(); // user devices registered
   const [openEditPopup, setEditPopup] = useState(false); //popup state for edit
   const [openAddPopup, setAddPopup] = useState(false); // popup state for add
-  const [deviceSelected, setDeviceSelected] = useState()
+  const [deviceSelected, setDeviceSelected] = useState({})
 
   const getUserData = async () => {
     try {
