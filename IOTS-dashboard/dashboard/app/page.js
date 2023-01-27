@@ -72,7 +72,8 @@ const HomePage = () => {
         </Link>
       </Breadcrumbs>
       <div>
-        {!!user && !!devices && //check if user is loaded
+        {console.log(devices)}
+        {/* {!!user && !!devices && //check if user is loaded
           devices.map((device) => {
             return (
               <Card sx={{ minWidth: 275 }}>
@@ -86,7 +87,7 @@ const HomePage = () => {
                 </CardContent>
               </Card>
             );
-          })}
+          })} */}
         <button onClick={write}>write</button>
       </div>
     </div>
