@@ -69,11 +69,8 @@ const HomePage = () => {
         </Link>
       </Breadcrumbs>
       <div>
-        <Stack direction={'row'} spacing={2} style={{ marginBottom: "20px" }}>
-          <Button
-            variant="contained"
-            onClick={handleAddPopup}
-          >
+        <Stack direction={"row"} spacing={2} style={{ marginBottom: "20px" }}>
+          <Button variant="contained" onClick={handleAddPopup}>
             Add new device
           </Button>
           <Button
@@ -84,8 +81,8 @@ const HomePage = () => {
             Refresh
           </Button>
         </Stack>
-        {!devices && <>loading...</>} {/* show loading when devices are not shown */}
-
+        {!devices && <>loading...</>}{" "}
+        {/* show loading when devices are not shown */}
         {!!user &&
           !!devices && //check if user and devices is loaded to prevent error when running an undefined variable
           devices.map((device) => {
@@ -93,10 +90,10 @@ const HomePage = () => {
               <Card sx={{ minWidth: 275 }} style={{ marginBottom: "10px" }}>
                 <CardActionArea onClick={handleEditPopup}>
                   <CardContent>
-                  <Typography variant="h5" gutterBottom>
+                    <Typography variant="h5" gutterBottom>
                       Device Name: {device.name}
                     </Typography>
-                    <Typography variant="body1"  >
+                    <Typography variant="body1">
                       Device ID: {device["device_id"]}
                     </Typography>
                     <Typography variant="body2">
@@ -107,22 +104,18 @@ const HomePage = () => {
               </Card>
             );
           })}
-        {openEditPopup && (
-          <EditDevice
-            handlePopup={handleEditPopup}
-            open={openEditPopup}
-            user={user}
-            mongodb={mongodb}
-          />
-        )}
-        {openAddPopup && (
-          <AddDevice
-            handlePopup={handleAddPopup}
-            open={openAddPopup}
-            user={user}
-            mongodb={mongodb}
-          />
-        )}
+        <EditDevice
+          handlePopup={handleEditPopup}
+          open={openEditPopup}
+          user={user}
+          mongodb={mongodb}
+        />
+        <AddDevice
+          handlePopup={handleAddPopup}
+          open={openAddPopup}
+          user={user}
+          mongodb={mongodb}
+        />
       </div>
     </div>
   );
