@@ -16,10 +16,27 @@ export default function EditDevice({handlePopup, open}) {
         <DialogTitle>Edit device</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here. We
-            will send updates occasionally.
+          To edit your device, please fill up the forms below.
           </DialogContentText>
           <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Email Address"
+            type="email"
+            fullWidth
+            variant="standard"
+          />
+           <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Email Address"
+            type="email"
+            fullWidth
+            variant="standard"
+          />
+           <TextField
             autoFocus
             margin="dense"
             id="name"
