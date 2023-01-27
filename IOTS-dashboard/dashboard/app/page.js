@@ -15,6 +15,7 @@ import Link from "next/link";
 
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import { CardActionArea } from "@mui/material";
+import Popup from "../components/popup";
 
 // Create the Application
 
@@ -98,7 +99,7 @@ const HomePage = () => {
               </Card>
             );
           })}
-          {openPopup && <openPopup handlePopup={handlePopup} open={openPopup}/>}
+          {openPopup && <Popup handlePopup={handlePopup} open={openPopup}/>}
         <button onClick={write}>write</button>
       </div>
     </div>
