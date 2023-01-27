@@ -172,7 +172,7 @@ export default function EditDevice({
             </Stack>
             <Stack
               direction={"row"}
-              justifyContent="center"
+              justifyContent="flex-start"
               alignItems="center"
             >
               <FormControlLabel
