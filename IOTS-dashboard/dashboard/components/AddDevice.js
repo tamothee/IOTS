@@ -12,6 +12,7 @@ import { MongoDBRealmError } from "realm-web";
 export default function AddDevice({ handlePopup, open, user, mongodb }) {
   const [deviceId, setDeviceId] = React.useState("");
   const [password, setpassword] = React.useState("");
+  const [name, setName] = React.useState("");
 
   async function write() {
     if (user) {
@@ -24,17 +25,18 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
             password: password,
             owner_id: user.id,
             device_id: deviceId,
+            name: name,
           });
           handlePopup();
           alert("Insert Successful!");
         } catch (err) {
-          if (err instanceof MongoDBRealmError) {
+          if (err.search("duplicate")) {
             console.error("# Duplicate Data Found:\n", err);
-            console.log('type of error', err.type)
-            alert("Found duplicate Device ID");
+            console.log("type of error", err.type);
+            alert("Found duplicate Device ID. Try a different Device ID");
           } else {
             alert("Unexpected error");
-            console.log(err)
+            console.log(err);
           }
         }
       } else {
@@ -64,6 +66,18 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
             value={deviceId}
             onChange={(event) => {
               setDeviceId(event.target.value);
+            }}
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name-input"
+            label="Name"
+            fullWidth
+            variant="standard"
+            value={name}
+            onChange={(event) => {
+              setName(event.target.value);
             }}
           />
           <TextField

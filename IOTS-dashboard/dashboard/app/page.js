@@ -92,7 +92,10 @@ const HomePage = () => {
               <Card sx={{ minWidth: 275 }} style={{ marginBottom: "10px" }}>
                 <CardActionArea onClick={handleEditPopup}>
                   <CardContent>
-                    <Typography variant="h5" gutterBottom>
+                  <Typography variant="h5" gutterBottom>
+                      Device Name: {device.name}
+                    </Typography>
+                    <Typography variant="body1"  >
                       Device ID: {device["device_id"]}
                     </Typography>
                     <Typography variant="body2">
