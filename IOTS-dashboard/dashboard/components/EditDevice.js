@@ -170,15 +170,29 @@ export default function EditDevice({
                 }}
               />
             </Stack>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={regenId}
-                  onChange={(e) => setRegenId(e.target.checked)}
-                />
-              }
-              label="Regenerate Device ID"
-            />
+            <Stack
+              direction={"row"}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={regenId}
+                    onChange={(e) => setRegenId(e.target.checked)}
+                  />
+                }
+                label="Regenerate Device ID"
+              />
+              <Box>{deviceId}</Box>
+              <IconButton
+                onClick={() => {
+                  navigator.clipboard.writeText(deviceId);
+                }}
+              >
+                <ContentCopyIcon />
+              </IconButton>
+            </Stack>
           </FormGroup>
         </DialogContent>
         <DialogActions>
