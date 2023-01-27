@@ -97,7 +97,7 @@ const HomePage = () => {
             return (
               <div key={index}>
                 <Card sx={{ minWidth: 275 }} style={{ marginBottom: "10px" }}>
-                  <CardActionArea onClick={(device)=>handleEditPopup(device)}>
+                  <CardActionArea onClick={()=>handleEditPopup(device)}>
                     <CardContent>
                       <Typography variant="h5" gutterBottom>
                         Device Name: {device.name}
