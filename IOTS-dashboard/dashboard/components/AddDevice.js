@@ -111,7 +111,11 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
                 Device ID. <b> DO NOT SHARE THIS WITH ANYONE.</b> Put this ID in
                 your device to pair with your account.
               </div>
-              <Stack direction={"row"}>
+              <Stack
+                direction={"row"}
+                justifyContent="center"
+                alignItems="center"
+              >
                 <Box>{deviceId}</Box>
                 <IconButton
                   onClick={() => {
