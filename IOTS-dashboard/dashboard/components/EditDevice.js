@@ -35,9 +35,6 @@ export default function EditDevice({
     setIdPopup(!idPopup);
   };
 
-  // console.log('device',device);
-  // console.log('device',device.name);
-
   React.useEffect(() => {
     if (device) {
       setName(device.name);
@@ -98,6 +95,7 @@ export default function EditDevice({
           .then(() => {
             regenId && handleIdPopup();
             handlePopup();
+          }).then(()=>{
             window.location.reload();
           })
           .catch((err) => {
