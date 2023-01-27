@@ -57,7 +57,7 @@ const HomePage = () => {
 
   useEffect(() => { // when a device is selected, this code will run opening up edit popup and passing the selected device data
     if(deviceSelected){// prevent popup from showing when device is undefined
-      handleEditPopup;
+      handleEditPopup();
       console.log("should run this")
     }
     console.log("outside useeffect and the data is:", deviceSelected)
