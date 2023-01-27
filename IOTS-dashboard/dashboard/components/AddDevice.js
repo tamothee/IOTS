@@ -39,9 +39,9 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
           handlePopup();
         } catch (err) {
           if (err.toString().search("duplicate")) {
-            alert("Please re-upload again"); //device id colliding with existing one in db
+            write(); //run write function again to get a new device id because the one generated was a duplicate
           } else {
-            alert("Unexpected error");
+            alert("Unexpected error. Please try again");
             console.log(err);
           }
         }
@@ -55,7 +55,6 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
   }
 
   const handleIdPopup = () => {
-    console.log(!idPopup);
     setIdPopup(!idPopup);
   };
 
