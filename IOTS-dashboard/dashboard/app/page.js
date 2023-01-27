@@ -30,7 +30,7 @@ const HomePage = () => {
   const [devices, setDevices] = useState(); // user devices registered
   const [openEditPopup, setEditPopup] = useState(false); //popup state for edit
   const [openAddPopup, setAddPopup] = useState(false); // popup state for add
-  const [deviceSelected, setDeviceSelected] = useState({});
+  const [deviceSelected, setDeviceSelected] = useState();
 
   const getUserData = async () => {
     try {
@@ -54,7 +54,7 @@ const HomePage = () => {
   };
 
   useEffect(() => { // when a device is selected, this code will run opening up edit popup and passing the selected device data
-    if(deviceSelected !=={}){
+    if(deviceSelected){// prevent popup from showing when device is undefined
       setEditPopup(!openEditPopup);
     }
   }, [deviceSelected]);
