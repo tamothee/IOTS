@@ -7,6 +7,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { MongoDBRealmError } from "realm-web";
 
 export default function AddDevice({ handlePopup, open, user, mongodb }) {
   const [deviceId, setDeviceId] = React.useState("");
@@ -27,11 +28,11 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
           handlePopup();
           alert("Insert Successful!");
         } catch (err) {
-          if (err.code === 11000) {
+          if (err instanceof MongoDBRealmError && err.code === 11000) {
             console.error("# Duplicate Data Found:\n", err);
-            alert("duplicate device id found")
+            alert("Found duplicate Device ID");
           } else {
-            alert("Unexpected failure")
+            alert("Unexpected error");
           }
         }
       } else {
