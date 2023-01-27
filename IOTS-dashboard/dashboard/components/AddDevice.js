@@ -33,6 +33,7 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
             alert("Found duplicate Device ID");
           } else {
             alert("Unexpected error");
+            console.log(err)
           }
         }
       } else {
