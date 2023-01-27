@@ -13,7 +13,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
 
-import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import { CardActionArea } from "@mui/material";
 
 // Create the Application
 
@@ -26,17 +27,22 @@ const HomePage = () => {
   // mongodb connection is established
   const { mongodb, user, permission, app } = useContext(mongodbContext);
   const [devices, setDevices] = useState();
+  const [openPopup, setOpenPopup] = useState(false);
 
   const getUserData = async () => {
     try {
       //connect to database
       const collection = mongodb.db("IOTS_dashboard").collection("iot"); // Everytime a change happens in the stream, add it to the list of events
       const devices = await collection.find({});
-      setDevices(devices)
+      setDevices(devices);
     } catch (err) {
       console.error("Failed to log in", err.message);
     }
   };
+
+  const handlePopup = ()=>{
+    setOpenPopup(!openPopup)
+  }
 
   useEffect(() => {
     if (mongodb) {
@@ -74,21 +80,25 @@ const HomePage = () => {
       </Breadcrumbs>
       <div>
         {console.log(devices)}
-        {!!user && !!devices && //check if user is loaded
+        {!!user &&
+          !!devices && //check if user is loaded
           devices.map((device) => {
             return (
-              <Card sx={{ minWidth: 275 }}>
-                <CardContent>
-                  <Typography variant="h5" gutterBottom>
-                    {device['device_id']}
-                  </Typography>
-                  <Typography variant="body2">
-                    Last updated at: {Date(JSON.stringify(device.timestamp))}
-                  </Typography>
-                </CardContent>
+              <Card sx={{ minWidth: 275 }} style={{ marginBottom: "10px" }}>
+                <CardActionArea onClick={handlePopup}>
+                  <CardContent>
+                    <Typography variant="h5" gutterBottom>
+                      Device ID: {device["device_id"]}
+                    </Typography>
+                    <Typography variant="body2">
+                      Last updated at: {Date(JSON.stringify(device.timestamp))}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
               </Card>
             );
           })}
+          {openPopup && <openPopup handlePopup={handlePopup}/>}
         <button onClick={write}>write</button>
       </div>
     </div>
