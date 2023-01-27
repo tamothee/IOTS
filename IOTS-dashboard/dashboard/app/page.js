@@ -14,15 +14,14 @@ import Link from "next/link";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import { CardActionArea } from "@mui/material";
 
-
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { Stack } from "@mui/system";
 
-import dynamic from "next/dynamic"
-const EditDevice = dynamic(() => import("../components/EditDevice")) //dynamic import for performance
+import dynamic from "next/dynamic";
+const EditDevice = dynamic(() => import("../components/EditDevice")); //dynamic import for performance
 // import EditDevice from "../components/EditDevice";
 
-const AddDevice = dynamic(() => import("../components/AddDevice")) //dynamic import for performance
+const AddDevice = dynamic(() => import("../components/AddDevice")); //dynamic import for performance
 // import AddDevice from "../components/AddDevice";
 
 const HomePage = () => {
@@ -31,6 +30,7 @@ const HomePage = () => {
   const [devices, setDevices] = useState(); // user devices registered
   const [openEditPopup, setEditPopup] = useState(false); //popup state for edit
   const [openAddPopup, setAddPopup] = useState(false); // popup state for add
+  const [deviceSelected, setDeviceSelected] = useState()
 
   const getUserData = async () => {
     try {
@@ -44,7 +44,8 @@ const HomePage = () => {
   };
 
   // for opening and closing popup
-  const handleEditPopup = () => {
+  const handleEditPopup = (device) => {
+    setDeviceSelected(device);
     setEditPopup(!openEditPopup);
   };
 
@@ -92,15 +93,11 @@ const HomePage = () => {
         {/* show loading when devices are not shown */}
         {!!user &&
           !!devices && //check if user and devices is loaded to prevent error when running an undefined variable
-          devices.map((device) => {
-            let open = false;
-            function handleEditPopup(){
-              open=true;
-            }
+          devices.map((device, index) => {
             return (
-              <div>
+              <div key={index}>
                 <Card sx={{ minWidth: 275 }} style={{ marginBottom: "10px" }}>
-                  <CardActionArea onClick={handleEditPopup}>
+                  <CardActionArea onClick={(device)=>handleEditPopup(device)}>
                     <CardContent>
                       <Typography variant="h5" gutterBottom>
                         Device Name: {device.name}
@@ -114,16 +111,16 @@ const HomePage = () => {
                     </CardContent>
                   </CardActionArea>
                 </Card>
-                <EditDevice
-                  handlePopup={handleEditPopup}
-                  open={open}
-                  user={user}
-                  mongodb={mongodb}
-                  device={device}
-                />
               </div>
             );
           })}
+        <EditDevice
+          handlePopup={handleEditPopup}
+          open={openEditPopup}
+          user={user}
+          mongodb={mongodb}
+          device={deviceSelected}
+        />
         <AddDevice
           handlePopup={handleAddPopup}
           open={openAddPopup}
