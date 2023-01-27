@@ -75,7 +75,7 @@ const HomePage = () => {
         >
           Add new device
         </Button>
-        <Button variant="outlined" onClick={router.reload()} startIcon={<RefreshIcon />}>
+        <Button variant="outlined" onClick={location.reload()} startIcon={<RefreshIcon />}>
           Refresh
         </Button>
         {!!user &&
