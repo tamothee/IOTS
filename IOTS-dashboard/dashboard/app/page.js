@@ -15,24 +15,19 @@ import Link from "next/link";
 
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import { CardActionArea } from "@mui/material";
-import Popup from "../components/popup";
-
-// Create the Application
-
-// Define the App component
+import EditDevice from "../components/EditDevice";
+import AddDevice from "../components/AddDevice";
 
 const HomePage = () => {
   // Set state variables
-
-  // This useEffect hook will run only once when the page is loaded and when
-  // mongodb connection is established
   const { mongodb, user, permission, app } = useContext(mongodbContext);
-  const [devices, setDevices] = useState();
-  const [openPopup, setOpenPopup] = useState(false);
+  const [devices, setDevices] = useState(); // user devices registered
+  const [openEditPopup, setEditPopup] = useState(false); //popup state for edit
+  cosnt [openAddPopup, setAddPopup] = useState(false) // popup state for add
 
   const getUserData = async () => {
     try {
-      //connect to database
+      //connect to database using credentials from mongohandler
       const collection = mongodb.db("IOTS_dashboard").collection("iot"); // Everytime a change happens in the stream, add it to the list of events
       const devices = await collection.find({});
       setDevices(devices);
@@ -41,11 +36,18 @@ const HomePage = () => {
     }
   };
 
-  const handlePopup = ()=>{
-    setOpenPopup(!openPopup)
-    console.log('run', openPopup)
-  }
+  // for opening and closing popup
+  const handleEditPopup = () => {
+    setEditPopup(!openEditPopup);
+  };
 
+  // for opening and closing popup
+  const handleAddPopup = () => {
+    setAddPopup(!openAddPopup);
+  };
+
+  // run when page first renders and when mongodb changes
+  // this useeffect is used to retrieve the user devices
   useEffect(() => {
     if (mongodb) {
       //dont run watch when mongodb connection is not established
@@ -81,12 +83,15 @@ const HomePage = () => {
         </Link>
       </Breadcrumbs>
       <div>
+        <Button variant="contained" onClick={write}>
+          Add new device
+        </Button>
         {!!user &&
-          !!devices && //check if user is loaded
+          !!devices && //check if user and devices is loaded to prevent error when running an undefined variable
           devices.map((device) => {
             return (
               <Card sx={{ minWidth: 275 }} style={{ marginBottom: "10px" }}>
-                <CardActionArea onClick={handlePopup}>
+                <CardActionArea onClick={handleEditPopup}>
                   <CardContent>
                     <Typography variant="h5" gutterBottom>
                       Device ID: {device["device_id"]}
@@ -99,8 +104,8 @@ const HomePage = () => {
               </Card>
             );
           })}
-          {openPopup && <Popup handlePopup={handlePopup} open={openPopup}/>}
-        <button onClick={write}>write</button>
+        {openEditPopup && <EditDevice handlePopup={handleEditPopup} open={openEditPopup} />}
+        {openAddPopup && <AddDevice handlePopup={handleAddPopup} open={openAddPopup} />}
       </div>
     </div>
   );
