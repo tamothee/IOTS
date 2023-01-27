@@ -7,12 +7,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-export default function Popup({handlePopup, open}) {
-    
+export default function EditDevice({handlePopup, open}) {
+
   return (
     <div>
       <Dialog open={open} onClose={handlePopup}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>Edit device</DialogTitle>
         <DialogContent>
           <DialogContentText>
             To subscribe to this website, please enter your email address here. We
