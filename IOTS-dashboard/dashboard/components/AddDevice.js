@@ -6,10 +6,12 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { useRouter } from "next/navigation";
 
 export default function AddDevice({ handlePopup, open, user, mongodb }) {
   const [deviceId, setDeviceId] = React.useState("");
   const [password, setpassword] = React.useState("");
+  const router = useRouter();
 
   function write() {
     if (user) {
@@ -24,6 +26,7 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
         });
         handlePopup();
         alert("Insert Successful!");
+        router.reload();
       }
       else{
         alert("password not strong enough")

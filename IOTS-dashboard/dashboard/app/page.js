@@ -18,7 +18,7 @@ import AddDevice from "../components/AddDevice";
 
 const HomePage = () => {
   // Set state variables
-  const { mongodb, user, permission, app } = useContext(mongodbContext);
+  const { mongodb, user, app } = useContext(mongodbContext);
   const [devices, setDevices] = useState(); // user devices registered
   const [openEditPopup, setEditPopup] = useState(false); //popup state for edit
   const [openAddPopup, setAddPopup] = useState(false) // popup state for add
