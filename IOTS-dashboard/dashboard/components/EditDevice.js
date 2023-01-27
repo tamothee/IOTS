@@ -41,7 +41,7 @@ export default function EditDevice({
     setEditLoading(true);
     if (user) {
       //dont run write when user connection is not established with mongodb
-      if (password.length > 5 || changePass) {
+      if (password.length > 5 || !changePass) {
         // const device_id = "" + Math.floor(Math.random() * 100000 + 10000);
         // setDeviceId(device_id);
         const collection = mongodb.db("IOTS_dashboard").collection("iot"); //insert into collection
@@ -81,7 +81,7 @@ export default function EditDevice({
         }
         console.log(update);
         collection
-          .updateOneupdateOne(
+          .updateOne(
             { _id: device["_id"] },
             {
               $set: update,
@@ -173,7 +173,6 @@ export default function EditDevice({
         </DialogContent>
         <DialogActions>
           <Button onClick={handlePopup}>Cancel</Button>
-          <Button onClick={handlePopup}>Edit</Button>
           <LoadingButton
             loading={editLoading}
             variant="contained"
