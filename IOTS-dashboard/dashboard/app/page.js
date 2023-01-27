@@ -13,10 +13,17 @@ import Link from "next/link";
 
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import { CardActionArea } from "@mui/material";
-import EditDevice from "../components/EditDevice";
-import AddDevice from "../components/AddDevice";
+
+
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { Stack } from "@mui/system";
+
+import dynamic from "next/dynamic"
+const EditDevice = dynamic(() => import("../components/EditDevice")) //dynamic import for performance
+// import EditDevice from "../components/EditDevice";
+
+const AddDevice = dynamic(() => import("../components/AddDevice")) //dynamic import for performance
+// import AddDevice from "../components/AddDevice";
 
 const HomePage = () => {
   // Set state variables
@@ -86,6 +93,10 @@ const HomePage = () => {
         {!!user &&
           !!devices && //check if user and devices is loaded to prevent error when running an undefined variable
           devices.map((device) => {
+            const [open, setOpen] = useState(false);
+            function handleEditPopup(){
+              setOpen(!open);
+            }
             return (
               <div>
                 <Card sx={{ minWidth: 275 }} style={{ marginBottom: "10px" }}>
@@ -98,7 +109,6 @@ const HomePage = () => {
                         Device ID: {device["device_id"]}
                       </Typography>
                       <Typography variant="body2">
-                        {/* Last updated at: {Date(JSON.stringify(device.timestamp))} */}
                         Last updated at: {device.timestamp.toLocaleString()}
                       </Typography>
                     </CardContent>
@@ -106,7 +116,7 @@ const HomePage = () => {
                 </Card>
                 <EditDevice
                   handlePopup={handleEditPopup}
-                  open={openEditPopup}
+                  open={open}
                   user={user}
                   mongodb={mongodb}
                   device={device}
