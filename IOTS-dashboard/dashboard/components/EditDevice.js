@@ -93,9 +93,7 @@ export default function EditDevice({
             }
           )
           .then(() => {
-            regenId && handleIdPopup();
-            handlePopup();
-          }).then(()=>{
+            regenId ? handleIdPopup():handlePopup();
             window.location.reload();
           })
           .catch((err) => {
