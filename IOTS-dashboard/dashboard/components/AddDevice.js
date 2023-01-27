@@ -100,7 +100,6 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
           </LoadingButton>
         </DialogActions>
       </Dialog>
-      {idPopup && (
         <Dialog open={idPopup} onClose={handleIdPopup}>
           <DialogTitle>Device ID</DialogTitle>
           <DialogContent>
@@ -122,7 +121,6 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
             <Button onClick={handleIdPopup}>Ok</Button>
           </DialogActions>
         </Dialog>
-      )}
     </div>
   );
 }
