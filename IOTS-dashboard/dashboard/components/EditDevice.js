@@ -35,8 +35,8 @@ export default function EditDevice({
     setIdPopup(!idPopup);
   };
 
-  console.log('device',device);
-  console.log('device',device.name);
+  // console.log('device',device);
+  // console.log('device',device.name);
 
   React.useEffect(()=>{
     setName(device.name);
