@@ -67,8 +67,8 @@ export default function EditDevice({ handlePopup, open }) {
               <TextField
                 autoFocus
                 margin="dense"
-                id="name-input"
-                label="Name"
+                id="password-input"
+                label="Password"
                 fullWidth
                 variant="standard"
                 disabled={!changePass}
@@ -100,7 +100,7 @@ export default function EditDevice({ handlePopup, open }) {
             Edit
           </LoadingButton>
         </DialogActions>
-        <DialogActions justifyContent="center" alignItems="center">
+        <DialogContent >
           <LoadingButton
             color="error"
             loading={deleteLoading}
@@ -110,7 +110,7 @@ export default function EditDevice({ handlePopup, open }) {
           >
             Delete
           </LoadingButton>
-        </DialogActions>
+        </DialogContent>
       </Dialog>
     </div>
   );
