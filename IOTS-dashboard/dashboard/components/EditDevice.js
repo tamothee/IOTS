@@ -22,7 +22,7 @@ export default function EditDevice({
   mongodb,
   device,
 }) {
-  const [name, setName] = React.useState("");
+  const [name, setName] = React.useState(device.name);
   const [regenId, setRegenId] = React.useState(false); // request to regenerate deviceId
   const [deviceId, setDeviceId] = React.useState(device["device_id"]);
   const [changePass, setChangePass] = React.useState(false); //request to change password
