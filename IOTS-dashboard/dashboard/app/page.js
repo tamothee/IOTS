@@ -83,7 +83,7 @@ const HomePage = () => {
         </Link>
       </Breadcrumbs>
       <div>
-        <Button variant="contained" onClick={write}>
+        <Button variant="contained" onClick={handleAddPopup} style={{marginBottom:'20px'}}>
           Add new device
         </Button>
         {!!user &&
