@@ -1,13 +1,38 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import * as React from "react";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import validator from "validator";
 
-export default function AddDevice({handlePopup, open}) {
+export default function AddDevice({ handlePopup, open, user }) {
+  const [deviceId, setDeviceId] = React.useState("");
+  const [password, setpassword] = React.useState("");
+
+  function write() {
+    if (mongodb) {
+      //dont run watch when mongodb connection is not established
+      if (password.length > 5) {
+        const collection = mongodb.db("IOTS_dashboard").collection("iot"); //insert into collection
+        collection.insertOne({
+          timestamp: new Date(),
+          password: password,
+          owner_id: user.id,
+          device_id: deviceId,
+        });
+        handlePopup();
+        alert("Insert Successful!");
+      }
+      else{
+        alert("password not strong enough")
+      }
+    } else {
+      alert("Mongodb connection not established. Please try again");
+    }
+  }
 
   return (
     <div>
@@ -15,21 +40,37 @@ export default function AddDevice({handlePopup, open}) {
         <DialogTitle>Add Device</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here. We
-            will send updates occasionally.
+            To add a new device, please fill up the forms below.
           </DialogContentText>
           <TextField
             autoFocus
             margin="dense"
-            id="name"
-            label="Email Address"
-            type="email"
+            id="deviceId-input"
+            label="Device ID"
+            type="number"
             fullWidth
             variant="standard"
+            value={deviceId}
+            onChange={(event) => {
+              setDeviceId(event.target.value);
+            }}
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="password-input"
+            label="Password"
+            type="password"
+            fullWidth
+            variant="standard"
+            value={password}
+            onChange={(event) => {
+              setpassword(event.target.value);
+            }}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handlePopup}>Cancel</Button>
+          <Button onClick={write}>Cancel</Button>
           <Button onClick={handlePopup}>Subscribe</Button>
         </DialogActions>
       </Dialog>

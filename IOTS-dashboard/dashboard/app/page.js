@@ -5,9 +5,7 @@ import { useState, useEffect, useContext } from "react";
 // import * as Realm from "realm-web";
 import { mongodbContext } from "./MongoHandler";
 
-import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -55,20 +53,6 @@ const HomePage = () => {
     }
   }, [mongodb]);
 
-  function write() {
-    if (mongodb) {
-      //dont run watch when mongodb connection is not established
-      const collection = mongodb.db("IOTS_dashboard").collection("iot"); //insert into collection
-      collection.insertOne({
-        timestamp: new Date(),
-        password: 1234567,
-        owner_id: user.id,
-      });
-    } else {
-      alert("Mongodb connection not established. Please try again");
-    }
-  }
-
   // Return the JSX that will generate HTML for the page
   return (
     <div>
@@ -105,7 +89,7 @@ const HomePage = () => {
             );
           })}
         {openEditPopup && <EditDevice handlePopup={handleEditPopup} open={openEditPopup} />}
-        {openAddPopup && <AddDevice handlePopup={handleAddPopup} open={openAddPopup} />}
+        {openAddPopup && <AddDevice handlePopup={handleAddPopup} open={openAddPopup} user={user}/>}
       </div>
     </div>
   );
