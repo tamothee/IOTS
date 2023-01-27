@@ -93,9 +93,9 @@ const HomePage = () => {
         {!!user &&
           !!devices && //check if user and devices is loaded to prevent error when running an undefined variable
           devices.map((device) => {
-            const [open, setOpen] = useState(false);
+            let open = false;
             function handleEditPopup(){
-              setOpen(!open);
+              open=true;
             }
             return (
               <div>
