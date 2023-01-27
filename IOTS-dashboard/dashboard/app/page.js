@@ -88,8 +88,8 @@ const HomePage = () => {
               </Card>
             );
           })}
-        {openEditPopup && <EditDevice handlePopup={handleEditPopup} open={openEditPopup} />}
-        {openAddPopup && <AddDevice handlePopup={handleAddPopup} open={openAddPopup} user={user}/>}
+        {openEditPopup && <EditDevice handlePopup={handleEditPopup} open={openEditPopup} user={user} mongodb={mongodb}/>}
+        {openAddPopup && <AddDevice handlePopup={handleAddPopup} open={openAddPopup} user={user} mongodb={mongodb}/>}
       </div>
     </div>
   );

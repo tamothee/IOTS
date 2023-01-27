@@ -7,13 +7,13 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export default function AddDevice({ handlePopup, open, user }) {
+export default function AddDevice({ handlePopup, open, user, mongodb }) {
   const [deviceId, setDeviceId] = React.useState("");
   const [password, setpassword] = React.useState("");
 
   function write() {
     if (user) {
-      //dont run watch when mongodb connection is not established
+      //dont run write when user connection is not established with mongodb
       if (password.length > 5) {
         const collection = mongodb.db("IOTS_dashboard").collection("iot"); //insert into collection
         collection.insertOne({
