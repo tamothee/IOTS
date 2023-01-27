@@ -26,7 +26,7 @@ const HomePage = ({mongodb, user, app}) => {
   function write() {
     if (mongodb) {
       //dont run watch when mongodb connection is not established
-      const collection = mongodb.db("IOTS-database").collection("iot"); //insert into collection
+      const collection = mongodb.db("IOTS_dashboard").collection("iot"); //insert into collection
       collection.insertOne({
         timestamp: new Date(),
         value: 1234567,
