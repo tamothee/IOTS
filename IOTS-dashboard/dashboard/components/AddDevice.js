@@ -39,7 +39,7 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
           handleIdPopup();
         } catch (err) {
           if (err.toString().search("duplicate")) {
-            alert("Found duplicate Device ID. Try a different Device ID");
+            alert("Please re-upload again"); //device id colliding with existing one in db
           } else {
             alert("Unexpected error");
             console.log(err);
@@ -105,7 +105,8 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
           <DialogContent>
             <DialogContentText>
               Your device has been successfully been inserted. 
-              This is your Device ID. <b> DO NOT SHARE THIS with anyone</b>
+              This is your Device ID. <b> DO NOT SHARE THIS with anyone.</b> Put 
+              this ID to your device to pair with your account.
               <Stack direction={"row"}>
                 <Box>
                   {deviceId}
