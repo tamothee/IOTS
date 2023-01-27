@@ -7,18 +7,25 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { MongoDBRealmError } from "realm-web";
+import LoadingButton from "@mui/lab/LoadingButton";
+import { Stack } from "@mui/system";
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import { IconButton } from "@mui/material";
 
 export default function AddDevice({ handlePopup, open, user, mongodb }) {
-  const [deviceId, setDeviceId] = React.useState("");
   const [password, setpassword] = React.useState("");
   const [name, setName] = React.useState("");
+  const [idPopup, setIdPopup] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [deviceId, setDeviceId] = React.useState('');
 
   async function write() {
+    setLoading(true);
     if (user) {
       //dont run write when user connection is not established with mongodb
       if (password.length > 5) {
         try {
+          setDeviceId("" + Math.floor(Math.random() * 100000 + 10000));
           const collection = mongodb.db("IOTS_dashboard").collection("iot"); //insert into collection
           await collection.insertOne({
             timestamp: new Date(),
@@ -43,7 +50,12 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
     } else {
       alert("Mongodb connection not established. Please try again");
     }
+    setLoading(false);
   }
+
+  const handleIdPopup = () => {
+    setIdPopup(!idPopup);
+  };
 
   return (
     <div>
@@ -53,19 +65,6 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
           <DialogContentText>
             To add a new device, please fill up the forms below.
           </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="deviceId-input"
-            label="Device ID"
-            type="number"
-            fullWidth
-            variant="standard"
-            value={deviceId}
-            onChange={(event) => {
-              setDeviceId(event.target.value);
-            }}
-          />
           <TextField
             autoFocus
             margin="dense"
@@ -94,9 +93,32 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handlePopup}>Cancel</Button>
-          <Button onClick={write}>Add</Button>
+          <LoadingButton loading={loading} variant="contained" onClick={write}>
+            Add
+          </LoadingButton>
         </DialogActions>
       </Dialog>
+      {idPopup && (
+        <Dialog open={idPopup} onClose={handleIdPopup}>
+          <DialogTitle>Device ID</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              This is your device <b>ID. DO NOT SHARE THIS with anyone</b>
+              <Stack direction={"row"}>
+                <Box>
+                  {deviceId}
+                </Box>
+                <IconButton onClick={() => {navigator.clipboard.writeText(deviceId)}}>
+                  <ContentCopyIcon/>
+                </IconButton>
+              </Stack>
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleIdPopup}>Ok</Button>
+          </DialogActions>
+        </Dialog>
+      )}
     </div>
   );
 }
