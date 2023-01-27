@@ -118,7 +118,7 @@ export default function EditDevice({
     setDeleteLoading(true);
     if (confirm("Are you sure you want to delete this device") === true) {
       const query = { _id: device["_id"] };
-      itemsCollection
+      collection
         .deleteOne(query)
         .then((result) => {
           console.log(`Deleted ${result.deletedCount} item.`);
