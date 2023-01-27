@@ -72,8 +72,8 @@ const HomePage = () => {
         </Link>
       </Breadcrumbs>
       <div>
-        {!!user && //check if user is loaded
-          devices?.map((device) => {
+        {!!user && !!devices && //check if user is loaded
+          devices.map((device) => {
             return (
               <Card sx={{ minWidth: 275 }}>
                 <CardContent>
