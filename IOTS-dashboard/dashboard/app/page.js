@@ -97,7 +97,8 @@ const HomePage = () => {
                       Device ID: {device["device_id"]}
                     </Typography>
                     <Typography variant="body2">
-                      Last updated at: {Date(JSON.stringify(device.timestamp))}
+                      {/* Last updated at: {Date(JSON.stringify(device.timestamp))} */}
+                      Last updated at: {JSON.stringify(device.timestamp)}
                     </Typography>
                   </CardContent>
                 </CardActionArea>

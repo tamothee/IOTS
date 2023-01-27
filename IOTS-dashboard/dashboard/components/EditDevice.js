@@ -11,7 +11,7 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Stack } from "@mui/system";
 import { FormControlLabel, FormGroup } from "@mui/material";
-import Checkbox from '@mui/material/Checkbox';
+import Checkbox from "@mui/material/Checkbox";
 
 export default function EditDevice({ handlePopup, open }) {
   const [name, setName] = React.useState("");
@@ -19,13 +19,14 @@ export default function EditDevice({ handlePopup, open }) {
   const [deviceId, setDeviceId] = React.useState("");
   const [changePass, setChangePass] = React.useState(false); //request to change password
   const [password, setPassword] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
+  const [deleteLoading, setDeleteLoading] = React.useState(false);
+  const [editLoading, setEditLoading] = React.useState(false);
 
   const edit = () => {
-    setLoading(true);
+    setEditLoading(true);
   };
   const deleteDevice = () => {
-    setLoading(true);
+    setDeleteLoading(true);
   };
 
   return (
@@ -49,15 +50,6 @@ export default function EditDevice({ handlePopup, open }) {
                 setName(event.target.value);
               }}
             />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={regenId}
-                  onChange={(e) => setRegenId(e.target.checked)}
-                />
-              }
-              label="Regenerate Device ID"
-            />
             <Stack
               direction={"row"}
               justifyContent="center"
@@ -79,26 +71,39 @@ export default function EditDevice({ handlePopup, open }) {
                 label="Name"
                 fullWidth
                 variant="standard"
-                disabled={changePass}
+                disabled={!changePass}
                 value={password}
                 onChange={(event) => {
-                  setName(event.target.value);
+                  setPassword(event.target.value);
                 }}
               />
             </Stack>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={regenId}
+                  onChange={(e) => setRegenId(e.target.checked)}
+                />
+              }
+              label="Regenerate Device ID"
+            />
           </FormGroup>
         </DialogContent>
         <DialogActions>
           <Button onClick={handlePopup}>Cancel</Button>
           <Button onClick={handlePopup}>Edit</Button>
-          <LoadingButton loading={loading} variant="contained" onClick={edit}>
+          <LoadingButton
+            loading={editLoading}
+            variant="contained"
+            onClick={edit}
+          >
             Edit
           </LoadingButton>
         </DialogActions>
-        <DialogActions>
+        <DialogActions justifyContent="center" alignItems="center">
           <LoadingButton
             color="error"
-            loading={loading}
+            loading={deleteLoading}
             startIcon={<DeleteIcon />}
             variant="contained"
             onClick={deleteDevice}
