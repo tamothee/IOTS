@@ -30,7 +30,7 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
           handlePopup();
           alert("Insert Successful!");
         } catch (err) {
-          if (err.search("duplicate")) {
+          if (err.toString().search("duplicate")) {
             console.error("# Duplicate Data Found:\n", err);
             console.log("type of error", err.type);
             alert("Found duplicate Device ID. Try a different Device ID");
