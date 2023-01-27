@@ -15,13 +15,16 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import { CardActionArea } from "@mui/material";
 import EditDevice from "../components/EditDevice";
 import AddDevice from "../components/AddDevice";
+import RefreshIcon from '@mui/icons-material/Refresh';
+import { useRouter } from "next/router";
 
 const HomePage = () => {
   // Set state variables
   const { mongodb, user, app } = useContext(mongodbContext);
   const [devices, setDevices] = useState(); // user devices registered
   const [openEditPopup, setEditPopup] = useState(false); //popup state for edit
-  const [openAddPopup, setAddPopup] = useState(false) // popup state for add
+  const [openAddPopup, setAddPopup] = useState(false); // popup state for add
+  const router = useRouter();
 
   const getUserData = async () => {
     try {
@@ -67,8 +70,15 @@ const HomePage = () => {
         </Link>
       </Breadcrumbs>
       <div>
-        <Button variant="contained" onClick={handleAddPopup} style={{marginBottom:'20px'}}>
+        <Button
+          variant="contained"
+          onClick={handleAddPopup}
+          style={{ marginBottom: "20px" }}
+        >
           Add new device
+        </Button>
+        <Button variant="outlined" onClick={router.reload()} startIcon={<RefreshIcon />}>
+          Refresh
         </Button>
         {!!user &&
           !!devices && //check if user and devices is loaded to prevent error when running an undefined variable
@@ -88,8 +98,22 @@ const HomePage = () => {
               </Card>
             );
           })}
-        {openEditPopup && <EditDevice handlePopup={handleEditPopup} open={openEditPopup} user={user} mongodb={mongodb}/>}
-        {openAddPopup && <AddDevice handlePopup={handleAddPopup} open={openAddPopup} user={user} mongodb={mongodb}/>}
+        {openEditPopup && (
+          <EditDevice
+            handlePopup={handleEditPopup}
+            open={openEditPopup}
+            user={user}
+            mongodb={mongodb}
+          />
+        )}
+        {openAddPopup && (
+          <AddDevice
+            handlePopup={handleAddPopup}
+            open={openAddPopup}
+            user={user}
+            mongodb={mongodb}
+          />
+        )}
       </div>
     </div>
   );
