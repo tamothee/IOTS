@@ -11,7 +11,6 @@ import DialogTitle from "@mui/material/DialogTitle";
 export default function AddDevice({ handlePopup, open, user, mongodb, getUserData }) {
   const [deviceId, setDeviceId] = React.useState("");
   const [password, setpassword] = React.useState("");
-  const router = useRouter();
 
   function write() {
     if (user) {
