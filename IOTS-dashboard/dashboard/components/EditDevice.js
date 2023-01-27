@@ -24,7 +24,7 @@ export default function EditDevice({
 }) {
   const [name, setName] = React.useState(device.name);
   const [regenId, setRegenId] = React.useState(false); // request to regenerate deviceId
-  const [deviceId, setDeviceId] = React.useState(device[device_id]);
+  const [deviceId, setDeviceId] = React.useState(device["device_id"]);
   const [changePass, setChangePass] = React.useState(false); //request to change password
   const [password, setPassword] = React.useState("");
   const [deleteLoading, setDeleteLoading] = React.useState(false);
@@ -35,7 +35,7 @@ export default function EditDevice({
     setIdPopup(!idPopup);
   };
 
-  console.log(device)
+  console.log(device);
 
   const edit = () => {
     setEditLoading(true);
@@ -46,22 +46,34 @@ export default function EditDevice({
         // setDeviceId(device_id);
         const collection = mongodb.db("IOTS_dashboard").collection("iot"); //insert into collection
         let update;
-        if (changePass) { //user wants to change password only
+        if (changePass) {
+          //user wants to change password only
           update = {
             name: name,
             password: password,
             timestamp: new Date(),
           };
-        } else if (changePass && regenId) { // user wants to change password and regenerate device id
+        } else if (changePass && regenId) {
+          // user wants to change password and regenerate device id
           const device_id = "" + Math.floor(Math.random() * 100000 + 10000);
           setDeviceId(device_id);
           update = {
             name: name,
             password: password,
-            device_id ,
+            device_id,
             timestamp: new Date(),
           };
-        } else { // user just wants to change name
+        } else if (regenId) {
+          // user wants to regenerate device id only
+          const device_id = "" + Math.floor(Math.random() * 100000 + 10000);
+          setDeviceId(device_id);
+          update = {
+            name: name,
+            device_id,
+            timestamp: new Date(),
+          };
+        } else {
+          // user just wants to change name
           update = {
             name: name,
             timestamp: new Date(),
@@ -70,7 +82,7 @@ export default function EditDevice({
         console.log(update);
         collection
           .updateOneupdateOne(
-            { _id: device[_id] },
+            { _id: device["_id"] },
             {
               $set: update,
             }
