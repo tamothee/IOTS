@@ -30,7 +30,7 @@ const HomePage = () => {
   const [devices, setDevices] = useState(); // user devices registered
   const [openEditPopup, setEditPopup] = useState(false); //popup state for edit
   const [openAddPopup, setAddPopup] = useState(false); // popup state for add
-  const [deviceSelected, setDeviceSelected] = useState({})
+  const [deviceSelected, setDeviceSelected] = useState({});
 
   const getUserData = async () => {
     try {
@@ -45,7 +45,6 @@ const HomePage = () => {
 
   // for opening and closing popup
   const handleEditPopup = (device) => {
-    setDeviceSelected(device);
     setEditPopup(!openEditPopup);
   };
 
@@ -53,6 +52,12 @@ const HomePage = () => {
   const handleAddPopup = () => {
     setAddPopup(!openAddPopup);
   };
+
+  useEffect(() => { // when a device is selected, this code will run opening up edit popup and passing the selected device data
+    if(deviceSelected !=={}){
+      setEditPopup(!openEditPopup);
+    }
+  }, [deviceSelected]);
 
   // run when page first renders and when mongodb changes
   // this useeffect is used to retrieve the user devices
@@ -97,7 +102,7 @@ const HomePage = () => {
             return (
               <div key={index}>
                 <Card sx={{ minWidth: 275 }} style={{ marginBottom: "10px" }}>
-                  <CardActionArea onClick={()=>handleEditPopup(device)}>
+                  <CardActionArea onClick={() => setDeviceSelected(device)}>
                     <CardContent>
                       <Typography variant="h5" gutterBottom>
                         Device Name: {device.name}

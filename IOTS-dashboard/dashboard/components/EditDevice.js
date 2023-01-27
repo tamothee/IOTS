@@ -35,7 +35,8 @@ export default function EditDevice({
     setIdPopup(!idPopup);
   };
 
-  console.log(device);
+  console.log('device',device);
+  console.log('device',device.name);
 
   const edit = () => {
     setEditLoading(true);
