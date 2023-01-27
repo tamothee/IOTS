@@ -79,7 +79,6 @@ const HomePage = () => {
         </Link>
       </Breadcrumbs>
       <div>
-        {console.log(devices)}
         {!!user &&
           !!devices && //check if user is loaded
           devices.map((device) => {
@@ -98,7 +97,7 @@ const HomePage = () => {
               </Card>
             );
           })}
-          {openPopup && <openPopup handlePopup={handlePopup}/>}
+          {openPopup && <openPopup handlePopup={handlePopup} open={openPopup}/>}
         <button onClick={write}>write</button>
       </div>
     </div>
