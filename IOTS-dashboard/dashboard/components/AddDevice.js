@@ -30,6 +30,7 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
         } catch (err) {
           if (err instanceof MongoDBRealmError) {
             console.error("# Duplicate Data Found:\n", err);
+            console.log('type of error', err.type)
             alert("Found duplicate Device ID");
           } else {
             alert("Unexpected error");
