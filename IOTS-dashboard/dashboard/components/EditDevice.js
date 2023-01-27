@@ -33,6 +33,8 @@ export default function EditDevice({
     setIdPopup(!idPopup);
   };
 
+  console.log(device)
+
   const edit = () => {
     setEditLoading(true);
     if (user) {
