@@ -100,16 +100,18 @@ export default function EditDevice({ handlePopup, open }) {
             Edit
           </LoadingButton>
         </DialogActions>
-        <DialogContent >
-          <LoadingButton
-            color="error"
-            loading={deleteLoading}
-            startIcon={<DeleteIcon />}
-            variant="contained"
-            onClick={deleteDevice}
-          >
-            Delete
-          </LoadingButton>
+        <DialogContent>
+          <Stack justifyContent="center" alignItems="center">
+            <LoadingButton
+              color="error"
+              loading={deleteLoading}
+              startIcon={<DeleteIcon />}
+              variant="contained"
+              onClick={deleteDevice}
+            >
+              Delete
+            </LoadingButton>
+          </Stack>
         </DialogContent>
       </Dialog>
     </div>
