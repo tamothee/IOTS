@@ -42,6 +42,7 @@ const HomePage = () => {
 
   const handlePopup = ()=>{
     setOpenPopup(!openPopup)
+    console.log('run', openPopup)
   }
 
   useEffect(() => {
