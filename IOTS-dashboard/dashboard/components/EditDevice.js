@@ -98,6 +98,7 @@ export default function EditDevice({
           .then(() => {
             regenId && handleIdPopup();
             handlePopup();
+            window.location.reload();
           })
           .catch((err) => {
             if (err.toString().search("duplicate")) {
@@ -115,6 +116,7 @@ export default function EditDevice({
     }
     setEditLoading(false);
   };
+
   const deleteDevice = () => {
     setDeleteLoading(true);
   };
@@ -232,7 +234,14 @@ export default function EditDevice({
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleIdPopup}>Ok</Button>
+          <Button
+            onClick={() => {
+              handleIdPopup();
+              window.location.reload();
+            }}
+          >
+            Ok
+          </Button>
         </DialogActions>
       </Dialog>
     </div>

@@ -128,7 +128,14 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleIdPopup}>Ok</Button>
+          <Button
+            onClick={() => {
+              handleIdPopup();
+              window.location.reload();
+            }}
+          >
+            Ok
+          </Button>
         </DialogActions>
       </Dialog>
     </div>
