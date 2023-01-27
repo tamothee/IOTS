@@ -98,7 +98,7 @@ const HomePage = () => {
                     </Typography>
                     <Typography variant="body2">
                       {/* Last updated at: {Date(JSON.stringify(device.timestamp))} */}
-                      Last updated at: {Date(JSON.stringify(device.timestamp))}
+                      Last updated at: {device.timestamp.toLocaleDateString(undefined, options)}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
