@@ -27,17 +27,18 @@ const HomePage = () => {
   const { mongodb, user, permission, app } = useContext(mongodbContext);
   const [devices, setDevices] = useState();
 
+  const getUserData = async () => {
+    try {
+      //connect to database
+      const collection = mongodb.db("IOTS_dashboard").collection("iot"); // Everytime a change happens in the stream, add it to the list of events
+      const devices = await collection.find({});
+      setDevices(devices)
+    } catch (err) {
+      console.error("Failed to log in", err.message);
+    }
+  };
+
   useEffect(() => {
-    const getUserData = async () => {
-      try {
-        //connect to database
-        const collection = mongodb.db("IOTS_dashboard").collection("iot"); // Everytime a change happens in the stream, add it to the list of events
-        const devices = await collection.find({});
-        setDevices(devices)
-      } catch (err) {
-        console.error("Failed to log in", err.message);
-      }
-    };
     if (mongodb) {
       //dont run watch when mongodb connection is not established
       getUserData();
@@ -73,7 +74,7 @@ const HomePage = () => {
       </Breadcrumbs>
       <div>
         {console.log(devices)}
-        {/* {!!user && !!devices && //check if user is loaded
+        {!!user && !!devices && //check if user is loaded
           devices.map((device) => {
             return (
               <Card sx={{ minWidth: 275 }}>
@@ -87,7 +88,7 @@ const HomePage = () => {
                 </CardContent>
               </Card>
             );
-          })} */}
+          })}
         <button onClick={write}>write</button>
       </div>
     </div>
