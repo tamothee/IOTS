@@ -10,7 +10,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { Stack } from "@mui/system";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import { IconButton } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 
 export default function AddDevice({ handlePopup, open, user, mongodb }) {
   const [password, setpassword] = React.useState("");
