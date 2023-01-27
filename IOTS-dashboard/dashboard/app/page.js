@@ -15,7 +15,8 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import { CardActionArea } from "@mui/material";
 import EditDevice from "../components/EditDevice";
 import AddDevice from "../components/AddDevice";
-import RefreshIcon from '@mui/icons-material/Refresh';
+import RefreshIcon from "@mui/icons-material/Refresh";
+import { Stack } from "@mui/system";
 
 const HomePage = () => {
   // Set state variables
@@ -68,16 +69,23 @@ const HomePage = () => {
         </Link>
       </Breadcrumbs>
       <div>
-        <Button
-          variant="contained"
-          onClick={handleAddPopup}
-          style={{ marginBottom: "20px" }}
-        >
-          Add new device
-        </Button>
-        <Button variant="contained" onClick={()=>window.location.reload()} startIcon={<RefreshIcon />}>
-          Refresh
-        </Button>
+        <Stack direction={'row'} spacing={2}>
+          <Button
+            variant="contained"
+            onClick={handleAddPopup}
+            style={{ marginBottom: "20px" }}
+          >
+            Add new device
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => window.location.reload()}
+            startIcon={<RefreshIcon />}
+          >
+            Refresh
+          </Button>
+        </Stack>
+
         {!!user &&
           !!devices && //check if user and devices is loaded to prevent error when running an undefined variable
           devices.map((device) => {
@@ -110,8 +118,6 @@ const HomePage = () => {
             open={openAddPopup}
             user={user}
             mongodb={mongodb}
-            setDevices={setDevices}
-            getUserData={getUserData}
           />
         )}
       </div>

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import * as React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -8,27 +8,30 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export default function AddDevice({ handlePopup, open, user, mongodb, getUserData }) {
+export default function AddDevice({ handlePopup, open, user, mongodb }) {
   const [deviceId, setDeviceId] = React.useState("");
   const [password, setpassword] = React.useState("");
 
-  function write() {
+  async function write() {
     if (user) {
       //dont run write when user connection is not established with mongodb
       if (password.length > 5) {
-        const collection = mongodb.db("IOTS_dashboard").collection("iot"); //insert into collection
-        collection.insertOne({
-          timestamp: new Date(),
-          password: password,
-          owner_id: user.id,
-          device_id: deviceId,
-        });
-        handlePopup();
-        alert("Insert Successful!");
-        getUserData();
-      }
-      else{
-        alert("password not strong enough")
+        try {
+          const collection = mongodb.db("IOTS_dashboard").collection("iot"); //insert into collection
+          await collection.insertOne({
+            timestamp: new Date(),
+            password: password,
+            owner_id: user.id,
+            device_id: deviceId,
+          });
+          handlePopup();
+          alert("Insert Successful!");
+        } catch (e) {
+          alert("Add failed. Please try a different device ID");
+          console.log(e);
+        }
+      } else {
+        alert("password not strong enough");
       }
     } else {
       alert("Mongodb connection not established. Please try again");
@@ -72,7 +75,7 @@ export default function AddDevice({ handlePopup, open, user, mongodb, getUserDat
         </DialogContent>
         <DialogActions>
           <Button onClick={handlePopup}>Cancel</Button>
-          <Button onClick={write}>Subscribe</Button>
+          <Button onClick={write}>Add</Button>
         </DialogActions>
       </Dialog>
     </div>
