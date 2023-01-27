@@ -17,11 +17,12 @@ import Typography from "@mui/material/Typography";
 
 // Define the App component
 
-const HomePage = ({mongodb, user, app}) => {
+const HomePage = () => {
   // Set state variables
   
   // This useEffect hook will run only once when the page is loaded and when
   // mongodb connection is established
+  const { mongodb, user, permission, app } = useContext(mongodbContext);
 
   function write() {
     if (mongodb) {
