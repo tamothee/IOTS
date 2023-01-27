@@ -16,7 +16,6 @@ import { CardActionArea } from "@mui/material";
 import EditDevice from "../components/EditDevice";
 import AddDevice from "../components/AddDevice";
 import RefreshIcon from '@mui/icons-material/Refresh';
-import { useRouter } from "next/navigation";
 
 const HomePage = () => {
   // Set state variables
@@ -24,7 +23,6 @@ const HomePage = () => {
   const [devices, setDevices] = useState(); // user devices registered
   const [openEditPopup, setEditPopup] = useState(false); //popup state for edit
   const [openAddPopup, setAddPopup] = useState(false); // popup state for add
-  const router = useRouter();
 
   const getUserData = async () => {
     try {
@@ -112,6 +110,8 @@ const HomePage = () => {
             open={openAddPopup}
             user={user}
             mongodb={mongodb}
+            setDevices={setDevices}
+            getUserData={getUserData}
           />
         )}
       </div>
