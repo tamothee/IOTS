@@ -12,6 +12,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Stack } from "@mui/system";
 import { FormControlLabel, FormGroup } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { Box, Grid, IconButton } from "@mui/material";
 
 export default function EditDevice({
   handlePopup,
