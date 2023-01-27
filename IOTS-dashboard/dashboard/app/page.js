@@ -32,7 +32,7 @@ const HomePage = () => {
       try {
         //connect to database
         const collection = mongodb.db("IOTS_dashboard").collection("iot"); // Everytime a change happens in the stream, add it to the list of events
-        const devices = collection.find({});
+        const devices = await collection.find({});
         setDevices(devices)
       } catch (err) {
         console.error("Failed to log in", err.message);
