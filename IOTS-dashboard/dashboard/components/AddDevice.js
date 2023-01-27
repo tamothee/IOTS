@@ -12,7 +12,7 @@ export default function AddDevice({ handlePopup, open, user }) {
   const [password, setpassword] = React.useState("");
 
   function write() {
-    if (mongodb) {
+    if (user) {
       //dont run watch when mongodb connection is not established
       if (password.length > 5) {
         const collection = mongodb.db("IOTS_dashboard").collection("iot"); //insert into collection
@@ -69,8 +69,8 @@ export default function AddDevice({ handlePopup, open, user }) {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={write}>Cancel</Button>
-          <Button onClick={handlePopup}>Subscribe</Button>
+          <Button onClick={handlePopup}>Cancel</Button>
+          <Button onClick={write}>Subscribe</Button>
         </DialogActions>
       </Dialog>
     </div>
