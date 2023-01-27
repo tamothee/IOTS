@@ -25,17 +25,18 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
       //dont run write when user connection is not established with mongodb
       if (password.length > 5) {
         try {
-          setDeviceId("" + Math.floor(Math.random() * 100000 + 10000));
+          const device_id = "" + Math.floor((Math.random() * 100000 + 10000));
+          setDeviceId(device_id);
           const collection = mongodb.db("IOTS_dashboard").collection("iot"); //insert into collection
           await collection.insertOne({
             timestamp: new Date(),
             password: password,
             owner_id: user.id,
-            device_id: deviceId,
+            device_id: device_id,
             name: name,
           });
           handlePopup();
-          alert("Insert Successful!");
+          handleIdPopup();
         } catch (err) {
           if (err.toString().search("duplicate")) {
             alert("Found duplicate Device ID. Try a different Device ID");
@@ -45,7 +46,7 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
           }
         }
       } else {
-        alert("password not strong enough");
+        alert("Password must be longer than 5");
       }
     } else {
       alert("Mongodb connection not established. Please try again");
@@ -103,7 +104,8 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
           <DialogTitle>Device ID</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              This is your device <b>ID. DO NOT SHARE THIS with anyone</b>
+              Your device has been successfully been inserted. 
+              This is your Device ID. <b> DO NOT SHARE THIS with anyone</b>
               <Stack direction={"row"}>
                 <Box>
                   {deviceId}
