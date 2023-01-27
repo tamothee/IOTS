@@ -83,7 +83,7 @@ const HomePage = () => {
                     {device.id}
                   </Typography>
                   <Typography variant="body2">
-                    Last updated at: {Date(JSON.stringify(events.fullDocument.timestamp))}
+                    Last updated at: {Date(JSON.stringify(device.timestamp))}
                   </Typography>
                 </CardContent>
               </Card>
