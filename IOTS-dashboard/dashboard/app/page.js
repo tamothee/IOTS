@@ -87,30 +87,33 @@ const HomePage = () => {
           !!devices && //check if user and devices is loaded to prevent error when running an undefined variable
           devices.map((device) => {
             return (
-              <Card sx={{ minWidth: 275 }} style={{ marginBottom: "10px" }}>
-                <CardActionArea onClick={handleEditPopup}>
-                  <CardContent>
-                    <Typography variant="h5" gutterBottom>
-                      Device Name: {device.name}
-                    </Typography>
-                    <Typography variant="body1">
-                      Device ID: {device["device_id"]}
-                    </Typography>
-                    <Typography variant="body2">
-                      {/* Last updated at: {Date(JSON.stringify(device.timestamp))} */}
-                      Last updated at: {device.timestamp.toLocaleString()}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
+              <div>
+                <Card sx={{ minWidth: 275 }} style={{ marginBottom: "10px" }}>
+                  <CardActionArea onClick={handleEditPopup}>
+                    <CardContent>
+                      <Typography variant="h5" gutterBottom>
+                        Device Name: {device.name}
+                      </Typography>
+                      <Typography variant="body1">
+                        Device ID: {device["device_id"]}
+                      </Typography>
+                      <Typography variant="body2">
+                        {/* Last updated at: {Date(JSON.stringify(device.timestamp))} */}
+                        Last updated at: {device.timestamp.toLocaleString()}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+                <EditDevice
+                  handlePopup={handleEditPopup}
+                  open={openEditPopup}
+                  user={user}
+                  mongodb={mongodb}
+                  device={device}
+                />
+              </div>
             );
           })}
-        <EditDevice
-          handlePopup={handleEditPopup}
-          open={openEditPopup}
-          user={user}
-          mongodb={mongodb}
-        />
         <AddDevice
           handlePopup={handleAddPopup}
           open={openAddPopup}

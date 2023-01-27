@@ -13,17 +13,83 @@ import { Stack } from "@mui/system";
 import { FormControlLabel, FormGroup } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 
-export default function EditDevice({ handlePopup, open }) {
-  const [name, setName] = React.useState("");
+export default function EditDevice({
+  handlePopup,
+  open,
+  user,
+  mongodb,
+  device,
+}) {
+  const [name, setName] = React.useState(device.name);
   const [regenId, setRegenId] = React.useState(false); // request to regenerate deviceId
-  const [deviceId, setDeviceId] = React.useState("");
+  const [deviceId, setDeviceId] = React.useState(device[device_id]);
   const [changePass, setChangePass] = React.useState(false); //request to change password
   const [password, setPassword] = React.useState("");
   const [deleteLoading, setDeleteLoading] = React.useState(false);
   const [editLoading, setEditLoading] = React.useState(false);
+  const [idPopup, setIdPopup] = React.useState(false); // second popup to say the device id
+
+  const handleIdPopup = () => {
+    setIdPopup(!idPopup);
+  };
 
   const edit = () => {
     setEditLoading(true);
+    if (user) {
+      //dont run write when user connection is not established with mongodb
+      if (password.length > 5 || changePass) {
+        // const device_id = "" + Math.floor(Math.random() * 100000 + 10000);
+        // setDeviceId(device_id);
+        const collection = mongodb.db("IOTS_dashboard").collection("iot"); //insert into collection
+        let update;
+        if (changePass) { //user wants to change password only
+          update = {
+            name: name,
+            password: password,
+            timestamp: new Date(),
+          };
+        } else if (changePass && regenId) { // user wants to change password and regenerate device id
+          const device_id = "" + Math.floor(Math.random() * 100000 + 10000);
+          setDeviceId(device_id);
+          update = {
+            name: name,
+            password: password,
+            device_id ,
+            timestamp: new Date(),
+          };
+        } else { // user just wants to change name
+          update = {
+            name: name,
+            timestamp: new Date(),
+          };
+        }
+        console.log(update);
+        collection
+          .updateOneupdateOne(
+            { _id: device[_id] },
+            {
+              $set: update,
+            }
+          )
+          .then(() => {
+            regenId && handleIdPopup();
+            handlePopup();
+          })
+          .catch((err) => {
+            if (err.toString().search("duplicate")) {
+              edit(); //run edit function again to get a new device id because the one generated was a duplicate
+            } else {
+              alert("Unexpected error. Please try again");
+              console.log(err);
+            }
+          });
+      } else {
+        alert("Password must be longer than 5");
+      }
+    } else {
+      alert("Mongodb connection not established. Please try again");
+    }
+    setEditLoading(false);
   };
   const deleteDevice = () => {
     setDeleteLoading(true);
@@ -113,6 +179,38 @@ export default function EditDevice({ handlePopup, open }) {
             </LoadingButton>
           </Stack>
         </DialogContent>
+      </Dialog>
+
+      <Dialog open={idPopup} onClose={handleIdPopup}>
+        <DialogTitle>Device ID</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            <Grid justifyContent="center" alignItems="center" spacing={4}>
+              <div>
+                Your device has been successfully been updated. This is your
+                Device ID. <b> DO NOT SHARE THIS WITH ANYONE.</b> Put this ID in
+                your device to pair with your account.
+              </div>
+              <Stack
+                direction={"row"}
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Box>{deviceId}</Box>
+                <IconButton
+                  onClick={() => {
+                    navigator.clipboard.writeText(deviceId);
+                  }}
+                >
+                  <ContentCopyIcon />
+                </IconButton>
+              </Stack>
+            </Grid>
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleIdPopup}>Ok</Button>
+        </DialogActions>
       </Dialog>
     </div>
   );
