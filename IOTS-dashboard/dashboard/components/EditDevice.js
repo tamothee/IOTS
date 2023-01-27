@@ -93,7 +93,8 @@ export default function EditDevice({
             }
           )
           .then(() => {
-            regenId ? handleIdPopup():handlePopup();
+            regenId ? handleIdPopup() : handlePopup();
+            alert("Successfully updated")
             window.location.reload();
           })
           .catch((err) => {
@@ -115,6 +116,20 @@ export default function EditDevice({
 
   const deleteDevice = () => {
     setDeleteLoading(true);
+    if (confirm("Are you sure you want to delete this device") === true) {
+      const query = { _id: device["_id"] };
+      itemsCollection
+        .deleteOne(query)
+        .then((result) => {
+          console.log(`Deleted ${result.deletedCount} item.`);
+          alert("Successfully deleted")
+          handlePopup();
+        })
+        .catch((err) => {
+          console.error(`Delete failed with error: ${err}`);
+          alert("Error deleting. Please try again");
+        });
+    }
   };
 
   return (
