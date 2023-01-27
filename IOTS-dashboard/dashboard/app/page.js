@@ -80,7 +80,7 @@ const HomePage = () => {
               <Card sx={{ minWidth: 275 }}>
                 <CardContent>
                   <Typography variant="h5" gutterBottom>
-                    {device.id}
+                    {device['device_id']}
                   </Typography>
                   <Typography variant="body2">
                     Last updated at: {Date(JSON.stringify(device.timestamp))}
