@@ -11,6 +11,7 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Stack } from "@mui/system";
 import { FormControlLabel, FormGroup } from "@mui/material";
+import Checkbox from '@mui/material/Checkbox';
 
 export default function EditDevice({ handlePopup, open }) {
   const [name, setName] = React.useState("");
