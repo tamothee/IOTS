@@ -55,6 +55,7 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
   }
 
   const handleIdPopup = () => {
+    console.log(!idPopup);
     setIdPopup(!idPopup);
   };
 
