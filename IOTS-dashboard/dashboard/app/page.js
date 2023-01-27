@@ -44,7 +44,7 @@ const HomePage = () => {
   };
 
   // for opening and closing popup
-  const handleEditPopup = (device) => {
+  const handleEditPopup = () => {
     setEditPopup(!openEditPopup);
   };
 
@@ -55,7 +55,7 @@ const HomePage = () => {
 
   useEffect(() => { // when a device is selected, this code will run opening up edit popup and passing the selected device data
     if(deviceSelected){// prevent popup from showing when device is undefined
-      setEditPopup(!openEditPopup);
+      handleEditPopup;
     }
   }, [deviceSelected]);
 
