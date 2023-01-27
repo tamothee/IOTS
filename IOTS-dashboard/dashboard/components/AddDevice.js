@@ -9,7 +9,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { Stack } from "@mui/system";
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { Box, IconButton } from "@mui/material";
 
 export default function AddDevice({ handlePopup, open, user, mongodb }) {
@@ -17,7 +17,7 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
   const [name, setName] = React.useState("");
   const [idPopup, setIdPopup] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
-  const [deviceId, setDeviceId] = React.useState('');
+  const [deviceId, setDeviceId] = React.useState("");
 
   async function write() {
     setLoading(true);
@@ -25,7 +25,7 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
       //dont run write when user connection is not established with mongodb
       if (password.length > 5) {
         try {
-          const device_id = "" + Math.floor((Math.random() * 100000 + 10000));
+          const device_id = "" + Math.floor(Math.random() * 100000 + 10000);
           setDeviceId(device_id);
           const collection = mongodb.db("IOTS_dashboard").collection("iot"); //insert into collection
           await collection.insertOne({
@@ -100,27 +100,30 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
           </LoadingButton>
         </DialogActions>
       </Dialog>
-        <Dialog open={idPopup} onClose={handleIdPopup}>
-          <DialogTitle>Device ID</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              Your device has been successfully been inserted. 
-              This is your Device ID. <b> DO NOT SHARE THIS with anyone.</b> Put 
-              this ID to your device to pair with your account.
-              <Stack direction={"row"}>
-                <Box>
-                  {deviceId}
-                </Box>
-                <IconButton onClick={() => {navigator.clipboard.writeText(deviceId)}}>
-                  <ContentCopyIcon/>
-                </IconButton>
-              </Stack>
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleIdPopup}>Ok</Button>
-          </DialogActions>
-        </Dialog>
+
+      <Dialog open={idPopup} onClose={handleIdPopup}>
+        <DialogTitle>Device ID</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Your device has been successfully been inserted. This is your Device
+            ID. <b> DO NOT SHARE THIS with anyone.</b> Put this ID to your
+            device to pair with your account.
+            {/* <Stack direction={"row"}>
+              <Box>{deviceId}</Box>
+              <IconButton
+                onClick={() => {
+                  navigator.clipboard.writeText(deviceId);
+                }}
+              >
+                <ContentCopyIcon />
+              </IconButton>
+            </Stack> */}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleIdPopup}>Ok</Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
