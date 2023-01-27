@@ -30,8 +30,8 @@ const HomePage = () => {
       const collection = mongodb.db("IOTS_dashboard").collection("iot"); //insert into collection
       collection.insertOne({
         timestamp: new Date(),
-        value: 1234567,
-        owner_id: user
+        password: 1234567,
+        owner_id: user.id
       });
     } else {
       alert("Mongodb connection not established. Please try again");
