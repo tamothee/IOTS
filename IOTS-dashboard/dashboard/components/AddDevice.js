@@ -28,7 +28,7 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
           handlePopup();
           alert("Insert Successful!");
         } catch (err) {
-          if (err instanceof MongoDBRealmError && err.code === 11000) {
+          if (err instanceof MongoDBRealmError) {
             console.error("# Duplicate Data Found:\n", err);
             alert("Found duplicate Device ID");
           } else {
