@@ -26,9 +26,13 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
           });
           handlePopup();
           alert("Insert Successful!");
-        } catch (e) {
-          alert("Add failed. Please try a different device ID");
-          console.log(e);
+        } catch (err) {
+          if (err.code === 11000) {
+            console.error("# Duplicate Data Found:\n", err);
+            alert("duplicate device id found")
+          } else {
+            alert("Unexpected failure")
+          }
         }
       } else {
         alert("password not strong enough");

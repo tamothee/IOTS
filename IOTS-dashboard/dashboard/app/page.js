@@ -69,11 +69,10 @@ const HomePage = () => {
         </Link>
       </Breadcrumbs>
       <div>
-        <Stack direction={'row'} spacing={2}>
+        <Stack direction={'row'} spacing={2} style={{ marginBottom: "20px" }}>
           <Button
             variant="contained"
             onClick={handleAddPopup}
-            style={{ marginBottom: "20px" }}
           >
             Add new device
           </Button>
