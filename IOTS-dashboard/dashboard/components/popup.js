@@ -8,7 +8,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 export default function Popup({handlePopup, open}) {
-
+    
   return (
     <div>
       <Dialog open={open} onClose={handlePopup}>
