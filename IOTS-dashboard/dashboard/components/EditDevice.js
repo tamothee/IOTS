@@ -125,6 +125,7 @@ export default function EditDevice({
           console.log(`Deleted ${result.deletedCount} item.`);
           alert("Successfully deleted")
           handlePopup();
+          window.location.reload();
         })
         .catch((err) => {
           console.error(`Delete failed with error: ${err}`);
