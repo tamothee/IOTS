@@ -48,8 +48,8 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
           handlePopup();
         } catch (err) {
           if (err.toString().search("duplicate")) {
-            console.log('this is running')
-            write(); //run write function again to get a new device id because the one generated was a duplicate
+            console.log("this err",err)
+            //write(); //run write function again to get a new device id because the one generated was a duplicate
           } else {
             alert("Unexpected error. Please try again");
             console.log(err);
