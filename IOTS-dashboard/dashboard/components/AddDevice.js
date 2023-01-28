@@ -12,6 +12,9 @@ import { Stack } from "@mui/system";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { Box, Grid, IconButton } from "@mui/material";
 
+// for hashing password
+import crypto from "crypto-js";
+
 export default function AddDevice({ handlePopup, open, user, mongodb }) {
   const [password, setpassword] = React.useState("");
   const [name, setName] = React.useState("");
@@ -27,10 +30,16 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
         try {
           const device_id = "" + Math.floor(Math.random() * 100000 + 10000);
           setDeviceId(device_id);
+          const hashedpassword = crypto
+            .PBKDF2("Secret Passphrase", process.env.SALT, {
+              keySize: 512 / 32,
+              iterations: 1000,
+            })
+            .toString(); // hash password before sending to db
           const collection = mongodb.db("IOTS_dashboard").collection("iot"); //insert into collection
           await collection.insertOne({
             timestamp: new Date(),
-            password: password,
+            password: hashedpassword,
             owner_id: user.id,
             device_id: device_id,
             name: name,
