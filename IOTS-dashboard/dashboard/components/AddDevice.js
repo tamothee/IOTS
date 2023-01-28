@@ -30,10 +30,10 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
         try {
           const device_id = "" + Math.floor(Math.random() * 100000 + 10000);
           setDeviceId(device_id);
-          console.log("password:",password)
+          console.log("password:", password);
           const hashedpassword = crypto
             .PBKDF2(password, process.env.NEXT_PUBLIC_SALT, {
-              keySize: 512 / 32,
+              keySize: 256 / 32,
               iterations: 1000,
             })
             .toString(); // hash password before sending to db
@@ -48,13 +48,8 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
           handleIdPopup();
           handlePopup();
         } catch (err) {
-          if (err.toString().search("duplicate")) {
-            console.log("this err",err)
-            //write(); //run write function again to get a new device id because the one generated was a duplicate
-          } else {
-            alert("Unexpected error. Please try again");
-            console.log(err);
-          }
+          alert("Unexpected error. Please try again");
+          console.log(err);
         }
       } else {
         alert("Password must be longer than 5");

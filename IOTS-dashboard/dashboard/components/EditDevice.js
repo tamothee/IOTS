@@ -15,6 +15,9 @@ import Checkbox from "@mui/material/Checkbox";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { Box, Grid, IconButton } from "@mui/material";
 
+//for hashing password
+import crypto from "crypto-js";
+
 export default function EditDevice({
   handlePopup,
   open,
@@ -51,20 +54,32 @@ export default function EditDevice({
         // setDeviceId(device_id);
         const collection = mongodb.db("IOTS_dashboard").collection("iot"); //insert into collection
         let update;
+        const hashedpassword = crypto
+            .PBKDF2(password, process.env.NEXT_PUBLIC_SALT, {
+              keySize: 256 / 32,
+              iterations: 1000,
+            })
+            .toString();
         if (changePass) {
           //user wants to change password only
           update = {
             name: name,
-            password: password,
+            password: hashedpassword,
             timestamp: new Date(),
           };
         } else if (changePass && regenId) {
           // user wants to change password and regenerate device id
           const device_id = "" + Math.floor(Math.random() * 100000 + 10000);
           setDeviceId(device_id);
+          const hashedpassword = crypto
+            .PBKDF2(password, process.env.NEXT_PUBLIC_SALT, {
+              keySize: 256 / 32,
+              iterations: 1000,
+            })
+            .toString();
           update = {
             name: name,
-            password: password,
+            password: hashedpassword,
             device_id,
             timestamp: new Date(),
           };
@@ -94,7 +109,7 @@ export default function EditDevice({
           )
           .then(() => {
             regenId ? handleIdPopup() : handlePopup();
-            alert("Successfully updated")
+            alert("Successfully updated");
             window.location.reload();
           })
           .catch((err) => {
@@ -123,7 +138,7 @@ export default function EditDevice({
         .deleteOne(query)
         .then((result) => {
           console.log(`Deleted ${result.deletedCount} item.`);
-          alert("Successfully deleted")
+          alert("Successfully deleted");
           handlePopup();
           window.location.reload();
         })
