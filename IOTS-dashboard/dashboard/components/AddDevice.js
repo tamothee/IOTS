@@ -32,7 +32,7 @@ export default function AddDevice({ handlePopup, open, user, mongodb }) {
           setDeviceId(device_id);
           console.log("password:",password)
           const hashedpassword = crypto
-            .PBKDF2(password, process.env.SALT, {
+            .PBKDF2(password, process.env.NEXT_PUBLIC_SALT, {
               keySize: 512 / 32,
               iterations: 1000,
             })
