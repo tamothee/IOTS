@@ -119,7 +119,7 @@ export default function EditDevice({
     if (confirm("Are you sure you want to delete this device") === true) {
       const query = { _id: device["_id"] };
       const collection = mongodb.db("IOTS_dashboard").collection("iot"); //insert into collection
-      collection
+      collection // delete device selected from this collection in the database
         .deleteOne(query)
         .then((result) => {
           console.log(`Deleted ${result.deletedCount} item.`);
