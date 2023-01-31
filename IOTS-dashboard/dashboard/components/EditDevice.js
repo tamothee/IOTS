@@ -55,11 +55,11 @@ export default function EditDevice({
         const collection = mongodb.db("IOTS_dashboard").collection("iot"); //insert into collection
         let update;
         const hashedpassword = crypto
-            .PBKDF2(password, process.env.NEXT_PUBLIC_SALT, {
-              keySize: 256 / 32,
-              iterations: 1000,
-            })
-            .toString();
+          .PBKDF2(password, process.env.NEXT_PUBLIC_SALT, {
+            keySize: 256 / 32,
+            iterations: 1000,
+          })
+          .toString();
         if (changePass) {
           //user wants to change password only
           update = {
