@@ -37,13 +37,20 @@ Thats it! Your smart door is ready to work
 
 <h3>TR64 compliance</h3>
 
-| Component  | TR64 |
+| TR64  | Compliance |
 | ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-
+| Cryptographic Support  | Content Cell  |
+| Security Function Protection  | Content Cell  |
+| Identification & Authentication  | Content Cell  |
+| Data Protection  | Content Cell  |
+| Access Protection  | Content Cell  |
+| Security Management  | Content Cell  |
+| Resiliency Support  | Content Cell  |
+| Security Audit  | Content Cell  |
+| Lifecycle Protection  | Content Cell  |
+| ------------- | ------------- |
 <h3>Documentation</h3>
 <h5>Website</h5>
-The website is hosted on vercel and is reachable via https://iots.vercel.app/ . It uses auth0 to authenticate users and mongodb is used to store user data.
+The website is hosted on vercel and is reachable via https://iots.vercel.app/ . It uses Auth0 to authenticate users and MongoDB is used to store user data.
 
 <h6>To get started</h6>
