@@ -35,19 +35,25 @@ After the user has created a new device in the website, they will go to the door
 </br>
 Thats it! Your smart door is ready to work
 
-<h3>TR64 compliance</h3>
+<h3>TR64 Compliance Checklist</h3>
 
 | TR64  | Compliance |
 | ------------- | ------------- |
 | Cryptographic Support  | CS-01, CS-02, CS-03, CS-04, CS-05  |
-| Security Function Protection  | Content Cell  |
-| Identification & Authentication  | Content Cell  |
-| Data Protection  | Content Cell  |
-| Access Protection  | Content Cell  |
-| Security Management  | Content Cell  |
-| Resiliency Support  | Content Cell  |
-| Security Audit  | Content Cell  |
-| Lifecycle Protection  | Content Cell  |
+| Security Function Protection  | FP-01  |
+| Identification & Authentication  | IA-01, IA-02, IA-03, IA-04  |
+| Data Protection  | DP-02, DP-04  |
+| Access Protection  | AP-01, AP-02, AP-05  |
+| Security Management  |  MT-01, MT-02  |
+| Resiliency Support  | RS-03, RS-04  |
+| Security Audit  | AU-01, AU-02  |
+| Lifecycle Protection  | LP-01, LP-02, LP-03, LP-05, LP-06, LP-07, LP-08, LP-09  |
+
+<h3>Attack Surfaces</h3>
+<h4>Webpage/Application</h4>
+<h4>Web Server</h4>
+<h4>ESP32</h4>
+
 <h3>Documentation</h3>
 <h5>Website</h5>
 The website is hosted on vercel and is reachable via https://iots.vercel.app/ . It uses Auth0 to authenticate users and MongoDB is used to store user data.
