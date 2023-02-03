@@ -99,3 +99,6 @@ Thats it! Your smart door is ready to work
 The website is hosted on vercel and is reachable via https://iots.vercel.app/ . It uses Auth0 to authenticate users and MongoDB is used to store user data.
 
 <h6>To get started</h6>
+
+<h5>Hardware</h5>
+
