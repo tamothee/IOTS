@@ -59,8 +59,8 @@ Thats it! Your smart door is ready to work
 |  TR64 Req ID  |  Explanation  |
 |  -------------  |  -------------  |
 |  CS-02;IA-01  |  User created passwords for Auth0 are hashed using bcrypt.  |
-|  RS-03  |  Web server is secured by vercel with security grade procedures. Presumably able to withstand malicious IoT threats such as Denial of Service (DoS).  |
-|  MT-02  |  Users are only able to view based on the level of privilege they were assigned.  |
+|  RS-03  |  Web server is secured by vercel with security grade procedures. Presumably able to withstand malicious threats such as Denial of Service (DoS).  |
+|  MT-02  |  Users are only able to create, read, update and delete their own data so to uphold confidentiality and that data will not be tampered by unauthorized users.  |
 
 <h4>MongoDB Atlas Compliance List</h4>
 <i>TR64 Req IDs: CS-01;CS-04;CS-05;FP-01;DP-04;RS-04;AU-01;AU-02;MT-02 </i></br>
@@ -92,13 +92,272 @@ Thats it! Your smart door is ready to work
 
 |  TR64 Req ID  |  Explanation  |
 |  -------------  |  -------------  |
-|  CS-02;IA-01:  |  We used a cryptographic algorithm (PBKDF2) for the password hashing with salt for better <b>confidentiality</b>.  |
+|  CS-02;IA-01:  |  We used a cryptographic algorithm (PBKDF2) to hash the device password with salt for better <b>confidentiality</b>.  |
 
 <h3>Documentation</h3>
-<h5>Website</h5>
-The website is hosted on vercel and is reachable via https://iots.vercel.app/ . It uses Auth0 to authenticate users and MongoDB is used to store user data.
+<h4>Website</h4>
+The website is hosted on vercel and is reachable via https://iots.vercel.app/ . The website is built on NextJS which is a meta ReactJS framework which allows developers to create full stack web application. It also uses MongoDB as a database to store the user device information and Auth0 to handle user authentication and storing of user information.
 
-<h6>To get started</h6>
+<h5>To get started</h5>
+<ol>
+  <li>
+  You will need to have nodejs installed. Go over to https://nodejs.org/en/ to install nodejs
+  </li>
+   <li>
+  Clone this repository or download the zip file
+  </li>
+  <li>
+  Open it up using visual studio code or equivalent and go to the root path of the dashboard which is /IOTS/IOTS-dashboard
+  </li>
+  <li>
+  From here you can choose to either run it in localhost mode or push it to the cloud. 
+  <br/>
+  <b>If you want to push it to the cloud</b>
+    <ol>
+      <li>
+      Create a new github repository and push the code to the repository
+      </li>
+      <li>
+      Create a vercel account and link it to your github https://vercel.com/
+      </li>
+      <li>
+      After signing in to vercel, go to add <b>new project</b>
+      </li>
+      <li>
+      Import the repository that you created
+      </li>
+      <li>
+      Select the NextJS under the <b>Framework Preset</b>
+      </li>
+      <li>
+      Ensure that the <b>Root Directory is the root path of the website</b>
+      </li>
+      <li>
+      Then click deploy
+      </li>
+      <li>
+      All codes that are commited to github will be rebuilt and redeployed on vercel.
+      </li>
+    </ol>
+    <b>If you want to run it locally using localhost</b>
+      <ol>
+      <li>
+       Go to the root path of the website locally from your terminal in visual studio code or equivalent
+      </li>
+      <li>
+       Type in npm run dev
+      </li>
+      <li>
+       Open your browser and go to http://localhost:3000/
+      </li>
+      <li>
+       You should see the website running
+      </li>
+      </ol>
+    </li>
+    <li>
+    Now you need to create a new Auth0 account https://auth0.com/
+    </li>
+    <li>
+    Login to auth0 
+    </li>
+    <li>
+    Go to applications and create a new application
+    </li>
+    <li>
+    Select Regular Web Application
+    </li>
+    <li>
+    Take note of the <b>Client ID</b> and <b>Client Secret</b>
+    </li>
+    <li>
+    Scroll down to <b>Allowed Callback URLs</b>
+    </li>
+    <li>
+    Add in  https://YOUR-VERCEL-APP-URL/api/auth/callback/auth0, http://localhost:3000/api/auth/callback . You do not need to add in the first one if you did not push       the code to vercel
+    </li>
+    <li>
+    Scroll down and save your changes
+    </li>
+    <li>
+    Now you need to create your MongoDB database
+    </li>
+    <li>
+    Head over to https://www.mongodb.com/ and create a new account
+    </li>
+    <li>
+    Create a new project and name it IOTS
+    </li>
+    <li>
+    Create a new cluster and select <b>shared</b> and change the cluster name to IOTS-database
+    </li>
+    <li>
+    Go to browse collection of IOTS-database
+    </li>
+    <li>
+    Go to collections tab and create a new database
+    </li>
+    <li>
+    Go to collections tab and create a new database
+    </li>
+    <li>
+    Name the <b>database name</b> as IOTS_dashboard and the <b>Collection name</b> as users
+    </li>
+    <li>
+    Hover over IOTS_dashboard and create another collection and name it as users
+    </li>
+    <li>
+    Go over to App Services
+    </li>
+    <li>
+    Go to Authentication tab
+    </li>
+    <li>
+    Click on edit for <b>Custom JWT Authentication</b> 
+    </li>
+    <li>
+    Enable the provider and select <b>Use a JWK URI</b>
+    </li>
+    <li>
+    Under <b>JWK URI</b> go back to auth0 application settings and scroll all the way down to advanced settings
+    </li>
+    <li>
+    Go to the <b>Endpoints</b> tab and copy the JSON Web Key Set. It should look something like https://YOUR-TENANT/.well-known/jwks.json
+    </li>
+    <li>
+    Go back to the MongoDB and paste what you copied to the JWK URI
+    </li>
+    <li>
+    Go to trigger and add a new trigger
+    </li>
+    <li>
+    Set the trigger type to Authentication
+    </li>
+    <li>
+    Name the Trigger AddUserToDatabase
+    </li>
+    <li>
+    Set your <b>Cluster name</b> to IOTS-database
+    </li>
+    <li>
+    Set your <b>Database name</b> to IOTS-dashboard
+    </li>
+    <li>
+    Set your <b>Collection name</b> to users
+    </li>
+    <li>
+    Scroll down and click on <b>select a function</b> and create a new function
+    </li>
+    <li>
+    Name the function addUserToDatabase
+    </li>
+    <li>
+    Copy this code and place it in the function
+    
+```javascript
+exports = function(authEvent) {
+  const user = authEvent.user;
+  const mongodb = context.services.get("IOTS-database");
+  const usersCollection = mongodb.db("IOTS_dashboard").collection("users");
+  usersCollection.insertOne({
+    ...user
+  });
+};
+```
+</li>
+    <li>
+    Save it and go back to the <b>Authentication</b> tab
+    </li>
+    <li>
+    Click on edit for the API Keys and create a new API Key and name it Door_Auth. Save the API key somewhere safe as you will not see it again. This will be your API key that you will use for the esp32 query
+    </li>
+    <li>
+    While you are saving the api key, on the sidebar, at the top, there is a copy icon. Click on it as save it as that is your app id and you will need it later
+    </li>
+    go back to the auth0
+    <li>
+    Go over to APIs and create a new API
+    </li>
+    <li>
+    Name it whatever you want and the identifier is the mongodb app id which you saved and the click create
+    </li>
+    <li>
+    Now if you are running the code on localhost, create a <b>.env</b> file at the <b>root directory</b>. If you are using vercel go over to <b>settings</b> and <b>Environment Variables</b>. Then add this into your env either on vercel or your .env file in your root directory
+    
+```
+AUTH0_CLIENT_ID = <Your auth0 application client ID>
+AUTH0_CLIENT_SECRET = <Your auth0 application client secret>
+AUTH0_ISSUER = https://<your auth0 application domain> 
+NEXTAUTH_URL = <your website url either localhost or the vercel url>
+NEXT_PUBLIC_APP_ID= <your mongodb app id that you saved>
+AUTH0_AUDIENCE= <your mongodb app id that you saved>
+NEXTAUTH_SECRET= <random secret of any length that you can use openssl to generate for you. would recommend 32 characters long>
+NEXT_PUBLIC_SALT = <the salt that you will use to hash the users device password. would also recommend to use openssl and 32 characters long to generate the salt>
+```
+</li>
+  <li>
+    Go back to mongodb app services
+  </li>
+  <li>
+    Go to HTTPS Endpoints and create a new HTTPS Endpoint 
+  </li>
+  <li>
+    Set the route to be /doorauth
+  </li>
+   <li>
+    Under <b>Operation Type</b> copy the url
+  </li>
+  <li>
+    Set the <b>HTTP Method</b> to post
+  </li>
+  <li>
+    Set the <b>Return Type</b> to JSON
+  </li>
+   <li>
+    Under <b>Function</b> add a new function and copy this code
+    
+    
+```javascript
+exports = async function({ query, headers, body}, response) {
+  const CryptoJS = require("crypto-js");
+
+    const serialized = body.text();
+    const data = JSON.parse(serialized);
+    
+    const {deviceId, userPassword} = data;
+    console.log(deviceId);
+    console.log(userPassword)
+    const dbPassword = await context.services.get("IOTS-database").db("IOTS_dashboard").collection("iot").findOne(
+    {device_id: deviceId},
+    {password: 1}
+    )
+    console.log(dbPassword);
+    
+    console.log("dbpassword", dbPassword)
+    
+    if (dbPassword){
+      console.log("not null")
+       if (dbPassword.password === CryptoJS.PBKDF2(userPassword, "<Your salt that you generated just now>",  {
+              keySize: 256 / 32,
+              iterations: 1000,
+            }).toString()){
+              console.log("authorised")
+         return "authorised"
+       }
+        return "Username or Password is invalid"
+    }else{
+      console.log('invalid')
+      return "Username or Password is invalid";
+    }
+
+};
+
+```
+</li>
+  <li>
+  Go to your esp32 code and add the API key of the doorauth you saved just now as well as add your http endpoint url to the endpoint variable
+  </li>
+</ol>
 
 <h5>Hardware</h5>
 
