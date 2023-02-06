@@ -11,9 +11,13 @@ The user will use a keypad to enter a code to unlock a door with a keypad to giv
 <ul>
   <li>Hardware
     <ul>
-      <li>esp32</li>
-      <li>LCD with I2C</li>
-      <li>Servo Motor</li>
+      <li>Esp32</li>
+      <li>4x4 Keypad</li>
+      <li>I2C LCD 16x2 with PCF8574 IIC I2C Serial Interface Adapter</li>
+      <li>SG90 Servo Motor</li>
+      <li>12x Female-to-Male Jumper Wires</li>
+      <li>3x Male-to-Male Jumper Wires</li>
+      <li>Breadboard</li>
     </ul>
   </li>
   <li>Website
@@ -359,5 +363,6 @@ exports = async function({ query, headers, body}, response) {
   </li>
 </ol>
 
-<h5>Hardware</h5>
-
+<h5>Circuit Diagram</h5>
+<p>The diagram below shows how the components are connected to create the circuit diagram. the tables shows the different pin connections to the Esp32 I/O pins.</p>
+<img src="IOTS circuir diagram.jpg" alt="IOTS Circuit Diagram">
