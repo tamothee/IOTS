@@ -39,17 +39,21 @@ Users will also be able to configure their device information through a website.
 </ul>
 
 <h3>User Journey</h3>
-The first thing the user must do is to create an account on our website. They can use social login which
-would not require them to create an account. The next step is to create a new device on the website with a
-password. Then save the device ID that they get after a successful device creation. 
-Then the user will need to go to their door lock and add in their device id. That’s it for the set up! User will be prompted to type in
-their code that they saved earlier in the website and the door will unlock when it is the correct code.
+The first thing the user must do is to create an account on our website. They can use social login which would not require them to create an account. The next step is to create a new door lock configuration on the website with a password. Then save the door lock ID that they get after a successful door lock creation. 
+Then the user will need to go to their door lock and add in their door lock id. That’s it for the set up! User will be prompted to type in their code that they saved earlier in the website and the door will unlock when it is the correct code.
 
-<h3>Why our solution</h3>
+
+<h3>How it works</h3>
+<p align="center">
+<img src="/img/diagram_flow.png" width=70% height=70% style=>
+</p>
+Mongodb stores the door lock ID and password. The user can use the website to create, read, update and delete their door lock information. When the user enters the password into the keypad and presses enter, it will do a HTTP request to the Mongodb HTTPS endpoint with the door lock ID and password. This endpoint is secured with TLS. Mongodb will receive the password and door lock ID, hash the incoming password using the same algorithm and salt and check the password to the hashed database password to see if they match. If they do, it will return an authorised, otherwise it will return not authorised.
+
+<h3>Justification</h3>
 Users wouldn't have to stress about forgetting their house keys or losing them by using our Door Entry System. They could even share their home's password for events with the option to subsequently change it. Even if they lost their door system password, they could still access the website and alter it. They would never be locked out of their home.
 <br/>
 <br/>
-Our Door Entry System is quick and easy to set up. Users would be able to manage their device through an easy-to-use website.
+Our Door Entry System is quick and easy to set up. Users would be able to manage their door lock through an easy-to-use website.
 Our solution would be secured with the use of Auth0, Vercel and MongoDB.
 <br/>
 <br/>
@@ -60,10 +64,10 @@ without having to create a new account.
 If they enable two-factor authentication for their social login, they will also be able to use it to access our website.
 <br/>
 <br/>
-Mongodb is used to save our user device information to the cloud. Mongodb uses enterprise level security features such as 
+Mongodb is used to save our user door lock information to the cloud. Mongodb uses enterprise level security features such as 
 network isolation and access, encryption of data in transit and at rest and granular database auditing. Mongodb is also compliant 
 with ISO27001, ISO27017, ISO27018, SOC 2, CSA STAR, PCI DSS,
-HIPAA, HITRUST, VPAT (Section 508) and GDPR. Thus, we are confident that user device information is stored securely.
+HIPAA, HITRUST, VPAT (Section 508) and GDPR. Thus, we are confident that user door lock information is stored securely.
 <br/>
 <br/>
 Our website is hosted in the cloud by Vercel. Our solution is resilient, secure, and highly available thanks to Vercel. Vercel uses 
@@ -71,4 +75,4 @@ AWS for high availability, AES 256 for data at rest and HTTPS/TLS 1.3 for data i
 SOC 2, GDPR, and PCI compliance are all met by Vercel.
 <br/>
 <br/>
-User device password is hashed with PBKDF2 which the hashing algorithm recommended by OWASP.
+User door lock password is hashed with PBKDF2 which is the hashing algorithm recommended by OWASP for passwords.
