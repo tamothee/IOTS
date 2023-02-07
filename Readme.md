@@ -373,4 +373,6 @@ exports = async function({ query, headers, body}, response) {
 
 <h5>Circuit Diagram</h5>
 <p>The diagram below shows how the components are connected to create the circuit diagram. the tables shows the different pin connections to the Esp32 I/O pins.</p>
-<img src="IOTS circuir diagram.jpg" alt="IOTS Circuit Diagram">
+<p align="center">
+<img src="/img/hardware_circuit_diagram.jpeg" alt="IOTS Circuit Diagram" width="70%" height="70%">
+</p>
