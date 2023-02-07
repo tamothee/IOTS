@@ -1,5 +1,11 @@
 <h1>SMART DOOR LOCK (IOTS PROJECT)</h1>
 
+|  Name |  Admission ID  |
+|  -------------  |  -------------  |
+|  Leong Ming Liang Timothy  |  P1907799  |
+|  Ron Tan Zi Yu |  P1908521  |
+|  Tiamzon Joseph Martin |  P1907492  |
+
 <h3>Concept</h3>
 The user will use a keypad to enter a code to unlock a door with a display to give instructions. For scalability, we have decided to let users configure their device settings through a website.
 </br>
