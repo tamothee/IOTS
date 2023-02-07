@@ -71,7 +71,7 @@ Thats it! Your smart door is ready to work
 |  TR64 Req ID  |  Explanation  |
 |  -------------  |  -------------  |
 |  CS-02;IA-01  |  User created passwords for Auth0 are hashed using bcrypt.  |
-|  RS-03  |  Web server is secured by vercel with security grade procedures. Presumably able to withstand malicious threats such as Denial of Service (DoS).  |
+|  RS-03  |  Web server is secured by vercel with security grade procedures. Able to withstand malicious threats such as Denial of Service (DoS) and Distributed Denial of Service (DDoS).  |
 |  MT-02  |  Users are only able to create, read, update and delete their own data so to uphold confidentiality and that data will not be tampered by unauthorized users.  |
 
 <h4>MongoDB Atlas Compliance List</h4>
