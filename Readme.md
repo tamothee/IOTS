@@ -1,8 +1,5 @@
 <h1>SMART DOOR LOCK (IOTS PROJECT)</h1>
 
-<h3>Introduction</h3>
-The smart door lock project focus is on IOT security. From hardware to software it is supposed to adhere as much to tr64 as possible. The project features/functions were not our priority. 
-
 <h3>Concept</h3>
 The user will use a keypad to enter a code to unlock a door with a display to give instructions. For scalability, we have decided to let users configure their device settings through a website.
 </br>
