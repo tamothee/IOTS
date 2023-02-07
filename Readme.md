@@ -34,7 +34,7 @@ The user will use a keypad to enter a code to unlock a door with a display to gi
     </ul>
   </li>
 </ul>
-<h3>How users are meant to operate and use the project</h3>
+<h3>How users are meant to operate and use the product</h3>
 <h5>Setting up on the website</h5>
 Users will need to set up their device to be connected to the database. To do that, the first thing a user will need to do is to register an account through the website. https://iots.vercel.app/ . After they signed in, they will click create a new device. They fill in the form then press create. Take not of the device id as you will need it later. You can create, read, update and delete your devices through the website.
 
