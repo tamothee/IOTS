@@ -46,11 +46,7 @@ Then the user will need to go to their door lock and add in their device id. Tha
 their code that they saved earlier in the website and the door will unlock when it is the correct code.
 
 <h3>Why our solution</h3>
-Users wouldn't have to stress about forgetting their house keys or losing them by using our Door Entry System. 
-They could even share their home's password for events with the option to subsequently change it. Even if they lost their door system password,
-Our Door Entry System is quick and easy to set up. Users would be able to manage their device through an easy-to-use website. Our solution 
-would be secured with the use of Auth0, Vercel and MongoDB.they could still access the website and alter it. They would never be locked
-out of their home.
+Users wouldn't have to stress about forgetting their house keys or losing them by using our Door Entry System. They could even share their home's password for events with the option to subsequently change it. Even if they lost their door system password, they could still access the website and alter it. They would never be locked out of their home.
 <br/>
 <br/>
 Our Door Entry System is quick and easy to set up. Users would be able to manage their device through an easy-to-use website.
