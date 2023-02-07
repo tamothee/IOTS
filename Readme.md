@@ -1,7 +1,13 @@
 <h1>SMART DOOR LOCK (IOTS PROJECT)</h1>
 
+|  Name |  Admission ID  |
+|  -------------  |  -------------  |
+|  Leong Ming Liang Timothy  |  P1907799  |
+|  Ron Tan Zi Yu |  P1908521  |
+|  Tiamzon Joseph Martin |  P1907492  |
+
 <h3>Concept</h3>
-The user will use a keypad to enter a code to unlock a door with a display to give instructions. For scalability, we have decided to let users configure their device settings through a website.
+The user will use a keypad to enter a code to unlock the door. It also uses an LCD to give prompts to the user. Users will also be able to configure their device information through a website.
 </br>
 
 <h3>Components</h3>
@@ -65,7 +71,7 @@ Thats it! Your smart door is ready to work
 |  TR64 Req ID  |  Explanation  |
 |  -------------  |  -------------  |
 |  CS-02;IA-01  |  User created passwords for Auth0 are hashed using bcrypt.  |
-|  RS-03  |  Web server is secured by vercel with security grade procedures. Presumably able to withstand malicious threats such as Denial of Service (DoS).  |
+|  RS-03  |  Web server is secured by vercel with security grade procedures. Able to withstand malicious threats such as Denial of Service (DoS) and Distributed Denial of Service (DDoS).  |
 |  MT-02  |  Users are only able to create, read, update and delete their own data so to uphold confidentiality and that data will not be tampered by unauthorized users.  |
 
 <h4>MongoDB Atlas Compliance List</h4>
