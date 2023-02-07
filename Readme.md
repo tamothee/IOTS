@@ -7,7 +7,7 @@
 |  Tiamzon Joseph Martin |  P1907492  |
 
 <h3>Concept</h3>
-The user will use a keypad to enter a code to unlock a door with a display to give instructions. For scalability, we have decided to let users configure their device settings through a website.
+The user will use a keypad to enter a code to unlock the door. It also uses an LCD to give prompts to the user. Users will also be able to configure their device information through a website.
 </br>
 
 <h3>Components</h3>
