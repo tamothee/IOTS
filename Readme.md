@@ -26,6 +26,7 @@ The user will use a keypad to enter a code to unlock a door with a display to gi
       <li>ReactJS</li>
       <li>MongoDB</li>
       <li>Auth0</li>
+      <li>Vercel</li>
     </ul>
   </li>
 </ul>
