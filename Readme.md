@@ -65,25 +65,23 @@ Thats it! Your smart door is ready to work
 <h4>Attack Surface 1: Physical Attacks (ESP-32)</h4>
 <h5>Vulnerabilities</h5>
 <p>
-Physically injecting of code
-Physically tampering with the door access system
+Physically tampering with the door access system and injecting of external code into the microcontroller controlling the door system could potentially result in the whole system failing.
 </p>
 <h5>Assessment<h5>
-<p>
-Damage - 
-</br>
-Reproducability - 
-</br>
-Exploitability -
-</br>
-Affected Users - 
-</br>
-Discoverability - 
+
+|  Category  |  Description  |
+|  --------  |  -----------  |
+|  Damage  | An attack on the physical hardware would have a very high impact as the physical hardware is the core of the Door Access System.  |
+|  Reproducability  |  a  |
+|  Exploitability  |  a  |
+|  Affected Users  |  a  |
+|  Discoverability  |  a  |
+
 </br>
 
 <h5>Mitigation<h5>
 <p>
-
+Physically securing the Door Access System with proper procedures, such as 
 </p>
 <h4>Attack Surface 2: ESP-32 Network Attack</h4>
 <h5>Vulnerabilities</h5>
@@ -92,21 +90,21 @@ Intercepting of packets being sent from the "Door Access" terminal to the secure
 </p>
 <h5>Assessment</h5>
 <p>
-Damage - An attack at this level would be be very low risk as there are proper security procedures implemented into this. For example, packets are sent through using TLS, meaning that it is very hard for hackers to identify and decrypt the Personal Identifiabe Information. 
-</br>
-Reproducability - In order to reproduce this type of attack, it would be very easy. However, the exploitaility of this attack is very low.
-</br>
-Exploitability - This attack has a low exploitability as the packets being sent over are encrypted using TLS.
-</br>
-Affected Users - Home Owners are the only users that would be affected.
-</br>
-Discoverability - Eavesdropping and sniffing are attacks which are very hard to discover. 
-</br>
+
+|  Category  |  Description  |
+|  --------  |  -----------  |
+|  Damage  | An attack at this level would be be very low risk as there are proper security procedures implemented into this. For example, packets are sent through using TLS, meaning that it is very hard for hackers to identify and decrypt the Personal Identifiabe Information.  |
+|  Reproducability  |  In order to reproduce this type of attack, it would be very easy. However, the exploitaility of this attack is very low.  |
+|  Exploitability  |  This attack has a low exploitability as the packets being sent over are encrypted using TLS.  |
+|  Affected Users  |  Home Owners are the only users that would be affected.  |
+|  Discoverability  |  Eavesdropping and sniffing are attacks which are very hard to discover.  |
+
 <p align="center">
 <img src="/img/OWaspVulnerabilityScore2.png" alt="Calculated Vulnerability Score 2" width="100%" height="100%">
 </p>
 CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N 
 </p>
+
 <h5>Mitigation</h5>
 <p>
 
@@ -118,17 +116,14 @@ Physically injecting of code
 Physically tampering with the door access system
 </p>
 <h5>Assessment<h5>
-<p>
-Damage - 
-</br>
-Reproducability - 
-</br>
-Exploitability -
-</br>
-Affected Users - 
-</br>
-Discoverability - 
-</br>
+
+|  Category  |  Description  |
+|  --------  |  -----------  |
+|  Damage  | a  |
+|  Reproducability  |  a  |
+|  Exploitability  |  a  |
+|  Affected Users  |  a  |
+|  Discoverability  |  a  |
 
 <h5>Mitigation<h5>
 <p>
@@ -141,39 +136,33 @@ Physically injecting of code
 Physically tampering with the door access system
 </p>
 <h5>Assessment<h5>
-<p>
-Damage - 
-</br>
-Reproducability - 
-</br>
-Exploitability -
-</br>
-Affected Users - 
-</br>
-Discoverability - 
-</br>
+
+|  Category  |  Description  |
+|  --------  |  -----------  |
+|  Damage  | a  |
+|  Reproducability  |  a  |
+|  Exploitability  |  a  |
+|  Affected Users  |  a  |
+|  Discoverability  |  a  |
 
 <h5>Mitigation<h5>
 <p>
 
-<h4>Attack Surface 4: Web Application Attacks (Auth0)</h4>
+<h4>Attack Surface 5: Web Application Attacks (Auth0)</h4>
 <h5>Vulnerabilities</h5>
 <p>
 Physically injecting of code
 Physically tampering with the door access system
 </p>
 <h5>Assessment<h5>
-<p>
-Damage - 
-</br>
-Reproducability - 
-</br>
-Exploitability -
-</br>
-Affected Users - 
-</br>
-Discoverability - 
-</br>
+
+|  Category  |  Description  |
+|  --------  |  -----------  |
+|  Damage  | a  |
+|  Reproducability  |  a  |
+|  Exploitability  |  a  |
+|  Affected Users  |  a  |
+|  Discoverability  |  a  |
 
 <h5>Mitigation<h5>
 <p>
