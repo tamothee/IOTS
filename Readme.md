@@ -84,12 +84,17 @@ Intercepting of packets being sent from the "Door Access" terminal to the secure
 <h5>Assessment<h5>
 <p>
 Damage - 
+</br>
 Reproducability - 
+</br>
 Exploitability -
+</br>
 Affected Users - 
+</br>
+</br>
 Discoverability - 
 <p align="center">
-<img src="/img/readmeImages/OwaspVulnerabilityScore2" alt="Calculated Vulnerability Score 2" width="70%" height="70%">
+<img src="/img/readmeImages/OwaspVulnerabilityScore2.png" alt="Calculated Vulnerability Score 2" width="70%" height="70%">
 </p>
 CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N 
 </p>
