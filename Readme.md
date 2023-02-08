@@ -67,7 +67,7 @@ Thats it! Your smart door is ready to work
 <p>
 Physically tampering with the door access system and injecting of external code into the microcontroller controlling the door system could potentially result in the whole system failing.
 </p>
-<h5>Assessment<h5>
+<h5>Assessment</h5>
 
 |  Category  |  Description  |
 |  --------  |  -----------  |
@@ -82,7 +82,7 @@ Physically tampering with the door access system and injecting of external code 
 </p>
 CVSS:3.0/AV:P/AC:H/PR:H/UI:N/S:C/C:N/I:N/A:H
 
-<h5>Mitigation<h5>
+<h5>Mitigation</h5>
 <p>
 Physically securing the Door Access System with proper procedures, such as 
 </p>
@@ -118,61 +118,60 @@ CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N
 <h4>Attack Surface 3: Database Attacks (MongoDB)</h4>
 <h5>Vulnerabilities</h5>
 <p>
-Physically injecting of code
-Physically tampering with the door access system
+Stealing access to administrator account.
 </p>
-<h5>Assessment<h5>
+<h5>Assessment</h5>
 
 |  Category  |  Description  |
 |  --------  |  -----------  |
-|  Damage  | a  |
-|  Reproducability  |  a  |
-|  Exploitability  |  a  |
-|  Affected Users  |  a  |
-|  Discoverability  |  a  |
+|  Damage  | The damage would be high if the administrator account would be accessed by a threat actor. This is because the administrator has access to all data and is able to configure the server settings |
+|  Reproducability  | the reproducability is high if the threat actor has found the credentials of the administrator account |
+|  Exploitability  | The exploitability is low as the administrator account of our Mongodb database is securely protected using social login with 2 factor authentication and the password follows the standard of strong password. |
+|  Affected Users  | All users would be affected as the administrator has access to all data and system configuration|
+|  Discoverability  | The discovery of the threat would not be easy as we did not leave save our credentials insecurely |
 
-<h5>Mitigation<h5>
+<h5>Mitigation</h5>
 <p>
-
+The mitigation would be using social logins that is using 2 factor authentication, a strong password to the social login, limiting the amount of people having administrator rights and logging of important events. 
 </p>
 <h4>Attack Surface 4: Web Server Attacks (Vercel)</h4>
 <h5>Vulnerabilities</h5>
 <p>
-Physically injecting of code
-Physically tampering with the door access system
+DDoS of the Vercel webserver to take down availability. 
 </p>
-<h5>Assessment<h5>
+<h5>Assessment</h5>
 
 |  Category  |  Description  |
 |  --------  |  -----------  |
-|  Damage  | a  |
-|  Reproducability  |  a  |
-|  Exploitability  |  a  |
-|  Affected Users  |  a  |
-|  Discoverability  |  a  |
+|  Damage  | The damage is medium as users will not be able to create, read, update and delete their door lock configuration.  |
+|  Reproducability  |  It is not easy to take down Vercel webserver with DDoS as there are implementation to prevent this attack  |
+|  Exploitability  |  To do DDoS of a scale that is able to take Vercel down, the threat actor would need to use a huge amount of zombies  |
+|  Affected Users  |  All of our users would be affected if Vercel goes down  |
+|  Discoverability  |  It is not easy to discover how to do a DDoS attack that works on Vercel |
 
-<h5>Mitigation<h5>
+<h5>Mitigation</h5>
 <p>
+The system needs to be able to detect a suspicious activities users and black list that IP address. 
+</p>
 
 <h4>Attack Surface 5: Web Application Attacks (Auth0)</h4>
 <h5>Vulnerabilities</h5>
 <p>
-Physically injecting of code
-Physically tampering with the door access system
+Brute force attack on a user in our website application
 </p>
-<h5>Assessment<h5>
+<h5>Assessment</h5>
 
 |  Category  |  Description  |
 |  --------  |  -----------  |
-|  Damage  | a  |
-|  Reproducability  |  a  |
-|  Exploitability  |  a  |
-|  Affected Users  |  a  |
-|  Discoverability  |  a  |
+|  Damage  | The damage would be high if the threat actor is able to log in as another user  |
+|  Reproducability  |  It is not easy to reproduce this attack as Auth0 has implementation against brute force attack |
+|  Exploitability  |  It will require a lot of work to be able to brute force Auth0 authentication  |
+|  Affected Users  |  Only the user being brute forced would be affected  |
+|  Discoverability  |  It is easy to find tutorials on how to execute this attack  |
 
-<h5>Mitigation<h5>
+<h5>Mitigation</h5>
 <p>
-
+Auth0 already has mitigations to brute force attack. Auth0 will block suspicious IP addresss from logging in as that user and sends an email to the affected user.
 </p>
 </p>
 <h3>Compliance Lists</h3>
