@@ -94,7 +94,7 @@ Affected Users -
 </br>
 Discoverability - 
 <p align="center">
-<img src="/img/readmeImages/OwaspVulnerabilityScore2.png" alt="Calculated Vulnerability Score 2" width="70%" height="70%">
+<img src="/img/readmeImages/OWaspVulnerabilityScore2.png" alt="Calculated Vulnerability Score 2" width="70%" height="70%">
 </p>
 CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N 
 </p>
