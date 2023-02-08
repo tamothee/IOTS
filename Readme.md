@@ -72,17 +72,23 @@ Physically tampering with the door access system and injecting of external code 
 |  Category  |  Description  |
 |  --------  |  -----------  |
 |  Damage  | An attack on the physical hardware would have a very high impact as the physical hardware is the core of the Door Access System.  |
-|  Reproducability  |  a  |
-|  Exploitability  |  a  |
-|  Affected Users  |  a  |
-|  Discoverability  |  a  |
+|  Reproducability  | An attack on the hardware level would be very hard to reproduce as it would require the attacker to be physically present at the same location as the hardware  |
+|  Exploitability  |   This attack would be considered as high exploitability since our hardware is not in the most secure position  |
+|  Affected Users  |  The home owner would be the main affected user as it would compromise the entire security system, allowing anyone to enter the home of the home owner.  |
+|  Discoverability  |  An attack at this level would be very high on the discoverability scale as this attack requires the home owner to be physically present at the site where the security system is, which in this case is the home.  |
 
-</br>
+<p align="center">
+<img src="/img/OWaspVulnerabilityScore1.png" alt="Calculated Vulnerability Score 2" width="100%" height="100%">
+</p>
+CVSS:3.0/AV:P/AC:H/PR:H/UI:N/S:C/C:N/I:N/A:H
 
 <h5>Mitigation<h5>
 <p>
 Physically securing the Door Access System with proper procedures, such as 
 </p>
+
+
+
 <h4>Attack Surface 2: ESP-32 Network Attack</h4>
 <h5>Vulnerabilities</h5>
 <p>
