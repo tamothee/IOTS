@@ -70,8 +70,17 @@ Physically tampering with the door access system
 </p>
 <h5>Assessment<h5>
 <p>
+Damage - 
+</br>
+Reproducability - 
+</br>
+Exploitability -
+</br>
+Affected Users - 
+</br>
+Discoverability - 
+</br>
 
-</p>
 <h5>Mitigation<h5>
 <p>
 
@@ -83,16 +92,16 @@ Intercepting of packets being sent from the "Door Access" terminal to the secure
 </p>
 <h5>Assessment<h5>
 <p>
-Damage - 
+Damage - An attack at this level would be be very low risk as there are proper security procedures implemented into this. For example, packets are sent through using TLS, meaning that it is very hard for hackers to identify and decrypt the Personal Identifiabe Information. 
 </br>
-Reproducability - 
+Reproducability - In order to reproduce this type of attack, it would be very easy. However, the exploitaility of this attack is very low.
 </br>
-Exploitability -
+Exploitability - This attack has a low exploitability as the packets being sent over are encrypted using PBKDF2 before sending it over to the MongoDB.
 </br>
-Affected Users - 
+Affected Users - Home Owners are the only users that would be affected.
 </br>
+Discoverability - Eavesdropping and sniffing are attacks which are very hard to discover. 
 </br>
-Discoverability - 
 <p align="center">
 <img src="/img/OWaspVulnerabilityScore2.png" alt="Calculated Vulnerability Score 2" width="100%" height="100%">
 </p>
