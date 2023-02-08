@@ -62,7 +62,7 @@ Thats it! Your smart door is ready to work
 | Lifecycle Protection  | LP-01, LP-02, LP-03, LP-05, LP-06, LP-07, LP-08, LP-09  |
 
 <h3>Attack Surfaces</h3>
-<h4>Attack Surface 1: Physical Attacks</h4>
+<h4>Attack Surface 1: Physical Attacks (ESP-32)</h4>
 <h5>Vulnerabilities</h5>
 <p>
 Physically injecting of code
@@ -85,18 +85,18 @@ Discoverability -
 <p>
 
 </p>
-<h4>Attack Surface 2: Backend Attacks</h4>
+<h4>Attack Surface 2: ESP-32 Network Attack</h4>
 <h5>Vulnerabilities</h5>
 <p>
 Intercepting of packets being sent from the "Door Access" terminal to the secure endpoint on MongoDB would result in the Personal Identifiable Information (PII/SPI) being leaked to the hacker as they would be able to know the specific time as to when the home owner leaves and returns.
 </p>
-<h5>Assessment<h5>
+<h5>Assessment</h5>
 <p>
 Damage - An attack at this level would be be very low risk as there are proper security procedures implemented into this. For example, packets are sent through using TLS, meaning that it is very hard for hackers to identify and decrypt the Personal Identifiabe Information. 
 </br>
 Reproducability - In order to reproduce this type of attack, it would be very easy. However, the exploitaility of this attack is very low.
 </br>
-Exploitability - This attack has a low exploitability as the packets being sent over are encrypted using PBKDF2 before sending it over to the MongoDB.
+Exploitability - This attack has a low exploitability as the packets being sent over are encrypted using TLS.
 </br>
 Affected Users - Home Owners are the only users that would be affected.
 </br>
@@ -107,9 +107,78 @@ Discoverability - Eavesdropping and sniffing are attacks which are very hard to 
 </p>
 CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N 
 </p>
+<h5>Mitigation</h5>
+<p>
+
+</p>
+<h4>Attack Surface 3: Database Attacks (MongoDB)</h4>
+<h5>Vulnerabilities</h5>
+<p>
+Physically injecting of code
+Physically tampering with the door access system
+</p>
+<h5>Assessment<h5>
+<p>
+Damage - 
+</br>
+Reproducability - 
+</br>
+Exploitability -
+</br>
+Affected Users - 
+</br>
+Discoverability - 
+</br>
+
 <h5>Mitigation<h5>
 <p>
 
+</p>
+<h4>Attack Surface 4: Web Server Attacks (Vercel)</h4>
+<h5>Vulnerabilities</h5>
+<p>
+Physically injecting of code
+Physically tampering with the door access system
+</p>
+<h5>Assessment<h5>
+<p>
+Damage - 
+</br>
+Reproducability - 
+</br>
+Exploitability -
+</br>
+Affected Users - 
+</br>
+Discoverability - 
+</br>
+
+<h5>Mitigation<h5>
+<p>
+
+<h4>Attack Surface 4: Web Application Attacks (Auth0)</h4>
+<h5>Vulnerabilities</h5>
+<p>
+Physically injecting of code
+Physically tampering with the door access system
+</p>
+<h5>Assessment<h5>
+<p>
+Damage - 
+</br>
+Reproducability - 
+</br>
+Exploitability -
+</br>
+Affected Users - 
+</br>
+Discoverability - 
+</br>
+
+<h5>Mitigation<h5>
+<p>
+
+</p>
 </p>
 <h3>Compliance Lists</h3>
 <h4>Webpage Compliance List</h4> 
