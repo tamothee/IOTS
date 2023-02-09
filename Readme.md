@@ -73,12 +73,12 @@ Physically tampering with the door access system and injecting of external code 
 |  --------  |  -----------  |
 |  Damage  | An attack on the physical hardware would have a very high impact as the physical hardware is the core of the Door Access System.  |
 |  Reproducability  | An attack on the hardware level would be very hard to reproduce as it would require the attacker to be physically present at the same location as the hardware  |
-|  Exploitability  |   This attack would be considered as high exploitability since our hardware is not in the most secure position  |
+|  Exploitability  |   This attack would be considered as medium level exploitability since our product is already placed in a tamper-proof box to secure it.  |
 |  Affected Users  |  The home owner would be the main affected user as it would compromise the entire security system, allowing anyone to enter the home of the home owner.  |
 |  Discoverability  |  An attack at this level would be very high on the discoverability scale as this attack requires the home owner to be physically present at the site where the security system is, which in this case is the home.  |
 
 <p align="center">
-<img src="/img/OWaspVulnerabilityScore1.png" alt="Calculated Vulnerability Score 1" width="50%" height="50%">
+<img src="/img/OWaspVulnerabilityScore1.png" alt="Calculated Vulnerability Score 1" width="75%" height="75%">
 </p>
 CVSS:3.0/AV:P/AC:H/PR:H/UI:N/S:C/C:N/I:N/A:H
 
@@ -92,7 +92,7 @@ In order to mitigate this attack, physically securing the Door Access System wit
 <h4>Attack Surface 2: ESP-32 Network Attack</h4>
 <h5>Vulnerabilities</h5>
 <p>
-Intercepting of packets being sent from the "Door Access" terminal to the secure endpoint on MongoDB would result in the Personal Identifiable Information (PII/SPI) being leaked to the hacker as they would be able to know the specific time as to when the home owner leaves and returns.
+Intercepting of packets being sent from the "Door Access" terminal to the secure endpoint on MongoDB would result in the Personal Identifiable Information (PII/SPI) being leaked to the threat actor as they would be able to know the specific time as to when the home owner leaves and returns.
 </p>
 <h5>Assessment</h5>
 <p>
@@ -100,78 +100,84 @@ Intercepting of packets being sent from the "Door Access" terminal to the secure
 |  Category  |  Description  |
 |  --------  |  -----------  |
 |  Damage  | An attack at this level would be be very low risk as there are proper security procedures implemented into this. For example, packets are sent through using TLS, meaning that it is very hard for hackers to identify and decrypt the Personal Identifiabe Information.  |
-|  Reproducability  |  In order to reproduce this type of attack, it would be very easy. However, the exploitaility of this attack is very low.  |
-|  Exploitability  |  This attack has a low exploitability as the packets being sent over are encrypted using TLS.  |
+|  Reproducability  |  In order to reproduce this type of attack, it would be very easy. However, the exploitaility of this attack is not easy.  |
+|  Exploitability  |  This attack has a medium level exploitability as it would require a specific skillset from the threat actor in order to perform this successfully.  |
 |  Affected Users  |  Home Owners are the only users that would be affected.  |
-|  Discoverability  |  Eavesdropping and sniffing are attacks which are very hard to discover.  |
+|  Discoverability  |  Discovering a vulnerability in order to perform an eavesdropping attack would be considered low since it is not very easy to find a vulnerability to intercept the packets.  |
 
 <p align="center">
-<img src="/img/OWaspVulnerabilityScore2.png" alt="Calculated Vulnerability Score 2" width="100%" height="100%">
+<img src="/img/OWaspVulnerabilityScore2.png" alt="Calculated Vulnerability Score 2" width="75%" height="75%">
 </p>
 CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N 
 </p>
 
 <h5>Mitigation</h5>
 <p>
-
+In order to mitigate this attack, we chose to encrypt the data at rest as well as the data in transit. The data at rest is encrpted using the PBKDF2 algorithm and the data in transit is encrypted using TLS. This way, even if there was an attacker listening on the packets being transmitted, they would have to find out the encryption algorithm and decrypt the packet before being able to identify the data.
 </p>
+
+
+
 <h4>Attack Surface 3: Database Attacks (MongoDB)</h4>
 <h5>Vulnerabilities</h5>
 <p>
-Stealing access to administrator account.
+Breach of Administrator account credentials. With a breached administrator account, the threat actor would have a full access to the Mongo Database which consists of all the information of end users.
 </p>
 <h5>Assessment</h5>
 
 |  Category  |  Description  |
 |  --------  |  -----------  |
-|  Damage  | The damage would be high if the administrator account would be accessed by a threat actor. This is because the administrator has access to all data and is able to configure the server settings |
-|  Reproducability  | the reproducability is high if the threat actor has found the credentials of the administrator account |
-|  Exploitability  | The exploitability is low as the administrator account of our Mongodb database is securely protected using social login with 2 factor authentication and the password follows the standard of strong password. |
-|  Affected Users  | All users would be affected as the administrator has access to all data and system configuration|
-|  Discoverability  | The discovery of the threat would not be easy as we did not leave save our credentials insecurely |
+|  Damage  | The damage would be high if the administrator account were to be accessed by a threat actor. This is because the administrator has full access to all the data that resides in the database and is able to configure all the server settings |
+|  Reproducability  | The reproducability is would be considered high if the threat actor has found the credentials of the administrator account as they have full access to the database and can make changes as and when they please |
+|  Exploitability  | The exploitability would be considered as low since the administrator account for the MongoDB database is securely protected with the use of social logins and 2 factor authentication. The social login also consists of a strong password, reducing the possibility of having a breached administrator account. |
+|  Affected Users  | An attack on the database would affect all users, including the Administrator and all end-users  |
+|  Discoverability  | The discovery of an IoT threat at this level would be considered as low as we have proper procedures in place to prevent a breached user account from having too much of an impact. |
 
 <h5>Mitigation</h5>
 <p>
-The mitigation would be using social logins that is using 2 factor authentication, a strong password to the social login, limiting the amount of people having administrator rights and logging of important events. 
+The best mitigation techniques would be implementing social logins that make use of 2 factor authentication, creating a strong password for the social login account, limiting the amount of people that have administrator privileges and having an audit log for important events such as authentications. The main purpose of implementing a strong password would be to minimize the risk of having a compromised password. Having a 2 factor authentication on top of the strong password would act as a gateway to the account, reducing the impact of a compromised user account. Limiting the number of administrator accounts would then help limit the number of potential compromised administrator accounts, reducing the risk of having an administrator account be compromised. 
 </p>
+
+
+
 <h4>Attack Surface 4: Web Server Attacks (Vercel)</h4>
 <h5>Vulnerabilities</h5>
 <p>
-DDoS of the Vercel webserver to take down availability. 
+Distributed Denial of Service (DDoS) of the Vercel webserver to take down the entire website. This attack would have a big impact on <b>availability</b> as the website will become inaccessible to all end-users. 
 </p>
 <h5>Assessment</h5>
 
 |  Category  |  Description  |
 |  --------  |  -----------  |
-|  Damage  | The damage is medium as users will not be able to create, read, update and delete their door lock configuration.  |
-|  Reproducability  |  It is not easy to take down Vercel webserver with DDoS as there are implementation to prevent this attack  |
-|  Exploitability  |  To do DDoS of a scale that is able to take Vercel down, the threat actor would need to use a huge amount of zombies  |
-|  Affected Users  |  All of our users would be affected if Vercel goes down  |
-|  Discoverability  |  It is not easy to discover how to do a DDoS attack that works on Vercel |
+|  Damage  | An attack of a web server attack would be considered as a middle damage level attack as it would completely prevent users from CRUD functions (Create, Read, Update and Delete functions). This would result in the end-users being unable to change any configuration related to their security system.  |
+|  Reproducability  |  In order to reproduce an attack at this level, it would be extremely difficult as Vercal has taken proper precautions to prevent high level threats such as DDoS which could reflect badly on the companys reputation  |
+|  Exploitability  |  To perform a DDoS at such a large scale, one that is able to take down a major cloud hosting such as Vercel, the threat actor would be required to be highly skilled and knowledgeable. They would also be require to make use of a extremely large number of zombies  |
+|  Affected Users  |  All users would be affected if Vercel were to be taken down as it would prevent them from being able to access and view their cloud based dashboards, which prevents them from using CRUD functions.  |
+|  Discoverability  |  It is not easy to discover how perform a DDoS attack that would work on major cloud hosts such as Vercel due to the security precautions that are already in place. |
 
 <h5>Mitigation</h5>
 <p>
-The system needs to be able to detect a suspicious activities users and black list that IP address. 
+Proper mitigation techniques for this type of attack would be an automatic identification of any and all suspicious activities from users as well as black listing of the User/IP addresses that may be considered as attempting any malicious activities. 
 </p>
 
 <h4>Attack Surface 5: Web Application Attacks (Auth0)</h4>
 <h5>Vulnerabilities</h5>
 <p>
-Brute force attack on a user in our website application
+One of the most common IoT attacks on web applications that require authentications would be brute force attack. Brute force attack is the act where the threat actor constantly attempts to get into the system by guessing the user credentials on the website application.
 </p>
 <h5>Assessment</h5>
 
 |  Category  |  Description  |
 |  --------  |  -----------  |
-|  Damage  | The damage would be high if the threat actor is able to log in as another user  |
-|  Reproducability  |  It is not easy to reproduce this attack as Auth0 has implementation against brute force attack |
-|  Exploitability  |  It will require a lot of work to be able to brute force Auth0 authentication  |
-|  Affected Users  |  Only the user being brute forced would be affected  |
-|  Discoverability  |  It is easy to find tutorials on how to execute this attack  |
+|  Damage  | The damage would be considered high for this attack as the threat actor would be able to reconfigure the settings of the home owner, potentially allowing the threat actor to get into the home of the account owner.  |
+|  Reproducability  |  The reproducability of this attack would be considered as low since there are proper precautions in place to prevent such attacks. Some examples would be a restriction and notification alert sent to the account owner if there was a number of failed attempts. |
+|  Exploitability  |  A brute force attack would be considered as low exploitability since it required a large amount of effort and time to enter each potential password.  |
+|  Affected Users  |  The only affected user would be the end-user whose account was breached by this attack.  |
+|  Discoverability  |  It does not difficult for a threat actor perform a brute force attack as it requires little to no knowledge about IoT attacks.  |
 
 <h5>Mitigation</h5>
 <p>
-Auth0 already has mitigations to brute force attack. Auth0 will block suspicious IP addresss from logging in as that user and sends an email to the affected user.
+Recommended mitigation techniques for this attack would include an alert and locking of the account after a set number of failed attempts. This has been implemented as part of Auth0's compliance. An additional method in preventing this attack would be the implementation of 2FA. With the use of 2FA, if the threat actor were to successfully authenticate themselves with the use of the username and password, they would still require authentication from the 2nd factor, which is highly unlikely.
 </p>
 </p>
 <h3>Compliance Lists</h3>
