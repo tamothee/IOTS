@@ -136,6 +136,11 @@ Breach of Administrator account credentials. With a breached administrator accou
 <h5>Mitigation</h5>
 <p>
 The best mitigation techniques would be implementing social logins that make use of 2 factor authentication, creating a strong password for the social login account, limiting the amount of people that have administrator privileges and having an audit log for important events such as authentications. The main purpose of implementing a strong password would be to minimize the risk of having a compromised password. Having a 2 factor authentication on top of the strong password would act as a gateway to the account, reducing the impact of a compromised user account. Limiting the number of administrator accounts would then help limit the number of potential compromised administrator accounts, reducing the risk of having an administrator account be compromised. 
+<p align="center">
+<img src="/img/OWaspVulnerabilityScore3.png" alt="Calculated Vulnerability Score 2" width="75%" height="75%">
+</p>
+CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H
+</p>
 </p>
 
 
@@ -158,7 +163,12 @@ Distributed Denial of Service (DDoS) of the Vercel webserver to take down the en
 <h5>Mitigation</h5>
 <p>
 Proper mitigation techniques for this type of attack would be an automatic identification of any and all suspicious activities from users as well as black listing of the User/IP addresses that may be considered as attempting any malicious activities. 
+<p align="center">
+<img src="/img/OWaspVulnerabilityScore4.png" alt="Calculated Vulnerability Score 2" width="75%" height="75%">
 </p>
+CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H
+</p>
+
 
 <h4>Attack Surface 5: Web Application Attacks (Auth0)</h4>
 <h5>Vulnerabilities</h5>
@@ -179,6 +189,10 @@ One of the most common IoT attacks on web applications that require authenticati
 <p>
 Recommended mitigation techniques for this attack would include an alert and locking of the account after a set number of failed attempts. This has been implemented as part of Auth0's compliance. An additional method in preventing this attack would be the implementation of 2FA. With the use of 2FA, if the threat actor were to successfully authenticate themselves with the use of the username and password, they would still require authentication from the 2nd factor, which is highly unlikely.
 </p>
+<p align="center">
+<img src="/img/OWaspVulnerabilityScore5.png" alt="Calculated Vulnerability Score 2" width="75%" height="75%">
+</p>
+CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H
 </p>
 <h3>Compliance Lists</h3>
 <h4>Webpage Compliance List</h4> 
