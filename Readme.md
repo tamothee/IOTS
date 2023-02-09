@@ -106,7 +106,7 @@ Intercepting of packets being sent from the "Door Access" terminal to the secure
 |  Discoverability  |  Eavesdropping and sniffing are attacks which are very hard to discover.  |
 
 <p align="center">
-<img src="/img/OWaspVulnerabilityScore2.png" alt="Calculated Vulnerability Score 2" width="100%" height="100%">
+<img src="/img/OWaspVulnerabilityScore2.png" alt="Calculated Vulnerability Score 2" width="50%" height="50%">
 </p>
 CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N 
 </p>
