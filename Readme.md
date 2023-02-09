@@ -84,7 +84,7 @@ CVSS:3.0/AV:P/AC:H/PR:H/UI:N/S:C/C:N/I:N/A:H
 
 <h5>Mitigation</h5>
 <p>
-Physically securing the Door Access System with proper procedures, such as 
+In order to mitigate this attack, physically securing the Door Access System with proper procedures would be recommended. In order to achieve this, we created a tamper proof enclosure for the ESP-32 microcontroller so that it would be very difficult for them to inject their own code and tamper with the microcontroller.
 </p>
 
 
