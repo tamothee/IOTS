@@ -78,7 +78,7 @@ Physically tampering with the door access system and injecting of external code 
 |  Discoverability  |  An attack at this level would be very high on the discoverability scale as this attack requires the home owner to be physically present at the site where the security system is, which in this case is the home.  |
 
 <p align="center">
-<img src="/img/OWaspVulnerabilityScore1.png" alt="Calculated Vulnerability Score 1" width="75%" height="75%">
+<img src="/img/OWaspVulnerabilityScore1.png" alt="Calculated Vulnerability Score 1" width="50%" height="50%">
 </p>
 CVSS:3.0/AV:P/AC:H/PR:H/UI:N/S:C/C:N/I:N/A:H
 
