@@ -78,7 +78,7 @@ Physically tampering with the door access system and injecting of external code 
 |  Discoverability  |  An attack at this level would be very high on the discoverability scale as this attack requires the home owner to be physically present at the site where the security system is, which in this case is the home.  |
 
 <p align="center">
-<img src="/img/OWaspVulnerabilityScore1.png" alt="Calculated Vulnerability Score 2" width="100%" height="100%">
+<img src="/img/OWaspVulnerabilityScore1.png" alt="Calculated Vulnerability Score 1" width="100%" height="100%">
 </p>
 CVSS:3.0/AV:P/AC:H/PR:H/UI:N/S:C/C:N/I:N/A:H
 
@@ -106,7 +106,7 @@ Intercepting of packets being sent from the "Door Access" terminal to the secure
 |  Discoverability  |  Eavesdropping and sniffing are attacks which are very hard to discover.  |
 
 <p align="center">
-<img src="/img/OWaspVulnerabilityScore2.png" alt="Calculated Vulnerability Score 2" width="50%" height="50%">
+<img src="/img/OWaspVulnerabilityScore2.png" alt="Calculated Vulnerability Score 2" width="100%" height="100%">
 </p>
 CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N 
 </p>
