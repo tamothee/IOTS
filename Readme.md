@@ -166,7 +166,7 @@ Proper mitigation techniques for this type of attack would be an automatic ident
 <p align="center">
 <img src="/img/OWaspVulnerabilityScore4.png" alt="Calculated Vulnerability Score 2" width="75%" height="75%">
 </p>
-CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H
+CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H
 </p>
 
 
@@ -192,7 +192,7 @@ Recommended mitigation techniques for this attack would include an alert and loc
 <p align="center">
 <img src="/img/OWaspVulnerabilityScore5.png" alt="Calculated Vulnerability Score 2" width="75%" height="75%">
 </p>
-CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H
+CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 </p>
 <h3>Compliance Lists</h3>
 <h4>Webpage Compliance List</h4> 
