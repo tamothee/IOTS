@@ -97,11 +97,14 @@ Physically tampering with the door access system and injecting of external code 
 <p align="center">
 <img src="/img/OWaspVulnerabilityScore1.png" alt="Calculated Vulnerability Score 1" width="75%" height="75%">
 </p>
+<p>
 CVSS:3.0/AV:P/AC:H/PR:H/UI:N/S:C/C:N/I:N/A:H
+</p>
 
 <h5>Mitigation</h5>
 <p>
 In order to mitigate this attack, physically securing the Door Access System with proper procedures would be recommended. In order to achieve this, we created a tamper proof enclosure for the ESP-32 microcontroller so that it would be very difficult for them to inject their own code and tamper with the microcontroller.
+
 </p>
 
 
@@ -125,6 +128,7 @@ Intercepting of packets being sent from the "Door Access" terminal to the secure
 <p align="center">
 <img src="/img/OWaspVulnerabilityScore2.png" alt="Calculated Vulnerability Score 2" width="75%" height="75%">
 </p>
+<p>
 CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N 
 </p>
 
@@ -150,13 +154,20 @@ Breach of Administrator account credentials. With a breached administrator accou
 |  Affected Users  | An attack on the database would affect all users, including the Administrator and all end-users  |
 |  Discoverability  | The discovery of an IoT threat at this level would be considered as low as we have proper procedures in place to prevent a breached user account from having too much of an impact. |
 
-<h5>Mitigation</h5>
-<p>
-The best mitigation techniques would be implementing social logins that make use of 2 factor authentication, creating a strong password for the social login account, limiting the amount of people that have administrator privileges and having an audit log for important events such as authentications. The main purpose of implementing a strong password would be to minimize the risk of having a compromised password. Having a 2 factor authentication on top of the strong password would act as a gateway to the account, reducing the impact of a compromised user account. Limiting the number of administrator accounts would then help limit the number of potential compromised administrator accounts, reducing the risk of having an administrator account be compromised. 
 <p align="center">
 <img src="/img/OWaspVulnerabilityScore3.png" alt="Calculated Vulnerability Score 2" width="75%" height="75%">
 </p>
 CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H
+</p>
+
+<h5>Mitigation</h5>
+<p>
+The best mitigation techniques would be implementing social logins that make use of 2 factor authentication, creating a strong password for the social login account, limiting the amount of people that have administrator privileges and having an audit log for important events such as authentications. The main purpose of implementing a strong password would be to minimize the risk of having a compromised password. Having a 2 factor authentication on top of the strong password would act as a gateway to the account, reducing the impact of a compromised user account. Limiting the number of administrator accounts would then help limit the number of potential compromised administrator accounts, reducing the risk of having an administrator account be compromised. 
+<p align="left">
+<img src="/img/PasswordRequest2FA.png" alt="2FA" width="75%" height="75%">
+</p>
+<p align="center">
+<img src="/img/StrongPasswordPolicy.png" alt="2FA" width="75%" height="75%">
 </p>
 </p>
 
