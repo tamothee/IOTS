@@ -69,14 +69,14 @@ The implementation of our website follows the OAuth 2.0 framework. The user will
 |  TR64 Category  |  Compliance Request ID  |
 | ------------- | ------------- |
 | Cryptographic Support  | CS-01, CS-02, CS-03, CS-04, CS-05  |
-| Security Function Protection  | FP-01  |
+| Security Function Protection  | FP-01, FP-02  |
 | Identification & Authentication  | IA-01, IA-02, IA-03, IA-04  |
 | Data Protection  | DP-02, DP-04  |
-| Access Protection  | AP-01, AP-02, AP-05  |
+| Access Protection  | AP-01, AP-02, AP-04, AP-05  |
 | Security Management  |  MT-01, MT-02  |
 | Resiliency Support  | RS-03, RS-04  |
 | Security Audit  | AU-01, AU-02  |
-| Lifecycle Protection  | LP-01, LP-02, LP-03, LP-05, LP-06, LP-07, LP-08, LP-09  |
+| Lifecycle Protection  | LP-01, LP-02, LP-03, LP-07, LP-09  |
 
 <h3>Attack Surfaces</h3>
 <h4>Attack Surface 1: Physical Attacks (ESP-32)</h4>
@@ -213,11 +213,12 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 </p>
 <h3>Compliance Lists</h3>
 <h4>Webpage Compliance List</h4> 
-<i>TR64 Req IDs: CS-02;IA-01;RS-03;MT-02</i>
+<i>TR64 Req IDs: CS-02; FP-02; IA-01;RS-03;MT-02</i>
 
 |  TR64 Req ID  |  Explanation  |
 |  -------------  |  -------------  |
 |  CS-02;IA-01  |  User created passwords for Auth0 are hashed using bcrypt.  |
+|  FP-02  | FP-02: Website application configuration variables are stored under vercel environment variables which are encrypted via AES256  |
 |  RS-03  |  Web server is secured by vercel with security grade procedures. Able to withstand malicious threats such as Denial of Service (DoS) and Distributed Denial of Service (DDoS).  |
 |  MT-02  |  Users are only able to create, read, update and delete their own data so to uphold confidentiality and that data will not be tampered by unauthorized users.  |
 
@@ -247,15 +248,27 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 |  AP-01  |  Failure to enter password consecutively would result in an account lockout followed by blocking of the suspected user IP Address. Account owner would also be notified of the suspicious activity and given a choice to unblock the IP Address.  |
 
 <h4>ESP32</h4> 
-<i>TR64 Compliance List: CS-02;IA-01</i> </br>
+<i>TR64 Compliance List: CS-02;IA-01;AP-04</i> </br>
 
 |  TR64 Req ID  |  Explanation  |
 |  -------------  |  -------------  |
-|  CS-02;IA-01:  |  We used a cryptographic algorithm (PBKDF2) to hash the device password with salt for better <b>confidentiality</b>.  |
+|  CS-02;IA-01  |  We used a cryptographic algorithm (PBKDF2) to hash the device password with salt for better <b>confidentiality</b>.  |
+|  AP-04  |  In order to prevent threat actors from physically accessing the microcontroller, which is the core of the physical system, we created a tamper-resistant box which is used to hold the microcontroller  |
 
 <h3>Documentation (to run this system yourself)</h3>
 <h4>Website</h4>
 The website is hosted on vercel and is reachable via https://iots.vercel.app/ . The website is built on NextJS which is a meta ReactJS framework which allows developers to create full stack web application. It also uses MongoDB as a database to store the user device information and Auth0 to handle user authentication and storing of user information.
+
+<h4>System Wide Compliance List</h4>
+<i>TR64 Compliance List: LP-01;LP-02;LP-03;LP-07;LP-09</i> </br>
+
+|  TR64 Req ID  |  Explanation  |
+|  -------------  |  -------------  |
+|  LP-01  |  Threat modelling was performed and used to improve our security features based on the DREAD  threat modelling method  |
+|  LP-02  |  System was designed using the secure systems engineering approach. Minimal inputs are taken from users, system was designed to be as simplified as possible and permissions are only granted as and when required.  |
+|  LP-03  |  System was constructed using components provided by Singapore Polytechnic. Components were presumably sourced from a authorized seller.  |
+|  LP-07  |  Penetration testing for the cloud services are done by the service providers upon new updates and releases. Penetration testing for the ESP-32 data transmission was done with Kali Linux by legal means and under a controlled environment.  |
+|  LP-09  |  MongoDB manages all the user data for authenticated clients and Auth0 helps to provide certificates to allow proper authentication for all authorized clients.  |
 
 <h5>To get started</h5>
 <ol>
