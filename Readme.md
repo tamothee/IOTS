@@ -155,7 +155,7 @@ Breach of Administrator account credentials. With a breached administrator accou
 |  Discoverability  | The discovery of an IoT threat at this level would be considered as low as we have proper procedures in place to prevent a breached user account from having too much of an impact. |
 
 <p align="center">
-<img src="/img/OWaspVulnerabilityScore3.png" alt="Calculated Vulnerability Score 2" width="75%" height="75%">
+<img src="/img/OWaspVulnerabilityScore3.png" alt="Calculated Vulnerability Score 3" width="75%" height="75%">
 </p>
 CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H
 </p>
@@ -164,11 +164,9 @@ CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H
 <p>
 The best mitigation techniques would be implementing social logins that make use of 2 factor authentication, creating a strong password for the social login account, limiting the amount of people that have administrator privileges and having an audit log for important events such as authentications. The main purpose of implementing a strong password would be to minimize the risk of having a compromised password. Having a 2 factor authentication on top of the strong password would act as a gateway to the account, reducing the impact of a compromised user account. Limiting the number of administrator accounts would then help limit the number of potential compromised administrator accounts, reducing the risk of having an administrator account be compromised. 
 <p align="left">
-<img src="/img/PasswordRequest2FA.png" alt="2FA" width="75%" height="75%">
+<img src="/img/AttackSurface3.png" alt="Atack Surface 3" width="75%" height="75%">
 </p>
-<p align="center">
-<img src="/img/StrongPasswordPolicy.png" alt="2FA" width="75%" height="75%">
-</p>
+
 </p>
 
 
@@ -188,11 +186,16 @@ Distributed Denial of Service (DDoS) of the Vercel webserver to take down the en
 |  Affected Users  |  All users would be affected if Vercel were to be taken down as it would prevent them from being able to access and view their cloud based dashboards, which prevents them from using CRUD functions.  |
 |  Discoverability  |  It is not easy to discover how perform a DDoS attack that would work on major cloud hosts such as Vercel due to the security precautions that are already in place. |
 
+<p align="center">
+<img src="/img/OWaspVulnerabilityScore4.png" alt="Calculated Vulnerability Score 4" width="75%" height="75%">
+</p>
+CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H
+
 <h5>Mitigation</h5>
 <p>
 Proper mitigation techniques for this type of attack would be an automatic identification of any and all suspicious activities from users as well as black listing of the User/IP addresses that may be considered as attempting any malicious activities. 
 <p align="center">
-<img src="/img/OWaspVulnerabilityScore4.png" alt="Calculated Vulnerability Score 2" width="75%" height="75%">
+<img src="/img/AttackSurface4.png" alt="Attack Surface 4" width="75%" height="75%">
 </p>
 CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H
 </p>
@@ -218,7 +221,7 @@ One of the most common IoT attacks on web applications that require authenticati
 Recommended mitigation techniques for this attack would include an alert and locking of the account after a set number of failed attempts. This has been implemented as part of Auth0's compliance. An additional method in preventing this attack would be the implementation of 2FA. With the use of 2FA, if the threat actor were to successfully authenticate themselves with the use of the username and password, they would still require authentication from the 2nd factor, which is highly unlikely.
 </p>
 <p align="center">
-<img src="/img/OWaspVulnerabilityScore5.png" alt="Calculated Vulnerability Score 2" width="75%" height="75%">
+<img src="/img/OWaspVulnerabilityScore5.png" alt="Calculated Vulnerability Score 5" width="75%" height="75%">
 </p>
 CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 </p>
