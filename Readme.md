@@ -37,6 +37,12 @@ The user will use a keypad to enter a code to unlock the door. It also uses an L
     </ul>
   </li>
 </ul>
+
+<h3>General Overview</h3>
+<p align="center">
+<img src="/img/diagram_flow.png" alt="diagram flow" width="70%" height="70%">
+</p>
+
 <h3>How users are meant to operate and use the product</h3>
 <h5>Setting up on the website</h5>
 Users will need to set up their device to be connected to the database. To do that, the first thing a user will need to do is to register an account through the website. https://iots.vercel.app/ . After they signed in, they will click create a new device. They fill in the form then press create. Take not of the device id as you will need it later. You can create, read, update and delete your devices through the website.
@@ -46,6 +52,17 @@ After the user has created a new device in the website, they will go to the door
 </br>
 </br>
 Thats it! Your smart door is ready to work
+
+<h3>
+OAuth 2.0 framework
+</h3>
+<p>
+The implementation of our website follows the OAuth 2.0 framework. The user will first go through a <b>Authorisation Request</b> to Auth0. If the user is authorised, they will get a <b>Authorisation Grant</b> from Auth0. The user will then use the <b>Authorisation Grant</b> received to retrieve a <b>Access Token</b> from Auth0. The user can then use this <b>Access Token</b> to retrieve data from Mongodb. For a better user experience, Auth0 uses refresh token to silently retrieve a access token when it is expired without user intervention. This allows our user to stay authenticated in our application without needing to logging everytime. The access token expiry set in our application is 86,400 seconds (24 hours) and the refresh token expiry set is 2592000 seconds (30 days).
+<p>
+
+<p align="center">
+<img src="/img/oauth2_diagram.jpg" alt="oauth2 diagram" width="70%" height="70%">
+</p>
 
 <h3>TR64 Compliance Checklist</h3>
 
@@ -222,7 +239,7 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 
 |  TR64 Req ID  |  Explanation  |
 |  -------------  |  -------------  |
-|  CS-05;IA-01  |  Passwords created for specific user accounts are hashed using bcrypt before being stored in the MongoDB to ensure <bold>confidentiality</bold> of user credentials.  |
+|  CS-05;IA-01  |  Passwords created for specific user accounts are hashed using bcrypt before being stored in the Auth0 database separate from our resource database (Mongodb) following OAuth 2.0 to ensure <bold>confidentiality</bold> of user credentials.  |
 |  IA-02  |  Authentication to web server has a set session expiry of 7 days before the user is prompted to sign in again.  |
 |  IA-03  |  Unique tokens are generated and assigned to users using JWTs to guarantee the Authenticity of users.  |
 |  IA-04;AP-02;MT-01  |  Users are required to create a complex password upon signing up. 2 factor authentication is also required for users who sign in using third-party applications such as Google or Microsoft Account.  |
@@ -236,7 +253,7 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 |  -------------  |  -------------  |
 |  CS-02;IA-01:  |  We used a cryptographic algorithm (PBKDF2) to hash the device password with salt for better <b>confidentiality</b>.  |
 
-<h3>Documentation</h3>
+<h3>Documentation (to run this system yourself)</h3>
 <h4>Website</h4>
 The website is hosted on vercel and is reachable via https://iots.vercel.app/ . The website is built on NextJS which is a meta ReactJS framework which allows developers to create full stack web application. It also uses MongoDB as a database to store the user device information and Auth0 to handle user authentication and storing of user information.
 

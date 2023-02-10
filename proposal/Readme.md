@@ -58,7 +58,7 @@ Our solution would be secured with the use of Auth0, Vercel and MongoDB.
 <br/>
 <br/>
 Our website uses Auth0 for authentication, and it manages user sessions and user authentication using JWT. Because Auth0 adheres to 
-industry security standards, our website is incredibly safe. It complies with PCI DSS, HIPPAA BAA, Gold CSA STAR, ISO27001, SOC 2 TYPE II, 
+industry security standards as well as OAuth 2.0, our website is incredibly safe. It complies with PCI DSS, HIPPAA BAA, Gold CSA STAR, ISO27001, SOC 2 TYPE II, 
 and ISO27018. Users can use social logins like Google and Microsoft with Auth0 as well. Because of this, people may access our website 
 without having to create a new account. 
 If they enable two-factor authentication for their social login, they will also be able to use it to access our website.
