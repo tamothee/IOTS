@@ -61,7 +61,7 @@ The implementation of our website follows the OAuth 2.0 framework. The user will
 <p>
 
 <p align="center">
-<img src="/img/oauth2_diagram" alt="oauth2 diagram" width="70%" height="70%">
+<img src="/img/oauth2_diagram.jpg" alt="oauth2 diagram" width="70%" height="70%">
 </p>
 
 <h3>TR64 Compliance Checklist</h3>
