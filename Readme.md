@@ -202,7 +202,7 @@ Auth0 already has mitigations to brute force attack. Auth0 will block suspicious
 
 |  TR64 Req ID  |  Explanation  |
 |  -------------  |  -------------  |
-|  CS-05;IA-01  |  Passwords created for specific user accounts are hashed using bcrypt before being stored in the MongoDB to ensure <bold>confidentiality</bold> of user credentials.  |
+|  CS-05;IA-01  |  Passwords created for specific user accounts are hashed using bcrypt before being stored in the Auth0 database separate from our resource database (Mongodb) following OAuth 2.0 to ensure <bold>confidentiality</bold> of user credentials.  |
 |  IA-02  |  Authentication to web server has a set session expiry of 7 days before the user is prompted to sign in again.  |
 |  IA-03  |  Unique tokens are generated and assigned to users using JWTs to guarantee the Authenticity of users.  |
 |  IA-04;AP-02;MT-01  |  Users are required to create a complex password upon signing up. 2 factor authentication is also required for users who sign in using third-party applications such as Google or Microsoft Account.  |
