@@ -269,10 +269,6 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 |  CS-02;IA-01  |  We used a cryptographic algorithm (PBKDF2) to hash the device password with salt for better <b>confidentiality</b>.  |
 |  AP-04  |  In order to prevent threat actors from physically accessing the microcontroller, which is the core of the physical system, we created a tamper-resistant box which is used to hold the microcontroller  |
 
-<h3>Documentation (to run this system yourself)</h3>
-<h4>Website</h4>
-The website is hosted on vercel and is reachable via https://iots.vercel.app/ . The website is built on NextJS which is a meta ReactJS framework which allows developers to create full stack web application. It also uses MongoDB as a database to store the user device information and Auth0 to handle user authentication and storing of user information.
-
 <h4>System Wide Compliance List</h4>
 <i>TR64 Compliance List: LP-01;LP-02;LP-03;LP-07;LP-09</i> </br>
 
@@ -283,6 +279,19 @@ The website is hosted on vercel and is reachable via https://iots.vercel.app/ . 
 |  LP-03  |  System was constructed using components provided by Singapore Polytechnic. Components were presumably sourced from a authorized seller.  |
 |  LP-07  |  Penetration testing for the cloud services are done by the service providers upon new updates and releases. Penetration testing for the ESP-32 data transmission was done with Kali Linux by legal means and under a controlled environment.  |
 |  LP-09  |  MongoDB manages all the user data for authenticated clients and Auth0 helps to provide certificates to allow proper authentication for all authorized clients.  |
+
+<h3>Documentation (to run this system yourself)</h3>
+<h4>Website</h4>
+The website is hosted on vercel and is reachable via https://iots.vercel.app/ . The website is built on NextJS which is a meta ReactJS framework which allows developers to create full stack web application. It also uses MongoDB as a database to store the user device information and Auth0 to handle user authentication and storing of user information.
+
+<h5>Website dependency</h5>
+<ul>
+<li>next (Framework built for full stack ReactJS web application) </li>
+<li>next auth (Handle authentication and middleware of the website)</li>
+<li>MUI (Design library)</li>
+<li>cypto-js (Cyptography library for the PBKFD2 hashing client side)</li>
+<li>ReactJS</li>
+</ul>
 
 <h5>To get started</h5>
 <ol>
