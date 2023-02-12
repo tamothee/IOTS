@@ -559,3 +559,23 @@ exports = async function({ query, headers, body}, response) {
 <p align="center">
 <img src="/img/hardware_circuit_diagram.jpeg" alt="IOTS Circuit Diagram" width="70%" height="70%">
 </p>
+<h5>Esp32 Code</h5>
+<ol>
+  <li>Once the circuit has been set up, connect the Esp32 to the computer</li>
+  <li>Install the necessary libraries needed:</li>
+    <ul>
+      <li>keypad by Mark Stanley, Alexander Brevig</li>
+      <li>LiquidCrystal I2C by Frank de Brabander</li>
+      <li>ESP32Servo by Kevin Harrington, John K. Bennett</li>
+    </ul>
+  <li>Download and open the program file <a href="IOTSGrp1Esp32Code.ino">Esp32 INO file [6 kB]</a> </li>
+  <li>Upload the code</li>
+  <li>Once the code is uploaded, hold on the 'boot' button on the Esp32 to run the program in the board</li>
+</ol>
+<p>if the 'Output' displays an error of the I2C LCD not compatible with Esp32, proceed to file explorer to edit the library</p>
+  <ol>
+    <li>Go to file explorer/Arduino/libraries/LiquidCrystal_I2C</li>
+    <li>open library.properties in notepad</li>
+    <li>Include Esp32 to the architechtures. That line of the library property should look like "architectures=avr,esp32"</li>
+    <li>save changes and run the code again</li>
+  <ol>  
