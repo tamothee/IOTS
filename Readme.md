@@ -280,6 +280,33 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 |  LP-07  |  Penetration testing for the cloud services are done by the service providers upon new updates and releases. Penetration testing for the ESP-32 data transmission was done with Kali Linux by legal means and under a controlled environment.  |
 |  LP-09  |  MongoDB manages all the user data for authenticated clients and Auth0 helps to provide certificates to allow proper authentication for all authorized clients.  |
 
+<h3>Security Testing of IoT Product</h3>
+<p>For the Security Testing portion, we have come up with two separate methods that would successfully penetrate the developed IoT Product.</p>
+
+<h4>Method 1: Distributed Denial of Service Attack</h4>
+<p>
+For method 1, we would be performing a Distributed Denial of Service Attack (DDoS). This attack has a sole purpose of denying the end user from being able to access the IoT Device, completely stopping the Smart Door System from working. For this DDoS attack, we would be flooding the network address with an absurd amount of traffic to the point where the IoT Devices would not be able to receive any incoming commands from the IoT Gateway.
+</p>
+<h5>Step 1: Access the network of the target IoT Device </h5>
+<p></p>
+<h5>Step 2: Identify the target IoT Device </h5>
+<p></p>
+<h5>Step 3: Perform the Attack </h5>
+<p></p>
+
+<h4>Method 2: Man in the Middle Attack</h4>
+<p>
+For method 2, we are going with the assumption that the IoT Device has been mass produced and deployed. This would result in the product connecting to the Access Points to gain access to the internet. As such, another threat that the IoT product faces would be Man in the Middle Attacks (MITM). For MITM attacks, there would be a fake access point that would be identical to that of the real one, causing the end user to misinterpret the fake access point as the real one and connecting to it, sending their personal data directly to the threat actor.
+</p>
+<h5>Step 1: Identify the real access point credentials </h5>
+<p></p>
+<h5>Step 2: Create a fake access point using WiHotspot </h5>
+<p></p>
+<h5>Step 3: Analyze incoming transmissions </h5>
+<p></p>
+<h5>Step 4: Decrypt packets </h5>
+<p></p>
+
 <h3>Documentation (to run this system yourself)</h3>
 <h4>Website</h4>
 The website is hosted on vercel and is reachable via https://iots.vercel.app/ . The website is built on NextJS which is a meta ReactJS framework which allows developers to create full stack web application. It also uses MongoDB as a database to store the user device information and Auth0 to handle user authentication and storing of user information.
