@@ -289,10 +289,12 @@ For method 1, we would be performing a Distributed Denial of Service Attack (DDo
 <h5>Step 1: Access the network of the target IoT Device </h5>
 <p>
 Access Kali and kill all processes using the WiFi interface
+
 `airmon-ng check kill`
+
 Start the network adapter in monitor mode and view all nearby access points to identify target network.
 <p align="center">
-<img src="/img/AllNearbyAP.png" alt="All Nearby AP" width="75%" height="75%">
+<img src="/img/AllNearbyAP.jpg" alt="All Nearby AP" width="75%" height="75%">
 </p>
 View all the clients that are connected to the network
 
@@ -307,7 +309,7 @@ After obtaining the handshake, compare the handshake with a dictionary consistin
 `aircrack-ng -a2 -b 80:35:C1:13:C1:2C -w /root/passwords.txt /root/hacking-01.cap`
 
 <p align="center">
-<img src="/img/ObtainedKey.png" alt="Obtained Key" width="75%" height="75%">
+<img src="/img/ObtainedKey.jpg" alt="Obtained Key" width="75%" height="75%">
 </p>
 </p>
 <h5>Step 2: Identify the target IoT Device </h5>
@@ -318,6 +320,9 @@ After obtaining the handshake, compare the handshake with a dictionary consistin
 <h4>Method 2: Man in the Middle Attack</h4>
 <p>
 For method 2, we are going with the assumption that the IoT Device has been mass produced and deployed. This would result in the product connecting to the Access Points to gain access to the internet. As such, another threat that the IoT product faces would be Man in the Middle Attacks (MITM). For MITM attacks, there would be a fake access point that would be identical to that of the real one, causing the end user to misinterpret the fake access point as the real one and connecting to it, sending their personal data directly to the threat actor.
+<p align="center">
+<img src="/img/MITM.jpg" alt="MITM" width="75%" height="75%">
+</p>
 </p>
 <h5>Step 1: Identify the real access point credentials </h5>
 <p></p>
