@@ -336,14 +336,28 @@ For method 2, we are going with the assumption that the IoT Device has been mass
 <img src="/img/MITM.png" alt="MITM" width="75%" height="75%">
 </p>
 </p>
-<h5>Step 1: Identify the real access point credentials </h5>
-<p></p>
+<h5>Step 1: Identify the network of the target IoT Device </h5>
+<p>
+Follow the guide provided for Method 1 Step 1.
+</p>
+
 <h5>Step 2: Create a fake access point using WiHotspot </h5>
-<p></p>
+<p>
+After identifying the network access point details, create a fake access point using any of the preferred tools such as wifiphisher. In this case, we will be using wihotspot, which is a GUI based tool. </br>
+In the GUI of wihotspot, set the SSID and password of fake access point to be that of the real one and click on create. This will create the fake access point which will act as a bait for the end user to connect to.
+<p align="center">
+<img src="/img/FakeAccessPoint.png" alt="Fake Access Point" width="75%" height="75%">
+</p>
+After setting up the fake access point, it would show up alike any other hotspots or available access points. To speed up the process, we would de-authenticate all the users that are currently connected to the real access point. This would increase the chances of the end user connecting their IoT device to our fake access point that we have created. 
+
+`aireplay-ng -0 10 -a 80:35:C1:13:C1:2C wlan0mon`
+
+</p>
+
 <h5>Step 3: Analyze incoming transmissions </h5>
-<p></p>
-<h5>Step 4: Decrypt packets </h5>
-<p></p>
+<p>
+After the users have connected to the fake access points, all the data that is intended to be sent to the cloud database will be sent to the threat actor instead. The last step would be to decrypt the received packets and we would have successfully obtained the private data of the end user.
+</p>
 
 <h3>Documentation (to run this system yourself)</h3>
 <h4>Website</h4>
