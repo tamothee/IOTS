@@ -300,7 +300,7 @@ View all the clients that are connected to the network
 
 `airodump-ng -c 1 --bssid 80:35:C1:13:C1:2C -w /root wlan0mon`
 
-Deauthenticate all clients from the network in order to get them to re-authenticated themselves. While clients attempt to reauthenticate themselves, we would be able to capture the WPA handshake.
+Deauthenticate all clients from the network in order to get them to re-authenticated themselves. While clients attempt to re-authenticate themselves, we would be able to capture the WPA handshake.
 
 `aireplay-ng -0 10 -a 80:35:C1:13:C1:2C wlan0mon`
 
@@ -312,16 +312,28 @@ After obtaining the handshake, compare the handshake with a dictionary consistin
 <img src="/img/ObtainedKey.jpg" alt="Obtained Key" width="75%" height="75%">
 </p>
 </p>
+
 <h5>Step 2: Identify the target IoT Device </h5>
-<p></p>
+<p>
+After gaining access to the same network as the IoT device, we would be able to scan the network using third-party softwares such as "Advanced IP Scanner" to identify the device we are trying to attack. In this case, it would be the device under the manufacturer "Espressif Systems".
+<p align="center">
+<img src="/img/AdvancedIPScanner.jpg" alt="Advanced IP Scanner" width="75%" height="75%">
+</p>
+
+</p>
 <h5>Step 3: Perform the Attack </h5>
-<p></p>
+<p>
+After we successfully identified the IP address of the target IoT device, we would be able to perform the Distributed Denial of Service attack by flooding the network with hping or with the use of zombies. For a guide on how to set up zombies, see here https://www.geeksforgeeks.org/slowloris-ddos-attack-tool-in-kali-linux/.
+
+`sudo hping3 "192.168.9.92" -q -n -d 120 -S -p 8883 --flood --rand-source`
+
+</p>
 
 <h4>Method 2: Man in the Middle Attack</h4>
 <p>
 For method 2, we are going with the assumption that the IoT Device has been mass produced and deployed. This would result in the product connecting to the Access Points to gain access to the internet. As such, another threat that the IoT product faces would be Man in the Middle Attacks (MITM). For MITM attacks, there would be a fake access point that would be identical to that of the real one, causing the end user to misinterpret the fake access point as the real one and connecting to it, sending their personal data directly to the threat actor.
 <p align="center">
-<img src="/img/MITM.jpg" alt="MITM" width="75%" height="75%">
+<img src="/img/MITM.png" alt="MITM" width="75%" height="75%">
 </p>
 </p>
 <h5>Step 1: Identify the real access point credentials </h5>
