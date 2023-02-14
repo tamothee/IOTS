@@ -272,9 +272,14 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 |  CS-05;IA-01  |  Passwords created for specific user accounts are hashed using bcrypt before being stored in the Auth0 database separate from our resource database (Mongodb) following OAuth 2.0 to ensure <bold>confidentiality</bold> of user credentials.  |
 |  IA-02  |  Authentication to web server has a set session expiry of 7 days before the user is prompted to sign in again.  |
 |  IA-03  |  Unique tokens are generated and assigned to users using JWTs to guarantee the Authenticity of users.  |
-|  IA-04;AP-02;MT-01  |  Users are required to create a complex password upon signing up. 2 factor authentication is also required for users who sign in using third-party applications such as Google or Microsoft Account.  |
+|  IA-04;AP-02;MT-01  |  Users are required to create a complex password upon signing up. 2 factor authentication is also required for users who sign in using third-party applications such as Google or Microsoft Account. (Refer to Attack Surface 3)  |
 |  DP-02  |  Digital signatures are created using RS256 to sign Json Web Tokens for <b>Non-Repudiation</b> and <b>Integrity</b>, making sure the content has not been tampered with.  |
-|  AP-01  |  Failure to enter password consecutively would result in an account lockout followed by blocking of the suspected user IP Address. Account owner would also be notified of the suspicious activity and given a choice to unblock the IP Address.  |
+|  AP-01  |  Failure to enter password consecutively would result in an account lockout followed by blocking of the suspected user IP Address. Account owner would also be notified of the suspicious activity and given a choice to unblock the IP Address. (Refer to Attack Surface 4)  |
+
+<p align="center">
+<img src="/img/Auth0Hashing.jpg" alt="Auth0 Hashing" width="75%" height="75%">
+</br><i>Hashing of passwords for Auth0 login credentials</i>
+</p>
 
 <h4>ESP32</h4> 
 <i>TR64 Compliance List: CS-02;IA-01;AP-04</i> </br>
@@ -283,6 +288,11 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 |  -------------  |  -------------  |
 |  CS-02;IA-01  |  We used a cryptographic algorithm (PBKDF2) to hash the device password with salt for better <b>confidentiality</b>.  |
 |  AP-04  |  In order to prevent threat actors from physically accessing the microcontroller, which is the core of the physical system, we created a tamper-resistant box which is used to hold the microcontroller  |
+
+<p align="center">
+<img src="/img/TamperProofEnclosure.jpg" alt="Tamper Proof Enclosure" width="75%" height="75%">
+</br><i>Tamper Proof Enclosure</i>
+</p>
 
 <h4>System Wide Compliance List</h4>
 <i>TR64 Compliance List: LP-01;LP-02;LP-03;LP-07;LP-09</i> </br>
@@ -311,6 +321,7 @@ Access Kali and kill all processes using the WiFi interface
 Start the network adapter in monitor mode and view all nearby access points to identify target network.
 <p align="center">
 <img src="/img/AllNearbyAP.jpg" alt="All Nearby AP" width="75%" height="75%">
+</br><i>All Nearby AccessPoints (GeeksforGeeks, 2022)</i>
 </p>
 View all the clients that are connected to the network
 
