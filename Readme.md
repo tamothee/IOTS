@@ -171,6 +171,7 @@ The best mitigation techniques would be implementing social logins that make use
 
 
 <h4>Attack Surface 4: Web Server Attacks (Vercel)</h4>
+[AttackSurface4]
 <h5>Vulnerabilities</h5>
 <p>
 Distributed Denial of Service (DDoS) of the Vercel webserver to take down the entire website. This attack would have a big impact on <b>availability</b> as the website will become inaccessible to all end-users. 
@@ -235,6 +236,8 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 |  RS-03  |  Web server is secured by vercel with security grade procedures. Able to withstand malicious threats such as Denial of Service (DoS) and Distributed Denial of Service (DDoS).  |
 |  MT-02  |  Users are only able to create, read, update and delete their own data so to uphold confidentiality and that data will not be tampered by unauthorized users.  |
 
+
+
 <h4>MongoDB Atlas Compliance List</h4>
 <i>TR64 Req IDs: CS-01;CS-04;CS-05;FP-01;DP-04;RS-04;AU-01;AU-02;MT-02 </i></br>
 
@@ -248,6 +251,20 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 |  AU-01;AU-02  |  Audit log consists of all entries, including Create, Read, Update and Delete (CRUD) as well as any successful or unsuccessful authentications. Audit logs are also secured and tamper proof. Only the authorized user with the proper credentials/API key would be able  to access it.  |
 |  MT-02  |  Role based access is granted to specific users such that there are no over privileged accounts, which poses as a IoT security vulnerability.  |
 
+<p align="center">
+<img src="/img/RoleBased.png" alt="RoleBased" width="75%" height="75%">
+</br><i>User dashboard view only consists of personal devices</i>
+</p>
+<p align="center">
+<img src="/img/AuditLog.jpg" alt="Audit Log" width="75%" height="75%">
+</br><i>Audit Log for CRUD and Authentications</i>
+</p>
+<p align="center">
+<img src="/img/UserDatabaseSave.jpg" alt="User Database Save" width="75%" height="75%">
+</br><i>Saving of user does not include saving of PIIs</i>
+</p>
+
+
 <h4>Auth0 Compliance List </h4>
 <i>TR64 Req IDs: CS-05;MT-01;IA-01;IA-02;IA-03;IA-04;DP-02;AP-01;AP-02;AP-05</i> </br>
 
@@ -256,9 +273,14 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 |  CS-05;IA-01  |  Passwords created for specific user accounts are hashed using bcrypt before being stored in the Auth0 database separate from our resource database (Mongodb) following OAuth 2.0 to ensure <bold>confidentiality</bold> of user credentials.  |
 |  IA-02  |  Authentication to web server has a set session expiry of 7 days before the user is prompted to sign in again.  |
 |  IA-03  |  Unique tokens are generated and assigned to users using JWTs to guarantee the Authenticity of users.  |
-|  IA-04;AP-02;MT-01  |  Users are required to create a complex password upon signing up. 2 factor authentication is also required for users who sign in using third-party applications such as Google or Microsoft Account.  |
+|  IA-04;AP-02;MT-01  |  Users are required to create a complex password upon signing up. 2 factor authentication is also required for users who sign in using third-party applications such as Google or Microsoft Account. (Refer to Attack Surface 3)  |
 |  DP-02  |  Digital signatures are created using RS256 to sign Json Web Tokens for <b>Non-Repudiation</b> and <b>Integrity</b>, making sure the content has not been tampered with.  |
-|  AP-01  |  Failure to enter password consecutively would result in an account lockout followed by blocking of the suspected user IP Address. Account owner would also be notified of the suspicious activity and given a choice to unblock the IP Address.  |
+|  AP-01  |  Failure to enter password consecutively would result in an account lockout followed by blocking of the suspected user IP Address. Account owner would also be notified of the suspicious activity and given a choice to unblock the IP Address. (Refer to Attack Surface 4) |
+
+<p align="center">
+<img src="/img/Auth0Hashing.jpg" alt="Auth0 Hashing" width="75%" height="75%">
+</br><i>Hashing of passwords for Auth0 login credentials</i>
+</p>
 
 <h4>ESP32</h4> 
 <i>TR64 Compliance List: CS-02;IA-01;AP-04</i> </br>
@@ -267,6 +289,11 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 |  -------------  |  -------------  |
 |  CS-02;IA-01  |  We used a cryptographic algorithm (PBKDF2) to hash the device password with salt for better <b>confidentiality</b>.  |
 |  AP-04  |  In order to prevent threat actors from physically accessing the microcontroller, which is the core of the physical system, we created a tamper-resistant box which is used to hold the microcontroller  |
+
+<p align="center">
+<img src="/img/TamperProofEnclosure.jpg" alt="Tamper Proof Enclosure" width="75%" height="75%">
+</br><i>Tamper Proof Enclosure</i>
+</p>
 
 <h4>System Wide Compliance List</h4>
 <i>TR64 Compliance List: LP-01;LP-02;LP-03;LP-07;LP-09</i> </br>
@@ -295,6 +322,7 @@ Access Kali and kill all processes using the WiFi interface
 Start the network adapter in monitor mode and view all nearby access points to identify target network.
 <p align="center">
 <img src="/img/AllNearbyAP.jpg" alt="All Nearby AP" width="75%" height="75%">
+</br><i>All Nearby AccessPoints (GeeksforGeeks, 2022)</i>
 </p>
 View all the clients that are connected to the network
 
@@ -317,15 +345,18 @@ After obtaining the handshake, compare the handshake with a dictionary consistin
 <p>
 After gaining access to the same network as the IoT device, we would be able to scan the network using third-party softwares such as "Advanced IP Scanner" to identify the device we are trying to attack. In this case, it would be the device under the manufacturer "Espressif Systems".
 <p align="center">
-<img src="/img/AdvancedIPScanner.jpg" alt="Advanced IP Scanner" width="75%" height="75%">
+<img src="/img/AdvancedIPScanner.png" alt="Advanced IP Scanner" width="75%" height="75%">
 </p>
 
 </p>
 <h5>Step 3: Perform the Attack </h5>
 <p>
-After we successfully identified the IP address of the target IoT device, we would be able to perform the Distributed Denial of Service attack by flooding the network with hping or with the use of zombies. For a guide on how to set up zombies, see here https://www.geeksforgeeks.org/slowloris-ddos-attack-tool-in-kali-linux/.
+After we successfully identified the IP address of the target IoT device, we would be able to perform the Distributed Denial of Service attack by flooding the network with hping or with the use of zombies. 
 
 `sudo hping3 "192.168.9.92" -q -n -d 120 -S -p 8883 --flood --rand-source`
+
+An alternative way to make use of the device would be to convert the Smart Door System into a Zombie for DDoS attacks on the internal network. Since we have attained access to the IoT Device, we could turn it into an IoT threat for the rest of their network, completely breaking down the home network of the end user.</br>
+For a guide on how to set up zombies, see here https://www.geeksforgeeks.org/slowloris-ddos-attack-tool-in-kali-linux/.
 
 </p>
 
