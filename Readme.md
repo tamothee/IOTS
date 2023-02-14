@@ -160,7 +160,7 @@ Breach of Administrator account credentials. With a breached administrator accou
 |  Damage (3)  | The damage would be high if the administrator account were to be accessed by a threat actor. This is because the administrator has full access to all the data that resides in the database and is able to configure all the server settings |
 |  Reproducability (3)  | The reproducability is would be considered high if the threat actor has found the credentials of the administrator account as they have full access to the database and can make changes as and when they please |
 |  Exploitability (3)  | The exploitability would be considered as high since it would be very difficult for a threat actor to gain access to the account. The administrator account for the MongoDB database is securely protected with the use of social logins and 2 factor authentication. The social login also consists of a strong password, reducing the possibility of having a breached administrator account. |
-|  Affected Users ()  | An attack on the database would affect all users, including the Administrator and all end-users  |
+|  Affected Users (3)  | An attack on the database would affect all users, including the Administrator and all end-users  |
 |  Discoverability (1)  | The discovery of an IoT threat at this level would be considered as low as it could be very difficult to identify that an account has been breached. This is very similar to the Verkada Breach which occured in 2021  |
 
 <p align="center">
