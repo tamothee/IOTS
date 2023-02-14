@@ -244,7 +244,6 @@ The best mitigation techniques would be implementing social logins that make use
 
 
 <h4>Attack Surface 4: Web Server Attacks (Vercel)</h4>
-[AttackSurface4]
 <h5>Vulnerabilities</h5>
 <p>
 Distributed Denial of Service (DDoS) of the Vercel webserver to take down the entire website. This attack would have a big impact on <b>availability</b> as the website will become inaccessible to all end-users. 
@@ -266,7 +265,7 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H
 
 <h5>Mitigation</h5>
 <p>
-Risk Response: Treat & Transfer
+Risk Response: Treat & Transfer </br>
 Proper mitigation techniques we could for this type of attack would be an automatic identification of any and all suspicious activities from users as well as black listing of the User/IP addresses that may be considered as attempting any malicious activities. However, a Distributed Denial of Service with the use of spoofing of the attacker's IP address would not be within our capabilities to treat. As such, we would be transferring those risks with the use of cloud service providers, which in this case would be Vercel.
 <p align="center">
 <img src="/img/AttackSurface4.png" alt="Attack Surface 4" width="75%" height="75%">
@@ -296,7 +295,7 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 </p>
 <h5>Mitigation</h5>
 <p>
-Risk Response: Treat
+Risk Response: Treat </br>
 Recommended mitigation techniques for this attack would include an alert and locking of the account after a set number of failed attempts. This has been implemented as part of Auth0's compliance. An additional method in preventing this attack would be the implementation of 2FA. With the use of 2FA, if the threat actor were to successfully authenticate themselves with the use of the username and password, they would still require authentication from the 2nd factor, which is highly unlikely.
 </p>
 
