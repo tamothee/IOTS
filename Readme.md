@@ -235,6 +235,8 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 |  RS-03  |  Web server is secured by vercel with security grade procedures. Able to withstand malicious threats such as Denial of Service (DoS) and Distributed Denial of Service (DDoS).  |
 |  MT-02  |  Users are only able to create, read, update and delete their own data so to uphold confidentiality and that data will not be tampered by unauthorized users.  |
 
+
+
 <h4>MongoDB Atlas Compliance List</h4>
 <i>TR64 Req IDs: CS-01;CS-04;CS-05;FP-01;DP-04;RS-04;AU-01;AU-02;MT-02 </i></br>
 
@@ -249,8 +251,18 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 |  MT-02  |  Role based access is granted to specific users such that there are no over privileged accounts, which poses as a IoT security vulnerability.  |
 
 <p align="center">
-<img src="/img/RoleBased.png" alt="Calculated Vulnerability Score 5" width="75%" height="75%">
+<img src="/img/RoleBased.png" alt="RoleBased" width="75%" height="75%">
+<i>User dashboard view only consists of personal devices</i>
 </p>
+<p align="center">
+<img src="/img/AuditLog.jpg" alt="Audit Log" width="75%" height="75%">
+<i>Audit Log for CRUD and Authentications</i>
+</p>
+<p align="center">
+<img src="/img/UserDatabaseSave.jpg" alt="User Database Save" width="75%" height="75%">
+<i>Saving of user does not include saving of PIIs</i>
+</p>
+
 
 <h4>Auth0 Compliance List </h4>
 <i>TR64 Req IDs: CS-05;MT-01;IA-01;IA-02;IA-03;IA-04;DP-02;AP-01;AP-02;AP-05</i> </br>
@@ -321,15 +333,18 @@ After obtaining the handshake, compare the handshake with a dictionary consistin
 <p>
 After gaining access to the same network as the IoT device, we would be able to scan the network using third-party softwares such as "Advanced IP Scanner" to identify the device we are trying to attack. In this case, it would be the device under the manufacturer "Espressif Systems".
 <p align="center">
-<img src="/img/AdvancedIPScanner.jpg" alt="Advanced IP Scanner" width="75%" height="75%">
+<img src="/img/AdvancedIPScanner.png" alt="Advanced IP Scanner" width="75%" height="75%">
 </p>
 
 </p>
 <h5>Step 3: Perform the Attack </h5>
 <p>
-After we successfully identified the IP address of the target IoT device, we would be able to perform the Distributed Denial of Service attack by flooding the network with hping or with the use of zombies. For a guide on how to set up zombies, see here https://www.geeksforgeeks.org/slowloris-ddos-attack-tool-in-kali-linux/.
+After we successfully identified the IP address of the target IoT device, we would be able to perform the Distributed Denial of Service attack by flooding the network with hping or with the use of zombies. 
 
 `sudo hping3 "192.168.9.92" -q -n -d 120 -S -p 8883 --flood --rand-source`
+
+An alternative way to make use of the device would be to convert the Smart Door System into a Zombie for DDoS attacks on the internal network. Since we have attained access to the IoT Device, we could turn it into an IoT threat for the rest of their network, completely breaking down the home network of the end user.</br>
+For a guide on how to set up zombies, see here https://www.geeksforgeeks.org/slowloris-ddos-attack-tool-in-kali-linux/.
 
 </p>
 
