@@ -163,10 +163,9 @@ CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H
 <h5>Mitigation</h5>
 <p>
 The best mitigation techniques would be implementing social logins that make use of 2 factor authentication, creating a strong password for the social login account, limiting the amount of people that have administrator privileges and having an audit log for important events such as authentications. The main purpose of implementing a strong password would be to minimize the risk of having a compromised password. Having a 2 factor authentication on top of the strong password would act as a gateway to the account, reducing the impact of a compromised user account. Limiting the number of administrator accounts would then help limit the number of potential compromised administrator accounts, reducing the risk of having an administrator account be compromised. 
-<p align="left">
+<p align="center">
 <img src="/img/AttackSurface3.png" alt="Atack Surface 3" width="75%" height="75%">
 </p>
-
 </p>
 
 
@@ -279,6 +278,86 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 |  LP-03  |  System was constructed using components provided by Singapore Polytechnic. Components were presumably sourced from a authorized seller.  |
 |  LP-07  |  Penetration testing for the cloud services are done by the service providers upon new updates and releases. Penetration testing for the ESP-32 data transmission was done with Kali Linux by legal means and under a controlled environment.  |
 |  LP-09  |  MongoDB manages all the user data for authenticated clients and Auth0 helps to provide certificates to allow proper authentication for all authorized clients.  |
+
+<h3>Security Testing of IoT Product</h3>
+<p>For the Security Testing portion, we have come up with two separate methods that would successfully penetrate the developed IoT Product.</p>
+
+<h4>Method 1: Distributed Denial of Service Attack</h4>
+<p>
+For method 1, we would be performing a Distributed Denial of Service Attack (DDoS). This attack has a sole purpose of denying the end user from being able to access the IoT Device, completely stopping the Smart Door System from working. For this DDoS attack, we would be flooding the network address with an absurd amount of traffic to the point where the IoT Devices would not be able to receive any incoming commands from the IoT Gateway.
+</p>
+<h5>Step 1: Access the network of the target IoT Device </h5>
+<p>
+Access Kali and kill all processes using the WiFi interface
+
+`airmon-ng check kill`
+
+Start the network adapter in monitor mode and view all nearby access points to identify target network.
+<p align="center">
+<img src="/img/AllNearbyAP.jpg" alt="All Nearby AP" width="75%" height="75%">
+</p>
+View all the clients that are connected to the network
+
+`airodump-ng -c 1 --bssid 80:35:C1:13:C1:2C -w /root wlan0mon`
+
+Deauthenticate all clients from the network in order to get them to re-authenticated themselves. While clients attempt to re-authenticate themselves, we would be able to capture the WPA handshake.
+
+`aireplay-ng -0 10 -a 80:35:C1:13:C1:2C wlan0mon`
+
+After obtaining the handshake, compare the handshake with a dictionary consisting of all common passwords.
+
+`aircrack-ng -a2 -b 80:35:C1:13:C1:2C -w /root/passwords.txt /root/hacking-01.cap`
+
+<p align="center">
+<img src="/img/ObtainedKey.jpg" alt="Obtained Key" width="75%" height="75%">
+</p>
+</p>
+
+<h5>Step 2: Identify the target IoT Device </h5>
+<p>
+After gaining access to the same network as the IoT device, we would be able to scan the network using third-party softwares such as "Advanced IP Scanner" to identify the device we are trying to attack. In this case, it would be the device under the manufacturer "Espressif Systems".
+<p align="center">
+<img src="/img/AdvancedIPScanner.jpg" alt="Advanced IP Scanner" width="75%" height="75%">
+</p>
+
+</p>
+<h5>Step 3: Perform the Attack </h5>
+<p>
+After we successfully identified the IP address of the target IoT device, we would be able to perform the Distributed Denial of Service attack by flooding the network with hping or with the use of zombies. For a guide on how to set up zombies, see here https://www.geeksforgeeks.org/slowloris-ddos-attack-tool-in-kali-linux/.
+
+`sudo hping3 "192.168.9.92" -q -n -d 120 -S -p 8883 --flood --rand-source`
+
+</p>
+
+<h4>Method 2: Man in the Middle Attack</h4>
+<p>
+For method 2, we are going with the assumption that the IoT Device has been mass produced and deployed. This would result in the product connecting to the Access Points to gain access to the internet. As such, another threat that the IoT product faces would be Man in the Middle Attacks (MITM). For MITM attacks, there would be a fake access point that would be identical to that of the real one, causing the end user to misinterpret the fake access point as the real one and connecting to it, sending their personal data directly to the threat actor.
+<p align="center">
+<img src="/img/MITM.png" alt="MITM" width="75%" height="75%">
+</p>
+</p>
+<h5>Step 1: Identify the network of the target IoT Device </h5>
+<p>
+Follow the guide provided for Method 1 Step 1.
+</p>
+
+<h5>Step 2: Create a fake access point using WiHotspot </h5>
+<p>
+After identifying the network access point details, create a fake access point using any of the preferred tools such as wifiphisher. In this case, we will be using wihotspot, which is a GUI based tool. </br>
+In the GUI of wihotspot, set the SSID and password of fake access point to be that of the real one and click on create. This will create the fake access point which will act as a bait for the end user to connect to.
+<p align="center">
+<img src="/img/FakeAccessPoint.png" alt="Fake Access Point" width="75%" height="75%">
+</p>
+After setting up the fake access point, it would show up alike any other hotspots or available access points. To speed up the process, we would de-authenticate all the users that are currently connected to the real access point. This would increase the chances of the end user connecting their IoT device to our fake access point that we have created. 
+
+`aireplay-ng -0 10 -a 80:35:C1:13:C1:2C wlan0mon`
+
+</p>
+
+<h5>Step 3: Analyze incoming transmissions </h5>
+<p>
+After the users have connected to the fake access points, all the data that is intended to be sent to the cloud database will be sent to the threat actor instead. The last step would be to decrypt the received packets and we would have successfully obtained the private data of the end user.
+</p>
 
 <h3>Documentation (to run this system yourself)</h3>
 <h4>Website</h4>
