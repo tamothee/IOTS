@@ -173,7 +173,8 @@ CVSS:3.0/AV:P/AC:H/PR:H/UI:N/S:C/C:N/I:N/A:H
 
 <h5>Mitigation</h5>
 <p>
-In order to mitigate this attack, physically securing the Door Access System with proper procedures would be recommended. In order to achieve this, we created a tamper proof enclosure for the ESP-32 microcontroller so that it would be very difficult for them to inject their own code and tamper with the microcontroller.
+Risk Response: Treat </br>
+In order to treat this attack, physically securing the Door Access System with proper procedures would be recommended. In order to achieve this, we created a tamper proof enclosure for the ESP-32 microcontroller so that it would be very difficult for them to inject their own code and tamper with the microcontroller.
 
 </p>
 
@@ -204,6 +205,7 @@ CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N
 
 <h5>Mitigation</h5>
 <p>
+Risk Response: Tolerate </br>
 In order to mitigate this attack, we chose to encrypt the data at rest as well as the data in transit. The data at rest is encrpted using the PBKDF2 algorithm and the data in transit is encrypted using TLS. This way, even if there was an attacker listening on the packets being transmitted, they would have to find out the encryption algorithm and decrypt the packet before being able to identify the data.
 </p>
 
@@ -232,6 +234,7 @@ CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H
 
 <h5>Mitigation</h5>
 <p>
+Risk Response: Transfer </br>
 The best mitigation techniques would be implementing social logins that make use of 2 factor authentication, creating a strong password for the social login account, limiting the amount of people that have administrator privileges and having an audit log for important events such as authentications. The main purpose of implementing a strong password would be to minimize the risk of having a compromised password. Having a 2 factor authentication on top of the strong password would act as a gateway to the account, reducing the impact of a compromised user account. Limiting the number of administrator accounts would then help limit the number of potential compromised administrator accounts, reducing the risk of having an administrator account be compromised. 
 <p align="center">
 <img src="/img/AttackSurface3.png" alt="Atack Surface 3" width="75%" height="75%">
@@ -263,7 +266,8 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H
 
 <h5>Mitigation</h5>
 <p>
-Proper mitigation techniques for this type of attack would be an automatic identification of any and all suspicious activities from users as well as black listing of the User/IP addresses that may be considered as attempting any malicious activities. 
+Risk Response: Treat & Transfer
+Proper mitigation techniques we could for this type of attack would be an automatic identification of any and all suspicious activities from users as well as black listing of the User/IP addresses that may be considered as attempting any malicious activities. However, a Distributed Denial of Service with the use of spoofing of the attacker's IP address would not be within our capabilities to treat. As such, we would be transferring those risks with the use of cloud service providers, which in this case would be Vercel.
 <p align="center">
 <img src="/img/AttackSurface4.png" alt="Attack Surface 4" width="75%" height="75%">
 </p>
@@ -292,6 +296,7 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 </p>
 <h5>Mitigation</h5>
 <p>
+Risk Response: Treat
 Recommended mitigation techniques for this attack would include an alert and locking of the account after a set number of failed attempts. This has been implemented as part of Auth0's compliance. An additional method in preventing this attack would be the implementation of 2FA. With the use of 2FA, if the threat actor were to successfully authenticate themselves with the use of the username and password, they would still require authentication from the 2nd factor, which is highly unlikely.
 </p>
 
