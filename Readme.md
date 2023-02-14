@@ -252,15 +252,15 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 
 <p align="center">
 <img src="/img/RoleBased.png" alt="RoleBased" width="75%" height="75%">
-<i>User dashboard view only consists of personal devices</i>
+</br><i>User dashboard view only consists of personal devices</i>
 </p>
 <p align="center">
 <img src="/img/AuditLog.jpg" alt="Audit Log" width="75%" height="75%">
-<i>Audit Log for CRUD and Authentications</i>
+</br><i>Audit Log for CRUD and Authentications</i>
 </p>
 <p align="center">
 <img src="/img/UserDatabaseSave.jpg" alt="User Database Save" width="75%" height="75%">
-<i>Saving of user does not include saving of PIIs</i>
+</br><i>Saving of user does not include saving of PIIs</i>
 </p>
 
 
