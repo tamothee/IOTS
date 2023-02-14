@@ -248,6 +248,10 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 |  AU-01;AU-02  |  Audit log consists of all entries, including Create, Read, Update and Delete (CRUD) as well as any successful or unsuccessful authentications. Audit logs are also secured and tamper proof. Only the authorized user with the proper credentials/API key would be able  to access it.  |
 |  MT-02  |  Role based access is granted to specific users such that there are no over privileged accounts, which poses as a IoT security vulnerability.  |
 
+<p align="center">
+<img src="/img/RoleBased.png" alt="Calculated Vulnerability Score 5" width="75%" height="75%">
+</p>
+
 <h4>Auth0 Compliance List </h4>
 <i>TR64 Req IDs: CS-05;MT-01;IA-01;IA-02;IA-03;IA-04;DP-02;AP-01;AP-02;AP-05</i> </br>
 
