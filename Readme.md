@@ -79,6 +79,15 @@ The implementation of our website follows the OAuth 2.0 framework. The user will
 | Lifecycle Protection  | LP-01, LP-02, LP-03, LP-07, LP-09  |
 
 <h3>Attack Surfaces</h3>
+<p>
+For each of the attack surfaces, we performed a DREAD analysis as well as a Common Vulneribility Scoring System assessment (CVSS) in order to identify the threat level. Based on this threat level, we came up with proper mitigation techniques that will be implemented into our existing solution.</br>
+For the DREAD rating: <br>
+Damage: How bad would the damage of the attack be. (1-Low, 3-High) </br>
+Reproducibility: How easy is it to reproduce the attack. (1-Difficult, 3-Easy) </br>
+Exploitability: How much work is it to launch the attack. (1-Little, 3-A lot) </br>
+Affected Users: How many users would be affected by the attack. (1-Little, 3-A lot) </br>
+Discoverability: How easy is it to discover the threat. (1-Difficult, 3-Easy) </br>
+</p>
 <h4>Attack Surface 1: Physical Attacks (ESP-32)</h4>
 <h5>Vulnerabilities</h5>
 <p>
@@ -88,11 +97,11 @@ Physically tampering with the door access system and injecting of external code 
 
 |  Category  |  Description  |
 |  --------  |  -----------  |
-|  Damage  | An attack on the physical hardware would have a very high impact as the physical hardware is the core of the Door Access System.  |
-|  Reproducability  | An attack on the hardware level would be very hard to reproduce as it would require the attacker to be physically present at the same location as the hardware  |
-|  Exploitability  |   This attack would be considered as medium level exploitability since our product is already placed in a tamper-proof box to secure it.  |
-|  Affected Users  |  The home owner would be the main affected user as it would compromise the entire security system, allowing anyone to enter the home of the home owner.  |
-|  Discoverability  |  An attack at this level would be very high on the discoverability scale as this attack requires the home owner to be physically present at the site where the security system is, which in this case is the home.  |
+|  Damage (3)  | An attack on the physical hardware would have a very high impact as the physical hardware is the core of the Door Access System.  |
+|  Reproducability (1)  | An attack on the hardware level would be very hard to reproduce as it would require the attacker to be physically present at the same location as the hardware  |
+|  Exploitability (2)  |   This attack would be considered as medium level exploitability since our product is already placed in a tamper-proof box to secure it.  |
+|  Affected Users (1)  |  The home owner would be the main affected user as it would compromise the entire security system, allowing anyone to enter the home of the home owner.  |
+|  Discoverability (2)  |  An attack at this level would be medium on the discoverability scale as this attack requires the home owner to be physically present at the site where the security system is, which in this case is the home.  |
 
 <p align="center">
 <img src="/img/OWaspVulnerabilityScore1.png" alt="Calculated Vulnerability Score 1" width="75%" height="75%">
@@ -119,11 +128,11 @@ Intercepting of packets being sent from the "Door Access" terminal to the secure
 
 |  Category  |  Description  |
 |  --------  |  -----------  |
-|  Damage  | An attack at this level would be be very low risk as there are proper security procedures implemented into this. For example, packets are sent through using TLS, meaning that it is very hard for hackers to identify and decrypt the Personal Identifiabe Information.  |
-|  Reproducability  |  In order to reproduce this type of attack, it would be very easy. However, the exploitaility of this attack is not easy.  |
-|  Exploitability  |  This attack has a medium level exploitability as it would require a specific skillset from the threat actor in order to perform this successfully.  |
-|  Affected Users  |  Home Owners are the only users that would be affected.  |
-|  Discoverability  |  Discovering a vulnerability in order to perform an eavesdropping attack would be considered low since it is not very easy to find a vulnerability to intercept the packets.  |
+|  Damage (1)  | An attack at this level would be be very low in damage as there are proper security procedures implemented into this. For example, packets are sent through using TLS, meaning that it is very hard for hackers to identify and decrypt the Personal Identifiabe Information.  |
+|  Reproducability (1)  |  In order to reproduce this type of attack, it would be very easy. However, the exploitaility of this attack is not easy.  |
+|  Exploitability (2)  |  This attack has a medium level exploitability as it would require a specific skillset from the threat actor in order to perform this successfully.  |
+|  Affected Users (1)  |  Home Owners are the only users that would be affected.  |
+|  Discoverability (2)  |  Discovering a vulnerability in order to perform an eavesdropping attack would be considered medium level since it is not very easy to find a vulnerability to intercept the packets.  |
 
 <p align="center">
 <img src="/img/OWaspVulnerabilityScore2.png" alt="Calculated Vulnerability Score 2" width="75%" height="75%">
@@ -148,11 +157,11 @@ Breach of Administrator account credentials. With a breached administrator accou
 
 |  Category  |  Description  |
 |  --------  |  -----------  |
-|  Damage  | The damage would be high if the administrator account were to be accessed by a threat actor. This is because the administrator has full access to all the data that resides in the database and is able to configure all the server settings |
-|  Reproducability  | The reproducability is would be considered high if the threat actor has found the credentials of the administrator account as they have full access to the database and can make changes as and when they please |
-|  Exploitability  | The exploitability would be considered as low since the administrator account for the MongoDB database is securely protected with the use of social logins and 2 factor authentication. The social login also consists of a strong password, reducing the possibility of having a breached administrator account. |
-|  Affected Users  | An attack on the database would affect all users, including the Administrator and all end-users  |
-|  Discoverability  | The discovery of an IoT threat at this level would be considered as low as we have proper procedures in place to prevent a breached user account from having too much of an impact. |
+|  Damage (3)  | The damage would be high if the administrator account were to be accessed by a threat actor. This is because the administrator has full access to all the data that resides in the database and is able to configure all the server settings |
+|  Reproducability (3)  | The reproducability is would be considered high if the threat actor has found the credentials of the administrator account as they have full access to the database and can make changes as and when they please |
+|  Exploitability (3)  | The exploitability would be considered as high since it would be very difficult for a threat actor to gain access to the account. The administrator account for the MongoDB database is securely protected with the use of social logins and 2 factor authentication. The social login also consists of a strong password, reducing the possibility of having a breached administrator account. |
+|  Affected Users ()  | An attack on the database would affect all users, including the Administrator and all end-users  |
+|  Discoverability (1)  | The discovery of an IoT threat at this level would be considered as low as it could be very difficult to identify that an account has been breached. This is very similar to the Verkada Breach which occured in 2021  |
 
 <p align="center">
 <img src="/img/OWaspVulnerabilityScore3.png" alt="Calculated Vulnerability Score 3" width="75%" height="75%">
@@ -180,11 +189,11 @@ Distributed Denial of Service (DDoS) of the Vercel webserver to take down the en
 
 |  Category  |  Description  |
 |  --------  |  -----------  |
-|  Damage  | An attack of a web server attack would be considered as a middle damage level attack as it would completely prevent users from CRUD functions (Create, Read, Update and Delete functions). This would result in the end-users being unable to change any configuration related to their security system.  |
-|  Reproducability  |  In order to reproduce an attack at this level, it would be extremely difficult as Vercal has taken proper precautions to prevent high level threats such as DDoS which could reflect badly on the companys reputation  |
-|  Exploitability  |  To perform a DDoS at such a large scale, one that is able to take down a major cloud hosting such as Vercel, the threat actor would be required to be highly skilled and knowledgeable. They would also be require to make use of a extremely large number of zombies  |
-|  Affected Users  |  All users would be affected if Vercel were to be taken down as it would prevent them from being able to access and view their cloud based dashboards, which prevents them from using CRUD functions.  |
-|  Discoverability  |  It is not easy to discover how perform a DDoS attack that would work on major cloud hosts such as Vercel due to the security precautions that are already in place. |
+|  Damage (2)  | An attack of a web server attack would be considered as a middle damage level attack as it would completely prevent users from CRUD functions (Create, Read, Update and Delete functions). This would result in the end-users being unable to change any configuration related to their security system.  |
+|  Reproducability (1)  |  In order to reproduce an attack at this level, it would be extremely difficult as Vercal has taken proper precautions to prevent high level threats such as DDoS which could reflect badly on the companys reputation  |
+|  Exploitability (1)  |  To perform a DDoS at such a large scale, one that is able to take down a major cloud hosting such as Vercel, the threat actor would be required to be highly skilled and knowledgeable. They would also be require to make use of a extremely large number of zombies  |
+|  Affected Users (3)  |  All users would be affected if Vercel were to be taken down as it would prevent them from being able to access and view their cloud based dashboards, which prevents them from using CRUD functions.  |
+|  Discoverability (1)  |  It would be very hard to discover how to perform a DDoS attack on such a big cloud hosting service such as Vercel.  |
 
 <p align="center">
 <img src="/img/OWaspVulnerabilityScore4.png" alt="Calculated Vulnerability Score 4" width="75%" height="75%">
@@ -210,21 +219,21 @@ One of the most common IoT attacks on web applications that require authenticati
 
 |  Category  |  Description  |
 |  --------  |  -----------  |
-|  Damage  | The damage would be considered high for this attack as the threat actor would be able to reconfigure the settings of the home owner, potentially allowing the threat actor to get into the home of the account owner.  |
-|  Reproducability  |  The reproducability of this attack would be considered as low since there are proper precautions in place to prevent such attacks. Some examples would be a restriction and notification alert sent to the account owner if there was a number of failed attempts. |
-|  Exploitability  |  A brute force attack would be considered as low exploitability since it required a large amount of effort and time to enter each potential password.  |
-|  Affected Users  |  The only affected user would be the end-user whose account was breached by this attack.  |
-|  Discoverability  |  It does not difficult for a threat actor perform a brute force attack as it requires little to no knowledge about IoT attacks.  |
-
-<h5>Mitigation</h5>
-<p>
-Recommended mitigation techniques for this attack would include an alert and locking of the account after a set number of failed attempts. This has been implemented as part of Auth0's compliance. An additional method in preventing this attack would be the implementation of 2FA. With the use of 2FA, if the threat actor were to successfully authenticate themselves with the use of the username and password, they would still require authentication from the 2nd factor, which is highly unlikely.
-</p>
+|  Damage (3)  | The damage would be considered high for this attack as the threat actor would be able to reconfigure the settings of the home owner, potentially allowing the threat actor to get into the home of the account owner.  |
+|  Reproducability (1)  |  The reproducability of this attack would be considered as low since there are proper precautions in place to prevent such attacks. Some examples would be a restriction and notification alert sent to the account owner if there was a number of failed attempts. |
+|  Exploitability (1)  |  A brute force attack would be considered as low exploitability since it required a large amount of effort and time to enter each potential password.  |
+|  Affected Users (1)  |  The only affected user would be the end-user whose account was breached by this attack.  |
+|  Discoverability (3)  |  It does not difficult for a threat actor perform a brute force attack as it requires little to no knowledge about IoT attacks.  |
 <p align="center">
 <img src="/img/OWaspVulnerabilityScore5.png" alt="Calculated Vulnerability Score 5" width="75%" height="75%">
 </p>
 CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 </p>
+<h5>Mitigation</h5>
+<p>
+Recommended mitigation techniques for this attack would include an alert and locking of the account after a set number of failed attempts. This has been implemented as part of Auth0's compliance. An additional method in preventing this attack would be the implementation of 2FA. With the use of 2FA, if the threat actor were to successfully authenticate themselves with the use of the username and password, they would still require authentication from the 2nd factor, which is highly unlikely.
+</p>
+
 <h3>Compliance Lists</h3>
 <h4>Webpage Compliance List</h4> 
 <i>TR64 Req IDs: CS-02; FP-02; IA-01;RS-03;MT-02</i>
