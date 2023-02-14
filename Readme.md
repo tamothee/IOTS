@@ -275,7 +275,7 @@ CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L
 |  IA-03  |  Unique tokens are generated and assigned to users using JWTs to guarantee the Authenticity of users.  |
 |  IA-04;AP-02;MT-01  |  Users are required to create a complex password upon signing up. 2 factor authentication is also required for users who sign in using third-party applications such as Google or Microsoft Account. (Refer to Attack Surface 3)  |
 |  DP-02  |  Digital signatures are created using RS256 to sign Json Web Tokens for <b>Non-Repudiation</b> and <b>Integrity</b>, making sure the content has not been tampered with.  |
-|  AP-01  |  Failure to enter password consecutively would result in an account lockout followed by blocking of the suspected user IP Address. Account owner would also be notified of the suspicious activity and given a choice to unblock the IP Address. ###Attack Surface 4  |
+|  AP-01  |  Failure to enter password consecutively would result in an account lockout followed by blocking of the suspected user IP Address. Account owner would also be notified of the suspicious activity and given a choice to unblock the IP Address. ###AttackSurface4  |
 
 <p align="center">
 <img src="/img/Auth0Hashing.jpg" alt="Auth0 Hashing" width="75%" height="75%">
