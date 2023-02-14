@@ -10,6 +10,42 @@
 The user will use a keypad to enter a code to unlock the door. It also uses an LCD to give prompts to the user. Users will also be able to configure their device information through a website.
 </br>
 
+<h3>How users are meant to operate and use the product</h3>
+<h5>Setting up on the website</h5>
+Users will need to set up their device to be connected to the database. To do that, the first thing a user will need to do is to register an account through the website. https://iots.vercel.app/ . After they signed in, they will click create a new device. They fill in the form then press create. Take not of the device id as you will need it later. You can create, read, update and delete your devices through the website.
+
+<h5>Setting up on the door lock</h5>
+After the user has created a new device in the website, they will go to the door lock and turn it on. After the door lock boots up, they will be prompted to add in the device id they got earlier on. 
+</br>
+</br>
+<h5>Using the door lock</h5>
+After they add in their device id, the door will prompt for the password (which was set in the website). When the user adds in their password, the door will check
+ the pasword. If it is authorised, the door will unlock else it will not open.
+
+
+<h3>Security Objective</h3>
+<p>
+Since our smart door lock system utilises a website, cloud database and the lock itself, our security objective would be to:
+<ul>
+<li>
+prevent threat actors from tampering with the door lock system
+</li>
+<li>
+prevent unauthorized users from unlocking the door system
+</li>
+<li>
+protect user information
+</li>
+<li>
+protect user door system information
+</li>
+</ul>
+These are the core security objective that our system aims to achieve as a security breach of any of these points would result in huge losses for users.
+</p>
+
+
+<h3>Documentation of IoT System Architecture</h3>
+
 <h3>Components</h3>
 <ul>
   <li>Hardware
@@ -38,24 +74,49 @@ The user will use a keypad to enter a code to unlock the door. It also uses an L
   </li>
 </ul>
 
-<h3>General Overview</h3>
+<h4>System Architecture Diagram</h4>
 <p align="center">
-<img src="/img/diagram_flow.png" alt="diagram flow" width="70%" height="70%">
+<img src="/img/diagram_flow.jpg" alt="diagram flow" width="70%" height="70%">
 </p>
 
-<h3>How users are meant to operate and use the product</h3>
-<h5>Setting up on the website</h5>
-Users will need to set up their device to be connected to the database. To do that, the first thing a user will need to do is to register an account through the website. https://iots.vercel.app/ . After they signed in, they will click create a new device. They fill in the form then press create. Take not of the device id as you will need it later. You can create, read, update and delete your devices through the website.
-
-<h5>Setting up on the door lock</h5>
-After the user has created a new device in the website, they will go to the door lock and turn it on. After the door lock boots up, they will be prompted to add in the device id they got earlier on. 
-</br>
-</br>
-Thats it! Your smart door is ready to work
+This diagram shows how the different components of the system interact with each other. The ESP32 reads the password and sends it together with the 
+pre-configured device id to Mongodb which stores the door system configurations. The Mongodb will run a function to check the device id and password like a 
+username and password function. If the device id and password is correct, it will return http code 200 (success) else a http code 401 (unauthorised). The user 
+can also use the website to do CRUD operations to their own data (RBAC).
 
 <h3>
-OAuth 2.0 framework
+Decomposing the IoT System
 </h3>
+
+<p align="center">
+<img src="img/trust_boundary_diagram.jpg" alt="diagram flow" width="70%" height="70%">
+</p>
+
+This diagram demonstrates how we have implemented our trust boundaries and the different features we have put in place to safeguard our data. Our entry points into our system where data is input is at the ESP32 and the website. 
+<br/>
+The privileged codes that we have identified are:
+<ul>
+<li>
+ESP32 Microcontroller Firmware: The ESP32 microcontroller firmware controls the lock mechanism based on Mongodb reply. This code has access to the lock control functionality and be able to perform critical tasks like reading the keypad input and controlling the lock mechanism.
+</li>
+<li>
+HTTPS Communication between ESP32 and MongoDB: The code responsible for sending and receiving HTTPS requests and responses between the ESP32 and the MongoDB database would also have privileged code. This code would have access to the network stack and be responsible for authenticating and validating the MongoDB server's identity and securing the communication between the ESP32 and the MongoDB server.
+</li>
+<li>
+HTTPS Communication between ESP32 and MongoDB: The code responsible for sending and receiving HTTPS requests and responses between the ESP32 and the MongoDB database would also have privileged code. This code would have access to the network stack and be responsible for authenticating and validating the MongoDB server's identity and securing the communication between the ESP32 and the MongoDB server.
+</li>
+<li>
+MongoDB Database: The code that manages the door lock configuration data in the MongoDB database would also have privileged code. This code would have access to the MongoDB database and be responsible for managing user accounts and door lock configuration data.
+</li>
+<li>
+Auth0: Although theres no code, the system manages the user and password of the Vercel-hosted website and is privileged. This system have access to the user accounts and password data stored in the MongoDB database and be responsible for performing critical tasks like authenticating users, managing passwords, and updating the MongoDB database.
+</li>
+</ul>
+
+
+<h4>
+OAuth 2.0 framework
+</h4>
 <p>
 The implementation of our website follows the OAuth 2.0 framework. The user will first go through a <b>Authorisation Request</b> to Auth0. If the user is authorised, they will get a <b>Authorisation Grant</b> from Auth0. The user will then use the <b>Authorisation Grant</b> received to retrieve a <b>Access Token</b> from Auth0. The user can then use this <b>Access Token</b> to retrieve data from Mongodb. For a better user experience, Auth0 uses refresh token to silently retrieve a access token when it is expired without user intervention. This allows our user to stay authenticated in our application without needing to logging everytime. The access token expiry set in our application is 86,400 seconds (24 hours) and the refresh token expiry set is 2592000 seconds (30 days).
 <p>
@@ -101,7 +162,7 @@ Physically tampering with the door access system and injecting of external code 
 |  Reproducability (1)  | An attack on the hardware level would be very hard to reproduce as it would require the attacker to be physically present at the same location as the hardware  |
 |  Exploitability (2)  |   This attack would be considered as medium level exploitability since our product is already placed in a tamper-proof box to secure it.  |
 |  Affected Users (1)  |  The home owner would be the main affected user as it would compromise the entire security system, allowing anyone to enter the home of the home owner.  |
-|  Discoverability (2)  |  An attack at this level would be medium on the discoverability scale as this attack requires the home owner to be physically present at the site where the security system is, which in this case is the home.  |
+|  Discoverability (1)  | Discoverability for physical attacks would be considered as a low level since it would require the threat actor to successfully get into the house in order to inject their code into the microcontroller.  |
 
 <p align="center">
 <img src="/img/OWaspVulnerabilityScore1.png" alt="Calculated Vulnerability Score 1" width="75%" height="75%">
