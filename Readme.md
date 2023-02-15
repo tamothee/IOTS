@@ -22,6 +22,10 @@ After the user has created a new device in the website, they will go to the door
 After they add in their device id, the door will prompt for the password (which was set in the website). When the user adds in their password, the door will check
  the pasword. If it is authorised, the door will unlock else it will not open.
 
+<h3>Project Demo</h3>
+
+### Demo Video
+[![Demo Video](https://img.youtu.be/vi/waqXAICTkyw/maxresdefault.jpg)](https://youtu.be/waqXAICTkyw)
 
 <h3>Security Objective</h3>
 <p>
@@ -433,6 +437,9 @@ An alternative way to make use of the device would be to convert the Smart Door 
 For a guide on how to set up zombies, see here https://www.geeksforgeeks.org/slowloris-ddos-attack-tool-in-kali-linux/.
 
 </p>
+
+### Penetration Video
+[![Penetration Video](https://img.youtu.be/vi/PevY5pmHhtg/maxresdefault.jpg)](https://youtu.be/PevY5pmHhtg)
 
 <h4>Method 2: Man in the Middle Attack</h4>
 <p>
