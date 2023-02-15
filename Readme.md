@@ -434,6 +434,10 @@ For a guide on how to set up zombies, see here https://www.geeksforgeeks.org/slo
 
 </p>
 
+<p>
+<video src="/videos/penetration.mp4" alt="Penetration Test" width="100%"height="100%">
+</p>
+
 <h4>Method 2: Man in the Middle Attack</h4>
 <p>
 For method 2, we are going with the assumption that the IoT Device has been mass produced and deployed. This would result in the product connecting to the Access Points to gain access to the internet. As such, another threat that the IoT product faces would be Man in the Middle Attacks (MITM). For MITM attacks, there would be a fake access point that would be identical to that of the real one, causing the end user to misinterpret the fake access point as the real one and connecting to it, sending their personal data directly to the threat actor.
