@@ -436,8 +436,7 @@ For a guide on how to set up zombies, see here https://www.geeksforgeeks.org/slo
 
 </p>
 
-<video src="https://youtu.be/PevY5pmHhtg" alt="Penetration Test" width="100%"height="100%">
-(https://img.youtu.be/PevY5pmHhtg/maxresdefault.jpg)](https://youtu.be/PevY5pmHhtg)
+[![PenetrationVideo](https://img.youtu.be/PevY5pmHhtg/maxresdefault.jpg)](https://youtu.be/PevY5pmHhtg)
 
 <h4>Method 2: Man in the Middle Attack</h4>
 <p>
