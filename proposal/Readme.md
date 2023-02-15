@@ -45,7 +45,7 @@ Then the user will need to go to their door lock and add in their door lock id. 
 
 <h3>How it works</h3>
 <p align="center">
-<img src="/img/diagram_flow.png" width=70% height=70% style=>
+<img src="/img/diagram_flow.jpg" width=70% height=70% style=>
 </p>
 Mongodb stores the door lock ID and password. The user can use the website to create, read, update and delete their door lock information. When the user enters the password into the keypad and presses enter, it will do a HTTP request to the Mongodb HTTPS endpoint with the door lock ID and password. This endpoint is secured with TLS. Mongodb will receive the password and door lock ID, hash the incoming password using the same algorithm and salt and check the password to the hashed database password to see if they match. If they do, it will return an authorised, otherwise it will return not authorised.
 
