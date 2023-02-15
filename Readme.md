@@ -22,6 +22,8 @@ After the user has created a new device in the website, they will go to the door
 After they add in their device id, the door will prompt for the password (which was set in the website). When the user adds in their password, the door will check
  the pasword. If it is authorised, the door will unlock else it will not open.
 
+<h3>Project Demo</h3>
+(https://img.youtu.be/waqXAICTkyw/maxresdefault.jpg)](https://youtu.be/waqXAICTkyw)
 
 <h3>Security Objective</h3>
 <p>
@@ -434,9 +436,8 @@ For a guide on how to set up zombies, see here https://www.geeksforgeeks.org/slo
 
 </p>
 
-<p>
-<video src="/videos/penetration.mp4" alt="Penetration Test" width="100%"height="100%">
-</p>
+<video src="https://youtu.be/PevY5pmHhtg" alt="Penetration Test" width="100%"height="100%">
+(https://img.youtu.be/PevY5pmHhtg/maxresdefault.jpg)](https://youtu.be/PevY5pmHhtg)
 
 <h4>Method 2: Man in the Middle Attack</h4>
 <p>
