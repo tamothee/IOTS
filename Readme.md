@@ -23,7 +23,9 @@ After they add in their device id, the door will prompt for the password (which 
  the pasword. If it is authorised, the door will unlock else it will not open.
 
 <h3>Project Demo</h3>
-(https://img.youtu.be/waqXAICTkyw/maxresdefault.jpg)](https://youtu.be/waqXAICTkyw)
+
+### Demo Video
+[![Demo Video](https://img.youtu.be/vi/PevY5pmHhtg/maxresdefault.jpg)](https://youtu.be/PevY5pmHhtg)
 
 <h3>Security Objective</h3>
 <p>
