@@ -427,7 +427,7 @@ After gaining access to the same network as the IoT device, we would be able to 
 <p>
 After we successfully identified the IP address of the target IoT device, we would be able to perform the Distributed Denial of Service attack by flooding the network with hping or with the use of zombies. 
 
-`sudo hping3 "192.168.9.92" -q -n -d 120 -S -p 8883 --flood --rand-source`
+`sudo hping3 "192.168.9.243" -q -n -d -S -p 443 --flood --rand-source`
 
 An alternative way to make use of the device would be to convert the Smart Door System into a Zombie for DDoS attacks on the internal network. Since we have attained access to the IoT Device, we could turn it into an IoT threat for the rest of their network, completely breaking down the home network of the end user.</br>
 For a guide on how to set up zombies, see here https://www.geeksforgeeks.org/slowloris-ddos-attack-tool-in-kali-linux/.
