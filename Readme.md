@@ -25,7 +25,7 @@ After they add in their device id, the door will prompt for the password (which 
 <h3>Project Demo</h3>
 
 ### Demo Video
-[![Demo Video](https://img.youtu.be/vi/waqXAICTkyw/maxresdefault.jpg)](https://youtu.be/waqXAICTkyw)
+[![Demo Video](https://img.youtu.be/vi/waqXAICTkyw/0.jpg)](https://youtu.be/waqXAICTkyw)
 
 <h3>Security Objective</h3>
 <p>
