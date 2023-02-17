@@ -24,8 +24,7 @@ After they add in their device id, the door will prompt for the password (which 
 
 <h3>Project Demo</h3>
 
-[![Demo Video](https://img.youtu.be/vi/waqXAICTkyw/mqdefault.jpg)](https://youtu.be/waqXAICTkyw)
-
+[![Demo Video](https://img.youtube.com/vi/waqXAICTkyw/mqdefault.jpg)](https://youtu.be/waqXAICTkyw)
 
 <h3>Security Objective</h3>
 <p>
@@ -439,7 +438,7 @@ For a guide on how to set up zombies, see here https://www.geeksforgeeks.org/slo
 </p>
 
 ### Penetration Video
-[![Penetration Video](https://img.youtu.be/vi/PevY5pmHhtg/maxresdefault.jpg)](https://youtu.be/PevY5pmHhtg)
+[![Penetration Video](https://img.youtube.com/vi/PevY5pmHhtg/0.jpg)](https://youtu.be/PevY5pmHhtg)
 
 <h4>Method 2: Man in the Middle Attack</h4>
 <p>
